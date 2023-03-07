@@ -6,7 +6,7 @@ USE chrysalide;
 CREATE TABLE user (
     id_user INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50),
-    user_img 
+    user_img BLOB,
     date_inscription DATE NOT NULL,
     PRIMARY KEY (id_user)
 ) ENGINE=InnoDB;
@@ -24,6 +24,7 @@ CREATE TABLE post (
     id_sport INT NOT NULL,
     title VARCHAR(50),
     content VARCHAR(1000),
+    post_img BLOB,
     date_post DATE NOT NULL,
     PRIMARY KEY (id_post),
     FOREIGN KEY (id_user) REFERENCES user(id_user),
@@ -32,6 +33,7 @@ CREATE TABLE post (
 
 CREATE TABLE commentaire (
     id_comm INT NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL,
     content VARCHAR(500),
-    
+    PRIMARY KEY (id_comm)
 ) ENGINE=InnoDB;
