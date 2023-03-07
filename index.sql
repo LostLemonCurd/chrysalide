@@ -34,12 +34,14 @@ CREATE TABLE commentaire (
     id_comm INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
     content VARCHAR(500),
-    PRIMARY KEY (id_comm)
+    PRIMARY KEY (id_comm),
+    FOREIGN KEY (id_user) REFERENCES user(id_user)
 ) ENGINE=InnoDB;
 
 CREATE TABLE mp (
     id_msg INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
     content VARCHAR(1000),
-    PRIMARY KEY (id_msg)
+    PRIMARY KEY (id_msg),
+    FOREIGN KEY (id_user) REFERENCES user(id_user)
 ) ENGINE=InnoDB;
