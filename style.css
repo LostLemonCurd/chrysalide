@@ -1,0 +1,16 @@
+body{
+    background: #1C1C28;
+    margin: auto 65px;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+.side-bar{
+    display: flex;
+    flex-direction: column;
+}
