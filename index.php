@@ -14,14 +14,14 @@
     <header>
         <img class="logo" src="img/logo.png" alt="Logo Chrysalide">
         <form method="post">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input class="search-bar" type="text">
+            <img src="img/search.svg" alt="search icon">
+            <input class="search-bar" type="text" placeholder="Rechercher">
         </form>
         <nav class="nav-header">
             <a href="">Tournois</a>
             <a href="">Chrysalide</a>
         </nav>
-        <a href=""><img class="profile" src="" alt="Profile img"></a>
+        <a href=""><img class="profile" src="img/img-profile.png" alt="Profile img"></a>
     </header>
     <main>
         <nav class="side-bar">
@@ -33,7 +33,7 @@
             <a href=""><img src="img/score.svg" alt="Score"> Score</a>
             <a href=""><img src="img/favoris.svg" alt="Favoris"> Favoris</a>
             <a href=""><img src="img/tournois.svg" alt="Tournois"> Tournois</a>
-            <a href=""><img src="img/parametres.svg" alt="Paramètres"> Paramètres</a>
+            <a href=""><img src="img/settings.svg" alt="Paramètres"> Paramètres</a>
             <a href=""><img src="img/aide.svg" alt="Aide"> Aide</a>
             <a href=""><img src="img/conditions.svg" alt="Conditions"> Conditions</a>
             <a href=""><img src="img/confidentialite.svg" alt="Confidentialité"> Confidentialité</a>
