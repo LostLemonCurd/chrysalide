@@ -1,8 +1,12 @@
+/* IMPORT FONT */
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* BODY */
 
 body{
     font-family: 'Rubik', sans-serif;
+    margin: 0 auto;
 }
 
 :root{
@@ -16,7 +20,7 @@ body{
     --couleur-white-hex: #F2F2F5;
     --couleur-grey-hex: #555770;
     --couleur-black-hex: #1C1C28;
-
+    --couleur-lightgrey-rgba: rgba(85, 87, 112, 0.05);
     font-size: 16px;
     
 }
@@ -56,4 +60,120 @@ h6{
 
 
 
+/* ASIDE */
+
+aside{
+    background-color: var(--couleur-black-hex);
+    max-width: 307px;
+    height: 100vh;
+    color: var(--couleur-white-hex);
+    display: flex;
+    flex-direction: column;
+
+}
+
+aside #aside-logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 5px;
+    padding-bottom: 93px;
+}
+
+aside #aside-logo img{
+    width: 27%;
+
+}
+
+aside #aside-logo h5{
+    margin: 0;
+}
+
+aside #aside-buttons{
+    display: flex;
+    flex-direction: column;
+    
+    
+    /* gap: 50px; */
+}
+
+aside #aside-main-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-self: flex-start;
+}
+
+aside #aside-main-buttons div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 307px;
+    background-color: var(--couleur-lightgrey-rgba);
+    border-radius: 0 50px 50px 0 ;
+    padding: 8px 0;
+    padding-left: 21% ;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+}
+
+aside #aside-main-buttons div::before, aside #aside-main-buttons div::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+}
+
+aside #aside-main-buttons div::before{
+    background-color: var(--couleur-grey-hex);
+    z-index: -1;
+    transition: opacity 250ms linear;
+    opacity: 0;
+}
+
+aside #aside-main-buttons div:hover::before{
+    opacity: 1;
+}
+
+aside #aside-main-buttons div::after{
+    content: '';
+    transform: translateX(-10px);
+}
+
+aside #aside-main-buttons div:hover::after{
+    animation-duration: 250ms;
+    animation-name: sweep;
+}
+
+@keyframes sweep {
+    from { 
+        transform: translateX(-10px)
+    }
+    to { 
+        transform: translateX(100%);
+        animation-timing-function: ease-out; 
+    }
+}
+
+aside #aside-other-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-self: flex-end;
+    /* padding-top: ; */
+}
+
+aside #aside-other-buttons div{
+    display: flex;
+    align-items: center;
+    padding-left: 21%;
+    gap: 10px;
+}
 
