@@ -1,6 +1,6 @@
 body{
     background: #1C1C28;
-    margin: auto 65px;
+    margin: auto 64px;
 }
 a{
     color: #fff;
@@ -10,12 +10,20 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 12vh;
     padding: 30px 0;
+}
+header form{
+    display: flex;
+    align-items: center;
 }
 header input{
     border-radius: 30px;
     padding: 12px;
     width: 20vw;
+}
+header input::placeholder{
+    margin-left: 30px;
 }
 
 
@@ -25,4 +33,11 @@ header input{
     display: flex;
     flex-direction: column;
     width: 18vw;
+    height: 88vh;
+}
+.side-bar a{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var( --couleur-lightgrey-rgba);
 }

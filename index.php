@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width'>
     <link rel='stylesheet' href='reset.css'>
     <link rel='stylesheet' href='style.css'>
+    <link rel="stylesheet" href="lib.css">
     <script src='script.js' defer></script>
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
     <title>Chrysalide</title>
@@ -25,18 +26,23 @@
     </header>
     <main>
         <nav class="side-bar">
-            <a href=""><img src="img/profile.svg" alt="Profil">Profil</a>
-            <a href=""><img src="img/search.svg" alt="Recherche"> Recherche</a>
-            <a href=""><img src="img/friends.svg" alt="Friends"> Friends</a>
-            <a href=""><img src="img/messages.svg" alt="Messages"> Messages</a>
-            <a href=""><img src="img/chrysalide.svg" alt="Chrysalide"> Chrysalide</a>
-            <a href=""><img src="img/score.svg" alt="Score"> Score</a>
-            <a href=""><img src="img/favoris.svg" alt="Favoris"> Favoris</a>
-            <a href=""><img src="img/tournois.svg" alt="Tournois"> Tournois</a>
-            <a href=""><img src="img/settings.svg" alt="Paramètres"> Paramètres</a>
-            <a href=""><img src="img/aide.svg" alt="Aide"> Aide</a>
-            <a href=""><img src="img/conditions.svg" alt="Conditions"> Conditions</a>
-            <a href=""><img src="img/confidentialite.svg" alt="Confidentialité"> Confidentialité</a>
+            <div class="aside-main-buttons">
+                <a href=""><img src="img/profile.svg" alt="Profil">Profil</a>
+                <a href=""><img src="img/search.svg" alt="Recherche"> Recherche</a>
+                <a href=""><img src="img/friends.svg" alt="Friends"> Friends</a>
+                <a href=""><img src="img/messages.svg" alt="Messages"> Messages</a>
+                <a href=""><img src="img/chrysalide.svg" alt="Chrysalide"> Chrysalide</a>
+                <a href=""><img src="img/score.svg" alt="Score"> Score</a>
+                <a href=""><img src="img/favoris.svg" alt="Favoris"> Favoris</a>
+                <a href=""><img src="img/tournois.svg" alt="Tournois"> Tournois</a>
+                <a href=""><img src="img/settings.svg" alt="Paramètres"> Paramètres</a>
+            </div>
+
+            <div class="aside-other-buttons">
+                <a href=""><img src="img/aide.svg" alt="Aide"> Aide</a>
+                <a href=""><img src="img/conditions.svg" alt="Conditions"> Conditions</a>
+                <a href=""><img src="img/confidentialite.svg" alt="Confidentialité"> Confidentialité</a>
+            </div>
         </nav>
 
     </main>
