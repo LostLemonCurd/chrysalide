@@ -7,7 +7,11 @@
 body{
     font-family: 'Rubik', sans-serif;
     margin: 0 auto;
+    background-color: var(--couleur-black-hex);
+    width: 100%;
 }
+
+/* VARIABLES */
 
 :root{
     --couleur-bleu-hex: #3E7BFA;
@@ -28,6 +32,9 @@ body{
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p {
 	margin: 0;
 	padding: 0;
@@ -58,59 +65,182 @@ h6{
     font-size: 1rem;
 }
 
+/* HEADER */
 
-
-/* ASIDE */
-
-aside{
-    background-color: var(--couleur-black-hex);
-    max-width: 307px;
-    height: 100vh;
-    color: var(--couleur-white-hex);
+header{
+    margin: auto 0;
+    width: 100%;
+    height: 15vh;
     display: flex;
-    flex-direction: column;
-
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--couleur-black-hex);
+    gap: 29px;
 }
 
-aside #aside-logo{
+header #header-logo{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px;
     gap: 5px;
-    padding-bottom: 93px;
+    margin-left: 64px;
 }
 
-aside #aside-logo img{
-    width: 27%;
+header #header-logo img{
+    width: 100%;
 
 }
 
-aside #aside-logo h5{
+header #header-logo h5{
     margin: 0;
+    color: var(--couleur-white-hex);
 }
 
-aside #aside-buttons{
+header #header-input-profil{
     display: flex;
-    flex-direction: column;
-    
-    
-    /* gap: 50px; */
+    justify-content: space-between;
+    width: 100%;
 }
 
-aside #aside-main-buttons {
+header #header-input-profil #header-input-buttons {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: start;
     gap: 25px;
+    width: 75%;
+    margin-left: 120px;
+}
+
+header #header-input-profil #header-input-buttons form{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 30%;
+
+}
+/* img/search.svg */
+header #header-input-profil #header-input-buttons form svg{
+    z-index: 10;
+    position: absolute;
+    left: 3%;
+    color: var(--couleur-black-hex);
+    
+}
+
+header #header-input-profil #header-input-buttons form input{
+    width: 100%;
+    height: 42px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    text-indent: 40px;
+}
+
+header #header-input-profil #header-input-buttons form input::placeholder{
+    color: var(--couleur-grey-hex);
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+
+
+}
+
+header #header-input-profil #header-input-buttons #header-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    width: 20%;
+
+}
+
+header #header-input-profil #header-input-buttons #header-buttons a{
+    text-decoration: none; 
+    color: var(--couleur-white-hex);
+    display: inline-block;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header #header-input-profil #header-input-buttons #header-buttons a::after{
+    content: '';
+    position: absolute;
+    background-color: var(--couleur-white-hex);
+    width: 100px;
+    height: 10px;
+    bottom: 70.5px;  
+    margin: 50vh auto 0; 
+    /* right: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    transform: translateY(-50%);
+    border-radius: 50px;
+    transform-origin: center top;
+    transform: scaleX(0);
+}
+
+header #header-input-profil #header-input-buttons #header-buttons a:hover::after{
+    transform: scaleX(1);
+    
+}
+
+.button {
+    font: 1em Arial, sans-serif;
+    display: inline-block;
+    padding: 1em;margin: 1em;
+  /*   border-radius: 5px; */
+    text-decoration: none;
+    color: gray;
+    
+    /* Set up the hover */
+    /* If you aren't using autoprefix, remember to prefix the gradient for other browsers */
+    background-image: linear-gradient(dodgerblue, dodgerblue), linear-gradient(silver, silver);
+    background-size: 0 5px, auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transition: all .2s ease-out;
+  }
+  
+  .button:hover {
+    /* The following line makes the underline only as wide as the text */
+    /* background-size: calc(100% - 2em) 5px, auto; */
+    background-size: 100% 5px, auto;
+  }
+
+
+header #header-input-profil #header-profil{
+    margin-right: 64px;
+}
+
+/* ASIDE */
+
+aside{
+    margin-top: 25px;
+    background-color: var(--couleur-black-hex);
+    max-width: 307px;
+    height: 80vh;
+    color: var(--couleur-white-hex);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+aside #aside-main-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-self: flex-start;
 }
 
-aside #aside-main-buttons div{
+aside #aside-main-buttons a{
     display: flex;
     align-items: center;
     gap: 10px;
     max-width: 307px;
+    text-decoration: none;
+    color: var(--couleur-white-hex);
     background-color: var(--couleur-lightgrey-rgba);
     border-radius: 0 50px 50px 0 ;
     padding: 8px 0;
@@ -121,7 +251,7 @@ aside #aside-main-buttons div{
     z-index: 1;
 }
 
-aside #aside-main-buttons div::before, aside #aside-main-buttons div::after{
+aside #aside-main-buttons a::before, aside #aside-main-buttons a::after{
     position: absolute;
     content: "";
     top: 0;
@@ -131,23 +261,23 @@ aside #aside-main-buttons div::before, aside #aside-main-buttons div::after{
     
 }
 
-aside #aside-main-buttons div::before{
+aside #aside-main-buttons a::before{
     background-color: var(--couleur-grey-hex);
     z-index: -1;
     transition: opacity 250ms linear;
     opacity: 0;
 }
 
-aside #aside-main-buttons div:hover::before{
+aside #aside-main-buttons a:hover::before{
     opacity: 1;
 }
 
-aside #aside-main-buttons div::after{
+aside #aside-main-buttons a::after{
     content: '';
     transform: translateX(-10px);
 }
 
-aside #aside-main-buttons div:hover::after{
+aside #aside-main-buttons a:hover::after{
     animation-duration: 250ms;
     animation-name: sweep;
 }
@@ -170,10 +300,12 @@ aside #aside-other-buttons{
     /* padding-top: ; */
 }
 
-aside #aside-other-buttons div{
+aside #aside-other-buttons a{
     display: flex;
     align-items: center;
     padding-left: 21%;
     gap: 10px;
+    text-decoration: none;
+    color: var(--couleur-white-hex);
 }
 
