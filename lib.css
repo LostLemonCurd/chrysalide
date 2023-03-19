@@ -131,8 +131,13 @@ header #header-input-profil #header-input-buttons form input{
     width: 100%;
     height: 42px;
     border-radius: 50px;
-    border: 1px solid rgba(0, 0, 0, 0);
+    border: none;
     text-indent: 40px;
+}
+
+header #header-input-profil #header-input-buttons form input:focus{
+    outline: none;
+    /* à voir - enlever les lines lors du focus */
 }
 
 header #header-input-profil #header-input-buttons form input::placeholder{
