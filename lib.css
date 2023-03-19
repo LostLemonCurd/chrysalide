@@ -90,11 +90,9 @@ header #header-logo{
 
 header #header-logo img{
     width: 100%;
-
 }
 
 header #header-logo h5{
-    margin: 0;
     color: var(--couleur-white-hex);
 }
 
@@ -148,7 +146,7 @@ header #header-input-profil #header-input-buttons form input::placeholder{
 header #header-input-profil #header-input-buttons #header-buttons{
     display: flex;
     justify-content: space-evenly;
-    gap: 10px;
+    gap: 15px;
     width: 20%;
 
 }
@@ -162,51 +160,29 @@ header #header-input-profil #header-input-buttons #header-buttons a{
     align-items: center;
 }
 
-header #header-input-profil #header-input-buttons #header-buttons a::after{
+header #header-input-profil #header-input-buttons #header-buttons a::after, header #header-input-profil #header-input-buttons #header-buttons a::before{
     content: '';
     position: absolute;
     background-color: var(--couleur-white-hex);
-    width: 100px;
+    width: 120%;
     height: 10px;
-    bottom: 70.5px;  
-    margin: 50vh auto 0; 
-    /* right: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%); */
-    transform: translateY(-50%);
+    bottom: 75.5px;  
     border-radius: 50px;
-    transform-origin: center top;
     transform: scaleX(0);
 }
 
-header #header-input-profil #header-input-buttons #header-buttons a:hover::after{
+header #header-input-profil #header-input-buttons #header-buttons a::after{
+    left: 0;
+}
+
+header #header-input-profil #header-input-buttons #header-buttons a::before{
+    right: 0;
+}
+
+header #header-input-profil #header-input-buttons #header-buttons a:hover::after,header #header-input-profil #header-input-buttons #header-buttons a:hover::before{
     transform: scaleX(1);
     
 }
-
-.button {
-    font: 1em Arial, sans-serif;
-    display: inline-block;
-    padding: 1em;margin: 1em;
-  /*   border-radius: 5px; */
-    text-decoration: none;
-    color: gray;
-    
-    /* Set up the hover */
-    /* If you aren't using autoprefix, remember to prefix the gradient for other browsers */
-    background-image: linear-gradient(dodgerblue, dodgerblue), linear-gradient(silver, silver);
-    background-size: 0 5px, auto;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    transition: all .2s ease-out;
-  }
-  
-  .button:hover {
-    /* The following line makes the underline only as wide as the text */
-    /* background-size: calc(100% - 2em) 5px, auto; */
-    background-size: 100% 5px, auto;
-  }
-
 
 header #header-input-profil #header-profil{
     margin-right: 64px;
@@ -251,7 +227,7 @@ aside #aside-main-buttons a{
     z-index: 1;
 }
 
-aside #aside-main-buttons a::before, aside #aside-main-buttons a::after{
+aside #aside-main-buttons a::before{
     position: absolute;
     content: "";
     top: 0;
@@ -272,32 +248,11 @@ aside #aside-main-buttons a:hover::before{
     opacity: 1;
 }
 
-aside #aside-main-buttons a::after{
-    content: '';
-    transform: translateX(-10px);
-}
-
-aside #aside-main-buttons a:hover::after{
-    animation-duration: 250ms;
-    animation-name: sweep;
-}
-
-@keyframes sweep {
-    from { 
-        transform: translateX(-10px)
-    }
-    to { 
-        transform: translateX(100%);
-        animation-timing-function: ease-out; 
-    }
-}
-
 aside #aside-other-buttons{
     display: flex;
     flex-direction: column;
     gap: 10px;
     justify-self: flex-end;
-    /* padding-top: ; */
 }
 
 aside #aside-other-buttons a{
