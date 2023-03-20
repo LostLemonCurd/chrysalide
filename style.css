@@ -1,5 +1,5 @@
 body{
-    background: #1C1C28;
+    background: var(--couleur-black-hex);
     margin: auto 64px;
 }
 a{
