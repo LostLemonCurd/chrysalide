@@ -16,7 +16,7 @@
     border-radius: 30px;
     padding: 20px;
     width: 24vw;
-    height: 48vh;
+    height: 52vh;
 }
 .mes-amis h2{
     color: var(--couleur-white-hex);
@@ -183,6 +183,9 @@
     justify-content: center;
     gap: 12px;
     color: var(--couleur-white-hex);
+    padding: 12px;
+    background-color: var(--couleur-grey-hex);
+    border-radius: 30px;
 }
 
 
