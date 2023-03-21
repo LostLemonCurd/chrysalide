@@ -173,6 +173,9 @@
     justify-content: space-between;
     width: 100%;
 }
+.friend-list::-webkit-scrollbar {
+    display: none;
+}
 .team-list img{
     width: 40%;
     height: auto;
