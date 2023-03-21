@@ -40,7 +40,7 @@ CREATE TABLE commentaire (
 
 CREATE TABLE mp (
     id_msg INT NOT NULL AUTO_INCREMENT,
-    id_user INT NOT NULL,
+    id_user INT NOT NULL, 
     content VARCHAR(1000),
     PRIMARY KEY (id_msg),
     FOREIGN KEY (id_user) REFERENCES user(id_user)

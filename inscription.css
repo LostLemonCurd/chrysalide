@@ -1,0 +1,60 @@
+header{
+    position: static;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 80px;
+}
+main h1, h6{
+    color: var(--couleur-white-hex);
+}
+.inscription{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 20px;
+}
+.inscription input{
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+}
+.inscription input::placeholder{
+    font-weight: 500;
+    font-size: 1rem;
+}
+.inscription h6{
+    text-align: center;
+}
+.profile-pic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.profile-pic .profile-choice{
+    display: flex;
+    flex-direction: column;
+}
+.profile-pic .profile-choice label{
+    width: 8vw;
+    display: inline-block;
+}
+.profile-pic .profile-choice label img{
+    height: 100%;
+    width: 100%;
+}
+
+.inscription .btn-valider{
+    width: 12vw;
+    margin: auto;
+}
+
+
+/* .inscription input:active, input:focus{
+    outline: none;
+} */

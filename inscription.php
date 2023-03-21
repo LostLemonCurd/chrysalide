@@ -6,10 +6,10 @@
     <meta name='viewport' content='width=device-width'>
     <link rel='stylesheet' href='reset.css'>
     <link rel="stylesheet" href="lib.css">
-    <link rel='stylesheet' href='friends.css'>
+    <link rel='stylesheet' href='inscription.css'>
     <script src='script.js' defer></script>
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
-    <title>Chrysalide</title>
+    <title>Inscription | Chrysalide</title>
 </head>
 <body>
     <header>
@@ -37,48 +37,34 @@
         
     </header>
     <main>
-        <aside>
-            <nav id="aside-main-buttons">
-                <a href="#">
-                    <img src="img/friends.svg" alt="">
-                    <h6>Friends</h6>
-                </a>
-                <a href="#">
-                    <img src="img/messages.svg" alt="">
-                    <h6>Messages</h6>
-                </a>
-                <a href="#">
-                    <img src="img/chrysalide.svg" alt="">
-                    <h6>Chrysalide</h6>
-                </a>
-                <a href="#">
-                    <img src="img/favoris.svg" alt="">
-                    <h6>Favoris</h6>
-                </a>
-                <a href="#">
-                    <img src="img/parametres.svg" alt="">
-                    <h6>Paramètres</h6>
-                </a>
-            </nav>
-            <nav id="aside-other-buttons">
-                <a href="#">
-                    <img src="img/aide.svg" alt="">
-                    <h6>Aide</h6>
-                </a>
-                <a href="#">
-                    <img src="img/conditions.svg" alt="">
-                    <h6>Conditions</h6>
-                </a>
-                <a href="#">
-                    <img src="img/confidentialite.svg" alt="">
-                    <h6>Confidentialité</h6>
-                </a>
-            </nav>
-        </aside>
-        <div id="main-content-friends">
-            
-        </div>
-
+        <h1>Inscription</h1>
+        <form method="post" class="inscription">
+            <input type="email" placeholder="Adresse Mail" name="email">
+            <input type="password" placeholder="Mot De Passe" name="password">
+            <input type="text" placeholder="Pseudo Utilisateur" name="pseudo">
+            <input type="text" placeholder="Vos Sports De Prédilection" name="sport-name">
+            <h6>Choissisez une icône</h6>
+            <div class="profile-pic">
+                <div class="profile-choice">
+                    <label for="img1"><img src="img/avatar-1.png" alt="Avatar à choisir"></img></label>
+                    <input type="radio" id="img1" name="avatar" value="Avatar1">  
+                </div>
+                <div class="profile-choice">
+                    <label for="img2"><img src="img/avatar-2.png" alt="Avatar à choisir"></img></label>
+                    <input type="radio" id="img2" name="avatar" value="Avatar2">
+                </div>
+                <div class="profile-choice">
+                    <label for="img3"><img src="img/avatar-3.png" alt="Avatar à choisir"></img></label>
+                    <input type="radio" id="img3" name="avatar" value="Avatar3">
+                </div>
+                <div class="profile-choice">
+                    <label for="img4"><img src="img/avatar-4.png" alt="Avatar à choisir"></img></label>
+                    <input type="radio" id="img4" name="avatar" value="Avatar4">
+                </div>
+            </div>
+            <input type="submit" value="valider" class="btn-valider">
+        </form>
+        <h6>Vous avez déjà un compte? C'est par <a href="connexion.php">ici</a></h6>
     </main>
 </body>
 </html>
