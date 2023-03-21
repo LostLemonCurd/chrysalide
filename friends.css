@@ -1,64 +1,85 @@
-#main-content{
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+main aside {
+    position: sticky;
+    top: 174px;
+    z-index: 1000;
+}
+
+
+
+
+#main-content-friends{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 122px;
-    margin-right: 64px;
+    margin: 50px 64px 0 0;
 }
+
+
+/*  Mes amis */
+
 .friends-section{
     display: flex;
+    gap: 12px;
 }
-.mes-amis{
+.friends-section .mes-amis{
     display: flex;
     flex-direction: column;
     gap: 16px;
     background-color: var(--couleur-grey-hex);
     border-radius: 30px;
     padding: 20px;
-    width: 24vw;
+    width: 32vw;
     height: 52vh;
 }
-.mes-amis h2{
+.friends-section .mes-amis h2{
     color: var(--couleur-white-hex);
+    text-align: center;
 }
 
 
 /* SEARCH BAR */
-.mes-amis form{
+.friends-section .mes-amis form{
     display: flex;
     align-items: center;
     position: relative;
 }
-.mes-amis form svg{
+.friends-section .mes-amis form svg{
     z-index: 10;
     position: absolute;
     left: 3%;
     color: var(--couleur-black-hex);
     
 }
-.mes-amis form input{
+.friends-section .mes-amis form input{
     width: 100%;
     height: 42px;
     border-radius: 50px;
     border: none;
     text-indent: 40px;
 }
-.mes-amis form input:focus{
+.friends-section .mes-amis form input:focus{
     outline: none;
 }
-.mes-amis form input::placeholder{
+.friends-section .mes-amis form input::placeholder{
     color: var(--couleur-grey-hex);
     font-size: 1rem;
     font-family: 'Rubik', sans-serif;
 }
 
-.friend-list{
+.friends-section .friend-list{
     display: flex;
     flex-direction: column;
     gap: 12px;
     overflow: scroll;
 }
-.friend{
+.friends-section .friend{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -66,11 +87,11 @@
     background-color: var(--couleur-white-hex);
     border-radius: 30px;
 }
-.friend h4{
+.friends-section .friend h4{
     font-weight: 500;
     color: var(--couleur-black-hex);
 }
-.friend img{
+.friends-section .friend img{
     width: 40px;
     height: 47px;
 }
@@ -79,73 +100,76 @@
 
 
 
-.friend-detail{
+.friends-section .friend-detail{
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
+    gap: 12px;
 }
-.friend-detail .contact-info img{
+.friends-section .friend-detail .contact-info{
+    display: flex;
+}
+.friends-section .friend-detail .contact-info img{
     width: 110px;
     height: 127px;
 }
-.friend-detail .contact-info{
-    display: flex;
-}
 
-.friend-detail .contact-info .rewards{
+.friends-section .friend-detail .contact-info .rewards{
     display: flex;
-    width: 100%;
+    width: 60%;
+    margin: auto;
     justify-content: space-between;
 }
-.friend-detail .contact-info .rewards img{
+.friends-section .friend-detail .contact-info .rewards img{
     height: 20px;
     width: 20px;
 }
-.friend-detail .contact-info .tropheys, .friend-detail .contact-info .chrysalide-pts{
+.friends-section .friend-detail .contact-info .tropheys, .friend-detail .contact-info .chrysalide-pts{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
+    color: var(--couleur-white-hex);
 }
 
-.friend-info{
+.friends-section .friend-info{
     display: flex;
-    padding: 20px;
     width: 35vw;
     align-items: center;
 }
-.contact-info{
+.friends-section .contact-info{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 40px;
     padding: 12px;
 }
-.contact-info .contact{
+.friends-section .contact-info .contact{
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-.contact-info .contact .status{
+.friends-section .contact-info .contact .status{
     color: var(--couleur-green-hex);
 }
-.contact-info .contact h4{
+.friends-section .contact-info .contact h4{
     color: var(--couleur-white-hex);
 }
-.contact-info .contact .pays{
+.friends-section .contact-info .contact .pays{
     display: flex;
     align-items: center;
     color: var(--couleur-grey-hex);
 }
-.contact-info .contact .pays img{
+.friends-section .contact-info .contact .pays img{
     height: 20px;
     width: 20px;
 }
-.friend-detail .friend-btns{
+.friends-section .friend-detail .friend-btns{
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-.friend-detail .friend-btns button{
+.friends-section .friend-detail .friend-btns button{
     padding: 10px 16px;
     border-radius: 30px;
     border: none;
@@ -153,43 +177,98 @@
     color: var(--couleur-white-hex);
 
 }
-.request-f{
+.friends-section .request-f{
     background-color: var(--couleur-bleu-hex);
+    font-weight: 500;
+    font-size: 1rem;
 }
-.msg{
+.friends-section .msg{
     background-color: var(--couleur-grey-hex); 
+    font-weight: 500;
+    font-size: 1rem;
 }
-.team-info{
+.friends-section .team-info{
     display: flex;
     flex-direction: column;
     width: 35vw;
-    padding: 20px;
     gap: 18px;
     color: var(--couleur-white-hex);
 
 }
-.team-list{
+.friends-section .team-list{
     display: flex;
     justify-content: space-between;
     width: 100%;
+    gap: 18px;
+
 }
-.team-list img{
+.friends-section .team-list img{
     width: 40%;
     height: auto;
 }
-.team-list .teams{
+.friends-section .team-list .teams{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
     color: var(--couleur-white-hex);
     padding: 12px;
     background-color: var(--couleur-grey-hex);
     border-radius: 30px;
+    height: 12vh;
+    gap: 12px;
 }
 
 
 
+/* Mes équipes */
 
+.equipe-section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.equipe-section h2{
+    color: var(--couleur-white-hex);
+}
+.equipe-section .create-btn{
+    width: 10vw;
+    padding: 8px;
+    background-color: var(--couleur-bleu-hex);
+    border: none;
+    border-radius: 30px;
+    color: var(--couleur-white-hex);
+    font-weight: 500;
+    font-size: 1rem;
+}
+.equipe-section .team-list{
+    display: flex;
+    gap: 20px;
+}
+.equipe-section .team-list .teams{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--couleur-grey-hex);
+    border-radius: 30px;
+    padding: 20px 60px;
+}
+.equipe-section .team-list .teams h5{
+    color: var(--couleur-white-hex);
+}
+.equipe-section .team-list .teams h5 span{
+    color: var(--couleur-purple-hex);
+}
 
-
+.equipe-section .team-list .teams .add-sport-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.equipe-section .team-list .teams .add-sport-btn{
+    background-color: var(--couleur-bleu-hex);
+    border-radius: 100px;
+    padding: 8px;
+}
