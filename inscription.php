@@ -12,7 +12,7 @@
     <title>Chrysalide</title>
 </head>
 <body>
-<header>
+    <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
             <h5>Chrysalide</h5>
@@ -35,7 +35,7 @@
             </section>
         </section>
         
-</header>
+    </header>
     <main>
         <aside>
             <nav id="aside-main-buttons">
@@ -76,7 +76,7 @@
             </nav>
         </aside>
         <div id="main-content-friends">
-
+            
         </div>
 
     </main>

@@ -210,13 +210,24 @@ header #header-input-profil #header-profil{
     margin-right: 64px;
 }
 
-/* MAIN */
-
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+  
+  /* MAIN */
+  
 main {
     display: flex;
     gap: 40px;
 }
-
+    
+main aside {
+    position: sticky;
+    top: 174px;
+    z-index: 1000;
+}
 /* ASIDE */
 
 aside{
