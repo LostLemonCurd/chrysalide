@@ -5,8 +5,9 @@ USE chrysalide;
 CREATE TABLE user (
     id_user INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50),
+    email VARCHAR(100),
     user_img BLOB,
-    date_inscription DATE NOT NULL,
+    date_inscription DATETIME CURRENT_TIMESTAMP,
     PRIMARY KEY (id_user)
 ) ENGINE=InnoDB;
 
@@ -38,10 +39,13 @@ CREATE TABLE commentaire (
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 ) ENGINE=InnoDB;
 
-CREATE TABLE mp (
-    id_msg INT NOT NULL AUTO_INCREMENT,
-    id_user INT NOT NULL, 
-    content VARCHAR(1000),
-    PRIMARY KEY (id_msg),
-    FOREIGN KEY (id_user) REFERENCES user(id_user)
+CREATE TABLE messages (
+    id_msg INT(11) NOT NULL AUTO_INCREMENT,
+    id_expediteur INT(11) NOT NULL,
+    id_destinataire INT(11) NOT NULL,
+    message TEXT NOT NULL,
+    date DATETIME NOT NULL,
+    PRIMARY KEY(id_msg),
+    FOREIGN KEY (id_expediteur) REFERENCES user(id_user),
+    FOREIGN KEY (id_destinataire) REFERENCES user(id_user)
 ) ENGINE=InnoDB;

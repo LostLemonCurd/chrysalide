@@ -7,7 +7,10 @@ main{
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 80px;
+    padding: 10px;
+}
+main h1{
+    font-size: 2.5rem;
 }
 main h1, h6{
     color: var(--couleur-white-hex);
@@ -19,7 +22,7 @@ main h1, h6{
     gap: 20px;
 }
 .inscription input{
-    padding: 16px;
+    padding: 12px;
     border-radius: 12px;
     border: none;
 }
@@ -54,7 +57,9 @@ main h1, h6{
     margin: auto;
 }
 
-
+.account-status{
+    color: var(--couleur-white-hex);
+}
 /* .inscription input:active, input:focus{
     outline: none;
 } */

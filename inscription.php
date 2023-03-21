@@ -12,6 +12,56 @@
     <title>Inscription | Chrysalide</title>
 </head>
 <body>
+    <h6 style="color:white;"> <?php     error_reporting(E_ALL); 
+    ini_set('display_errors', 1); ?></h6>
+    <?php 
+
+    include('init.php');
+
+    if($_POST){
+        
+        // Je définie une varaible qui me sert à afficher les erreurs:
+        $erreur = '';
+        //Je verifie si le prénom n'est pas trop court ou trop long:
+        if(strlen($_POST['email']) <= 2 || strlen($_POST['email']) > 100) {
+            $erreur .= '<p>Votre email est trop court ou trop long.<p>';
+        }
+        
+        // Je vérifie que l'email n'a pas déjà été utilisé
+        $r = $pdo->query("SELECT * FROM user WHERE email = '$_POST[email]'");
+        if ($r->rowCount() >= 1) {
+            $erreur .= '<p>Compte déjà existant!</p>';
+        }
+
+        // Je vérifie que le pseudo n'a pas déjà été utilisé
+        $r2 = $pdo->query("SELECT * FROM user WHERE username = '$_POST[username]'");
+        if ($r2->rowCount() >= 1) {
+            $erreur .= '<p>Ce pseudo est déjà utilisé!</p>';
+        }
+
+        // Pour chaque champ, je corrige le problème d'apostrophe : 
+        // A revoir, pas suffisant pour protéger des query injections
+        foreach($_POST as $indice => $valeur) {
+            $_POST[$indice] = addslashes($valeur);
+        }
+
+        // Je hash le mdp:
+        $_POST['mdp'] = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+
+        $userImg = $_POST['userimg'];
+
+        // Si la variable erreur est vide : 
+        if(empty($erreur)){
+            //j'enregistre les infos dans la BDD:
+            $pdo->exec("INSERT INTO user (email, mdp, username, favsport, userimg) VALUES ('$_POST[email]', '$_POST[mdp]', '$_POST[username]', '$_POST[favsport]', '$userImg')");
+        // J'ajoute un message de succès:
+            $content .= '<p>Votre inscription a bien été prise en compte !</p>';
+        }
+        // J'ajoute les messages d'erreur dans la variable content : 
+        $content .= $erreur;
+    }
+    ?>
+
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
@@ -40,30 +90,31 @@
         <h1>Inscription</h1>
         <form method="post" class="inscription">
             <input type="email" placeholder="Adresse Mail" name="email">
-            <input type="password" placeholder="Mot De Passe" name="password">
-            <input type="text" placeholder="Pseudo Utilisateur" name="pseudo">
-            <input type="text" placeholder="Vos Sports De Prédilection" name="sport-name">
+            <input type="password" placeholder="Mot De Passe" name="mdp">
+            <input type="text" placeholder="Pseudo Utilisateur" name="username">
+            <input type="text" placeholder="Vos Sports De Prédilection" name="favsport">
             <h6>Choissisez une icône</h6>
             <div class="profile-pic">
                 <div class="profile-choice">
                     <label for="img1"><img src="img/avatar-1.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img1" name="avatar" value="Avatar1">  
+                    <input type="radio" id="img1" name="userimg" value="Avatar1">  
                 </div>
                 <div class="profile-choice">
                     <label for="img2"><img src="img/avatar-2.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img2" name="avatar" value="Avatar2">
+                    <input type="radio" id="img2" name="userimg" value="Avatar2">
                 </div>
                 <div class="profile-choice">
                     <label for="img3"><img src="img/avatar-3.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img3" name="avatar" value="Avatar3">
+                    <input type="radio" id="img3" name="userimg" value="Avatar3">
                 </div>
                 <div class="profile-choice">
                     <label for="img4"><img src="img/avatar-4.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img4" name="avatar" value="Avatar4">
+                    <input type="radio" id="img4" name="userimg" value="Avatar4">
                 </div>
             </div>
-            <input type="submit" value="valider" class="btn-valider">
+            <input type="submit" value="Valider" class="btn-valider">
         </form>
+        <h6 class="account_status"><?php echo $content ?></h6>
         <h6>Vous avez déjà un compte? C'est par <a href="connexion.php">ici</a></h6>
     </main>
 </body>
