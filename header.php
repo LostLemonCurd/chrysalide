@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang='fr'>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width'>
+    <link rel='stylesheet' href='reset.css'>
+    <link rel='stylesheet' href='style.css'>
     <link rel="stylesheet" href="lib.css">
-    <script src='lib.js' defer></script>
-    <title>Librairie</title>
+    <script src='script.js' defer></script>
+    <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
+    <title>Chrysalide</title>
 </head>
 <body>
-    <header>
+<header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
             <h5>Chrysalide</h5>
@@ -49,12 +51,10 @@
                     <img src="img/chrysalide.svg" alt="">
                     <h6>Chrysalide</h6>
                 </a>
-
                 <a href="#">
                     <img src="img/favoris.svg" alt="">
                     <h6>Favoris</h6>
                 </a>
-
                 <a href="#">
                     <img src="img/parametres.svg" alt="">
                     <h6>Paramètres</h6>
@@ -79,7 +79,5 @@
         </section>
 
     </main>
-
-    
 </body>
 </html>

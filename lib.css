@@ -200,12 +200,21 @@ header #header-input-profil #header-profil{
     margin-right: 64px;
 }
 
+/* MAIN */
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
 /* ASIDE */
 
 aside{
     margin-top: 50px;
     background-color: var(--couleur-black-hex);
-    max-width: 307px;
+    /* max-width: 307px; */
+    width: 20vw;
     height: 70vh;
     color: var(--couleur-white-hex);
     display: flex;
