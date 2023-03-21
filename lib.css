@@ -211,7 +211,6 @@ header #header-input-profil #header-profil{
 
 main {
     display: flex;
-    flex-wrap: wrap;
     gap: 40px;
 }
 
