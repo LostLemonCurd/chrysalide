@@ -6,10 +6,10 @@
     <meta name='viewport' content='width=device-width'>
     <link rel='stylesheet' href='reset.css'>
     <link rel="stylesheet" href="lib.css">
-    <link rel='stylesheet' href='inscription.css'>
+    <link rel='stylesheet' href='connexion.css'>
     <script src='script.js' defer></script>
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
-    <title>Inscription | Chrysalide</title>
+    <title>Connexion | Chrysalide</title>
 </head>
 <body>
     <h6 style="color:white;"> <?php error_reporting(E_ALL); 
@@ -22,51 +22,31 @@
 
         // Je définie une varaible qui me sert à afficher les erreurs:
         $erreur = '';
-        //Je verifie si le prénom n'est pas trop court ou trop long:
-        if(strlen($_POST['email']) <= 2 || strlen($_POST['email']) > 100) {
-            $erreur .= '<p>Votre email est trop court ou trop long.<p>';
-        }
-        
-        // Je vérifie que l'email n'a pas déjà été utilisé
-        $r = $pdo->query("SELECT * FROM user WHERE email = '$_POST[email]'");
+
+        $r = $pdo->query("SELECT * FROM user WHERE email = '$_POST[email]' or username = '$_POST[email]'");
         if ($r->rowCount() >= 1) {
-            $erreur .= '<p>Compte déjà existant!</p>';
+            $user = $r->fetch(PDO::FETCH_ASSOC);
+            var_dump($user); 
+            //(pour vérifier si l'array a été crée)
+
+            // Je vérifie si le mot de passe est correct:
+                if(password_verify($_POST['mdp'], $user['mdp'])) {
+                    // Enregistre les infos dans la session :
+                    $_SESSION['user']['email'] = $membre['email'];
+                    $_SESSION['user']['username'] = $membre['username'];
+                    // Je redirige l'internaute vers l'index avec la fonction header et l'attribut location: 
+                    header('location:index.php');
+                } else {
+                    $erreur .= '<p>Mot de passe incorrect</p>';
+                }
+        } else {
+            $erreur .= '<p>Ce compte n\'existe pas</p>';
         }
-        
-        // Je hash le mdp:
-        $_POST['mdp'] = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
-
-        // Je vérifie que le pseudo n'a pas déjà été utilisé
-        $r2 = $pdo->query("SELECT * FROM user WHERE username = '$_POST[username]'");
-        if ($r2->rowCount() >= 1) {
-            $erreur .= '<p>Ce pseudo est déjà utilisé!</p>';
-        }
-
-        // Pour chaque champ, je corrige le problème d'apostrophe : 
-        // A revoir, pas suffisant pour protéger des query injections
         foreach($_POST as $indice => $valeur) {
             $_POST[$indice] = addslashes($valeur);
         }
 
-
-        $userImg = $_POST['userimg'];
-
-        
-        $r3 = $pdo->query("SELECT * FROM sport");
-
-        if($_POST['favsport'] )
-
-
-
-        // Si la variable erreur est vide : 
-        if(empty($erreur)){
-            //j'enregistre les infos dans la BDD:
-            $pdo->exec("INSERT INTO user (email, mdp, username, favsport, userimg) VALUES ('$_POST[email]', '$_POST[mdp]', '$_POST[username]', '$_POST[favsport]', '$userImg')");
-        // J'ajoute un message de succès:
-            $content .= '<p>Votre inscription a bien été prise en compte !</p>';
-        }
-        // J'ajoute les messages d'erreur dans la variable content : 
         $content .= $erreur;
     }
     ?>
@@ -96,35 +76,14 @@
         
     </header>
     <main>
-        <h1>Inscription</h1>
-        <form method="post" class="inscription">
-            <input type="email" placeholder="Adresse Mail" name="email">
+        <h1>Connexion</h1>
+        <form method="post" class="connexion">
+            <input type="text" placeholder="Adresse Mail ou Pseudo" name="email">
             <input type="password" placeholder="Mot De Passe" name="mdp">
-            <input type="text" placeholder="Pseudo Utilisateur" name="username">
-            <input type="text" placeholder="Vos Sports De Prédilection" name="favsport">
-            <h6>Choissisez une icône</h6>
-            <div class="profile-pic">
-                <div class="profile-choice">
-                    <label for="img1"><img src="img/avatar-1.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img1" name="userimg" value="Avatar1" require>  
-                </div>
-                <div class="profile-choice">
-                    <label for="img2"><img src="img/avatar-2.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img2" name="userimg" value="Avatar2" require>
-                </div>
-                <div class="profile-choice">
-                    <label for="img3"><img src="img/avatar-3.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img3" name="userimg" value="Avatar3" require>
-                </div>
-                <div class="profile-choice">
-                    <label for="img4"><img src="img/avatar-4.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img4" name="userimg" value="Avatar4" require>
-                </div>
-            </div>
             <input type="submit" value="Valider" class="btn-valider">
         </form>
         <h6 class="account_status"><?php echo $content ?></h6>
-        <h6>Vous avez déjà un compte? C'est par <a href="connexion.php">ici</a></h6>
+        <h6>Vous n'avez pas de compte? C'est par <a href="inscription.php">ici</a></h6>
     </main>
 </body>
 </html>

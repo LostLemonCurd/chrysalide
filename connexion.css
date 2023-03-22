@@ -1,0 +1,62 @@
+header{
+    position: static;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+main h1{
+    font-size: 2.5rem;
+}
+main h1, h6{
+    color: var(--couleur-white-hex);
+}
+.connexion{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 20px;
+}
+.connexion input{
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+}
+.connexion input::placeholder{
+    font-weight: 500;
+    font-size: 1rem;
+}
+.connexion h6{
+    text-align: center;
+}
+.profile-pic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.profile-pic .profile-choice{
+    display: flex;
+    flex-direction: column;
+}
+.profile-pic .profile-choice label{
+    width: 8vw;
+    display: inline-block;
+}
+.profile-pic .profile-choice label img{
+    height: 100%;
+    width: 100%;
+}
+
+.connexion .btn-valider{
+    width: 12vw;
+    margin: auto;
+}
+
+.account-status{
+    color: var(--couleur-white-hex);
+}
