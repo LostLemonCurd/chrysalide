@@ -12,6 +12,15 @@
     <title>Chrysalide</title>
 </head>
 <body>
+    <?php 
+        include('init.php');
+        // $r = $pdo->query('SELECT * FROM user');
+
+        // // while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
+
+        // // }
+        
+    ?>
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">

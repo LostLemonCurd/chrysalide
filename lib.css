@@ -210,6 +210,11 @@ header #header-input-profil #header-profil{
     margin-right: 64px;
 }
 
+header #header-input-profil #header-profil img{
+    height: auto;
+    width: 40%;
+}
+
 header {
     position: sticky;
     top: 0;

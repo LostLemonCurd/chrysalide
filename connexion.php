@@ -32,10 +32,15 @@
             // Je vérifie si le mot de passe est correct:
                 if(password_verify($_POST['mdp'], $user['mdp'])) {
                     // Enregistre les infos dans la session :
-                    $_SESSION['user']['email'] = $membre['email'];
-                    $_SESSION['user']['username'] = $membre['username'];
+                    $_SESSION['user']['email'] = $user['email'];
+                    $_SESSION['user']['username'] = $user['username'];
+                    $_SESSION['user']['favsport'] = $user['favsport'];
+                    $_SESSION['user']['userimg'] = $user['userimg'];
+                    $_SESSION['user']['date_inscription'] = $user['date_inscription'];
+
                     // Je redirige l'internaute vers l'index avec la fonction header et l'attribut location: 
                     header('location:index.php');
+                    
                 } else {
                     $erreur .= '<p>Mot de passe incorrect</p>';
                 }
