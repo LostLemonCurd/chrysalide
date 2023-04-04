@@ -58,6 +58,7 @@ p {
 h1{
     font-weight: 600;
     font-size: 4rem;
+    color: var(--couleur-pure-white-hex);
 }
 h2{
     font-weight: 500;
@@ -83,6 +84,8 @@ h6{
 .font-lalezard{
     font-family: 'Lalezar', cursive;
 }
+
+
 
 /* HEADER */
 
