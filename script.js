@@ -20,3 +20,12 @@ for (let index = 0; index < friend.length; index++) {
         count++;
     })
 }
+
+
+/* Inscription */
+
+function redirectionToHomapage(){
+    setTimeout(() =>{
+        var myWindow = window.open("index.php", "_self");
+    },3000)
+}
