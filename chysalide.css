@@ -1,3 +1,6 @@
+.espace{
+    margin-top: 30px;
+}
 #main-content{
 }
 
@@ -162,6 +165,78 @@
     color: white;
     margin-bottom: 0;
   }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
   
+  .overlay-content {
+    width: 1106px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--couleur-black-hex);
+    border: solid 3px var(--couleur-white-hex);
+    border-radius: 30px;
+    padding: 20px;
+  }
   
-  
+  .close-btn {
+    color: var(--couleur-bleu-hex);
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: solid var(--couleur-bleu-hex) 3px;
+    border-radius: 100%;
+    top: 10px;
+    right: 10px;
+  }
+  .btn-blue:hover {
+    cursor: pointer;
+  }
+  .carte_sport{
+    display: flex;
+    align-items: center;
+    width: 242px;
+    height: 120px;
+    background-color: var(--couleur-grey-hex);
+    border-radius: 30px;
+    margin: 30px 30px 0 0;
+  }
+  .sport_line :hover{
+    background-color: var(--couleur-bleu-hex);
+  }
+  .carte_sport img{
+    margin-left: 15px;
+  }
+  .space_carte{
+    margin: 25px;
+  }
+  .sport_line{
+    display: flex;
+  }
+  .btn-inviter{
+    padding: 3px 20px;
+    border-radius: 30px;
+    border: 2px solid var(--couleur-bleu-hex);
+    background-color: var(--couleur-black-hex);
+    color: var(--couleur-white-hex);
+    cursor: pointer;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+
+  :hover.btn-inviter{
+    background-color: var(--couleur-bleu-hex);
+}
+

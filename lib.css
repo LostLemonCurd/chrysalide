@@ -64,6 +64,7 @@ h1{
 h2{
     font-weight: 500;
     font-size: 2.5rem;
+    color: var(--couleur-pure-white-hex);
 }
 
 h3{
@@ -79,11 +80,13 @@ h4{
 h5{
     font-weight: 500;
     font-size: 1.25rem;
+    color: var(--couleur-pure-white-hex);
 }
 
 h6{
     font-weight: 500;
     font-size: 1rem;
+    color: var(--couleur-white-hex);
 }
 
 .font-lalezard{

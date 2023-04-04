@@ -89,6 +89,109 @@
                 <button class="btn-blue"><h6>Créer</h6></button>
                 <button class="btn-vide"><h6>Rejoindre</h6></button>
             </div>
+            <div class="overlay">
+            <div class="overlay-content">
+                <button class="close-btn">x</button>
+                <h1 id="titre-overlay">Créer ta Chrysalide</h1>
+                <h5 class="espace" >Type de compétition</h5>
+                <div id="block-checkbox">
+                    
+                  <div id="block-checkbox">
+                    <label for="public">Privée</label>
+                    <input type="checkbox" id="public" name="access" value="public">
+                    <label for="private">Public</label>
+                    <input type="checkbox" id="private" name="access" value="private">
+                  </div>
+                </div>
+                <h2 class="espace">Activitées</h2>
+                <div class="sport_line">
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                </div>
+                <div class="sport_line">
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div><div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                <div class="carte_sport">
+                    <img src="img/foot.png" alt="" width="112" height="100">
+                    <h6 class="space_carte">Football</h6>
+                </div>
+                </div>
+                <h2 class="espace">Places disponibles</h2>
+                <div id="block-checkbox">
+                    <label for="checkbox-1">1</label>
+                    <input type="checkbox" id="checkbox-1" name="checkbox-group">
+                    <label for="checkbox-2">2</label>
+                    <input type="checkbox" id="checkbox-2" name="checkbox-group">
+                    <label for="checkbox-3">3</label>
+                    <input type="checkbox" id="checkbox-3" name="checkbox-group">
+                    <label for="checkbox-4">4</label>
+                    <input type="checkbox" id="checkbox-4" name="checkbox-group">
+                    <label for="checkbox-5">5</label>
+                    <input type="checkbox" id="checkbox-5" name="checkbox-group">
+                    <label for="checkbox-6">6</label>
+                    <input type="checkbox" id="checkbox-6" name="checkbox-group">
+                    <label for="checkbox-7">7</label>
+                    <input type="checkbox" id="checkbox-7" name="checkbox-group">
+                    <label for="checkbox-8">8</label>
+                    <input type="checkbox" id="checkbox-8" name="checkbox-group">
+                    <label for="checkbox-9">Plus</label>
+                    <input type="checkbox" id="checkbox-9" name="checkbox-group">
+                  </div>
+                  <script>
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach((checkbox) => {
+                    checkbox.addEventListener('change', (event) => {
+                        // Si la checkbox est cochée
+                        if (event.target.checked) {
+                        // Désélectionner toutes les autres checkboxes
+                        checkboxes.forEach((otherCheckbox) => {
+                            if (otherCheckbox !== checkbox) {
+                            otherCheckbox.checked = false;
+                            }
+                        });
+                        }
+                    });
+                    });
+                  </script>
+                  <button class="btn-inviter"><h6>Inviter</h6></button>
+            </div>
+            <script>
+                const btnBlue = document.querySelector('.btn-blue');
+                const overlay = document.querySelector('.overlay');
+                const closeBtn = document.querySelector('.close-btn');
+
+                btnBlue.addEventListener('click', function() {
+                overlay.style.display = 'block';
+                });
+
+                closeBtn.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                });
+            </script>
+            </div>
             <div id="block-checkbox">
                 <label for="public">Public</label>
                 <input type="checkbox" id="public" name="access" value="public">
@@ -134,7 +237,7 @@
                 </div>
               </div>
               <h1>Trouvez une chrysalide</h1>
-              
+
         </section>
 
     </main>
