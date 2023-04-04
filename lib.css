@@ -317,3 +317,12 @@ aside #aside-other-buttons a{
     text-decoration: none;
     color: var(--couleur-white-hex);
 }
+
+/* Button */
+.btn{
+    padding: 8px;
+    border-radius: 30px;
+    outline: none;
+    color: var(--couleur-white-hex);
+    cursor: pointer;
+}

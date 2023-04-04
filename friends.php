@@ -131,8 +131,10 @@
                                     </div>
                                 </div>
                                 <div class="friend-btns">
-                                    <button class="request-f">PHP (Suivre/Ami)</button>
-                                    <button class="msg">Message</button>
+                                    <form method="post">
+                                        <input type="submit" class="request-f" placeholder="Suivre">
+                                        <input type="submit" class="msg" placeholder="Message">
+                                    </form>
                                 </div>
                                 <div class="rewards">
                                     <div class="tropheys" >
