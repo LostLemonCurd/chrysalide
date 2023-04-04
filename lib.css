@@ -326,3 +326,14 @@ aside #aside-other-buttons a{
     color: var(--couleur-white-hex);
     cursor: pointer;
 }
+
+.btn-blue{
+    padding: 5px 20px;
+    border-radius: 30px;
+    background-color: rgba(62, 123, 250, 1);
+    outline: none;
+    border: none;
+    color: var(--couleur-white-hex);
+    cursor: pointer;
+    text-align: center;
+}
