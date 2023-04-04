@@ -12,6 +12,7 @@
     <title>Chrysalide</title>
 </head>
 <body>
+    <h6 style="color:white;"> <?php error_reporting(E_ALL); ini_set('display_errors', 1); ?></h6>
     <?php 
         include('init.php');
         // $r = $pdo->query('SELECT * FROM user');

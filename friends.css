@@ -155,23 +155,27 @@
     gap: 12px;
 }
 .friends-section .friend-detail .friend-btns button{
-    padding: 10px 16px;
+    padding: 8px;
     border-radius: 30px;
-    border: none;
     outline: none;
     color: var(--couleur-white-hex);
+    cursor: pointer;
+}
 
-}
-.friends-section .request-f{
+.friends-section .friend-detail .friend-btns .request-f{
     background-color: var(--couleur-bleu-hex);
+    border: 2px solid var(--couleur-bleu-hex);
     font-weight: 500;
     font-size: 1rem;
 }
-.friends-section .msg{
+
+.friends-section .friend-detail .friend-btns .msg{
     background-color: var(--couleur-grey-hex); 
+    border: 2px solid var(--couleur-grey-hex);
     font-weight: 500;
     font-size: 1rem;
 }
+
 .friends-section .team-info{
     display: flex;
     flex-direction: column;
@@ -218,12 +222,14 @@
     width: 10vw;
     padding: 8px;
     background-color: var(--couleur-bleu-hex);
-    border: none;
+    border: 1px solid var(--couleur-bleu-hex);
     border-radius: 30px;
     color: var(--couleur-white-hex);
     font-weight: 500;
     font-size: 1rem;
+    cursor: pointer;
 }
+
 .equipe-section .team-list{
     display: flex;
     gap: 20px;
