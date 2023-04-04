@@ -12,14 +12,31 @@
     <title>Chrysalide</title>
 </head>
 <body>
+    <h6><?php $_SESSION['user']['email'] ?></h6>
     <h6 style="color:white;"> <?php error_reporting(E_ALL); ini_set('display_errors', 1); ?></h6>
     <?php 
         include('init.php');
-        // $r = $pdo->query('SELECT * FROM user');
 
-        // // while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
-
-        // // }
+        $r = $pdo->query('SELECT * FROM user');
+        while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
+           switch ($user['userimg']) {
+            case 'Avatar1':
+                $userimg = 'avatar-1.png';
+            break;
+            case 'Avatar2':
+                $userimg = 'avatar-2.png';
+            break;
+            case 'Avatar3':
+                $userimg = 'avatar-3.png';
+            break;
+            case 'Avatar4':
+                $userimg = 'avatar-4.png';
+            break;
+            default:
+                $userimg = 'Whoopsie';
+            break;
+           }
+        }
         
     ?>
     <header>
@@ -41,7 +58,7 @@
                 </div>
             </section>
             <section id="header-profil">
-                <img src="img/img-profile.png" alt="photo de profil">
+                <img src="img/<?php echo $userimg?>" alt="photo de profil">
             </section>
         </section>
         
@@ -132,8 +149,8 @@
                                 </div>
                                 <div class="friend-btns">
                                     <form method="post">
-                                        <input type="submit" class="request-f" placeholder="Suivre">
-                                        <input type="submit" class="msg" placeholder="Message">
+                                        <input type="submit" class="request-f" value="Ami">
+                                        <input type="submit" class="msg" value="Message">
                                     </form>
                                 </div>
                                 <div class="rewards">

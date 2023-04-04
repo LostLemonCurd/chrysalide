@@ -18,6 +18,11 @@
 
     include('init.php');
 
+    // SI l'utilisateur est déjà connecté il sera automatique redirigé vers l'index
+    if(isset($_SESSION['membre'])){
+        header('location:index.php');
+    }
+
     if($_POST){
 
         // Je définie une varaible qui me sert à afficher les erreurs:
@@ -53,9 +58,9 @@
         $userImg = $_POST['userimg'];
 
         
-        $r3 = $pdo->query("SELECT * FROM sport");
+        // $r3 = $pdo->query("SELECT * FROM sport");
 
-        if($_POST['favsport'] )
+        // if($_POST['favsport'] )
 
 
 
