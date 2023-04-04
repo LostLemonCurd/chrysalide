@@ -103,6 +103,7 @@ header #header-logo{
     padding: 15px;
     gap: 5px;
     margin-left: 64px;
+    cursor: pointer;
 }
 
 /* header #header-logo img{
@@ -212,7 +213,7 @@ header #header-input-profil #header-profil{
 
 header #header-input-profil #header-profil img{
     height: auto;
-    width: 40%;
+    width: 62%;
 }
 
 header {
