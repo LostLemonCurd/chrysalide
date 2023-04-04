@@ -20,7 +20,7 @@
 
     // SI l'utilisateur est déjà connecté il sera automatique redirigé vers l'index
     if(isset($_SESSION['user'])){
-        header('location:index.php');
+        header('Location:index.php');
     }
 
     if($_POST){
@@ -40,6 +40,7 @@
                     $_SESSION['user']['email'] = $user['email'];
                     $_SESSION['user']['username'] = $user['username'];
                     $_SESSION['user']['favsport'] = $user['favsport'];
+                    $_SESSION['user']['id_user'] = $user['id_user'];
                     $_SESSION['user']['userimg'] = $user['userimg'];
                     $_SESSION['user']['date_inscription'] = $user['date_inscription'];
 
