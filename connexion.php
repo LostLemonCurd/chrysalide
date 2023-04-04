@@ -18,6 +18,11 @@
 
     include('init.php');
 
+    // SI l'utilisateur est déjà connecté il sera automatique redirigé vers l'index
+    if(isset($_SESSION['user'])){
+        header('Location:index.php');
+    }
+
     if($_POST){
 
         // Je définie une varaible qui me sert à afficher les erreurs:
@@ -35,11 +40,12 @@
                     $_SESSION['user']['email'] = $user['email'];
                     $_SESSION['user']['username'] = $user['username'];
                     $_SESSION['user']['favsport'] = $user['favsport'];
+                    $_SESSION['user']['id_user'] = $user['id_user'];
                     $_SESSION['user']['userimg'] = $user['userimg'];
                     $_SESSION['user']['date_inscription'] = $user['date_inscription'];
 
                     // Je redirige l'internaute vers l'index avec la fonction header et l'attribut location: 
-                    header('location:index.php');
+                    header('Location:index.php');
                     
                 } else {
                     $erreur .= '<p>Mot de passe incorrect</p>';

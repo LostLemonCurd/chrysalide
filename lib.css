@@ -219,8 +219,11 @@ header #header-input-profil #header-profil{
 }
 
 header #header-input-profil #header-profil img{
+    display: block;
     height: auto;
-    width: 62%;
+    width: 40%;
+    margin: 0 auto;
+
 }
 
 header {
