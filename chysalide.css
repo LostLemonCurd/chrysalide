@@ -44,7 +44,9 @@
       transform: scale(0);
     }
   }
-  
+  #btn-box{
+    margin-bottom: 15px;
+  }
   .btn-blue{
     padding: 5px 20px;
     border-radius: 30px;
@@ -55,3 +57,111 @@
     cursor: pointer;
     text-align: center;
 }
+
+.btn-vide{
+    padding: 3px 20px;
+    border-radius: 30px;
+    border: 2px solid var(--couleur-bleu-hex);
+    background-color: var(--couleur-black-hex);
+    color: var(--couleur-white-hex);
+    cursor: pointer;
+    text-align: center;
+    margin-left: 10px;
+}
+:hover.btn-vide{
+    background-color: var(--couleur-bleu-hex);
+}
+
+#block-checkbox{
+    color: var(--couleur-white-hex);
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+}
+
+#block-checkbox {
+    color: var(--couleur-white-hex);
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style de la checkbox */
+  input[type="checkbox"] {
+    /* Masquer la checkbox par défaut */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Définir la taille de la checkbox */
+    width: 20px;
+    height: 20px;
+    /* Définir la bordure et la couleur */
+    border: 3px solid var(--couleur-bleu-hex);
+    border-radius: 3px;
+    /* Définir la couleur de fond */
+    background-color: var(--couleur-black-hex);
+    /* Définir la position du point */
+    position: relative;
+    /* Ajouter une marge pour que le point ne touche pas la bordure */
+    margin: 3px;
+    /* Ajouter une transition pour l'animation */
+    transition: all 0.3s ease;
+  }
+  
+  /* Style de la checkbox cochée */
+  input[type="checkbox"]:checked::after {
+    /* Ajouter un point orange */
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 136, 0, 1);
+    border-radius: 50%;
+  }
+  
+  /* Style du label */
+  label {
+    /* Définir la marge */
+    margin-left: 10px;
+  }
+  
+  /* Style de la checkbox lorsqu'elle est cliquée */
+  input[type="checkbox"]:active {
+    /* Définir la couleur de la bordure */
+    border-color: var(--couleur-bleu-hex);
+  }
+#mes-chrysalide{
+    display: flex;
+    margin-bottom: 30px;
+    
+}
+  .my-div {
+    margin: 30px 30px 0 0;
+    border-radius: 30px;
+    width: 242px;
+    background-color: rgba(85, 87, 112, 1);
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .my-div h5 {
+    color: white;
+    margin-top: 0;
+    padding: 5px;
+  }
+  
+  .my-div img {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  .my-div h6 {
+    color: white;
+    margin-bottom: 0;
+  }
+  
+  
+  

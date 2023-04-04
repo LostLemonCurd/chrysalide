@@ -85,7 +85,56 @@
                 <span></span>
               </div>
             </div>
-            <button class="btn-blue">Créer</button>
+            <div id="btn-box">
+                <button class="btn-blue"><h6>Créer</h6></button>
+                <button class="btn-vide"><h6>Rejoindre</h6></button>
+            </div>
+            <div id="block-checkbox">
+                <label for="public">Public</label>
+                <input type="checkbox" id="public" name="access" value="public">
+                <label for="private">Privée</label>
+                <input type="checkbox" id="private" name="access" value="private">
+              </div>
+              <script>
+                // Récupérer les deux checkboxes
+                const publicCheckbox = document.getElementById('public');
+                const privateCheckbox = document.getElementById('private');
+
+                // Ajouter un événement "click" à chaque checkbox
+                publicCheckbox.addEventListener('click', function() {
+                if (publicCheckbox.checked) {
+                    privateCheckbox.checked = false;
+                }
+                });
+
+                privateCheckbox.addEventListener('click', function() {
+                if (privateCheckbox.checked) {
+                    publicCheckbox.checked = false;
+                }
+                });
+              </script>
+              <div id="mes-chrysalide">
+                <div class="my-div">
+                    <h5>Equipe</h5>
+                    <img src="img/foot.png" alt="Image" width="140" height="125">
+                    <h5>Ville</h5>
+                    <h6>Date</h6>
+                </div>
+                <div class="my-div">
+                    <h5>Equipe</h5>
+                    <img src="img/foot.png" alt="Image" width="140" height="125">
+                    <h5>Ville</h5>
+                    <h6>Date</h6>
+                </div>
+                <div class="my-div">
+                    <h5>Equipe</h5>
+                    <img src="img/foot.png" alt="Image" width="140" height="125">
+                    <h5>Ville</h5>
+                    <h6>Date</h6>
+                </div>
+              </div>
+              <h1>Trouvez une chrysalide</h1>
+              
         </section>
 
     </main>
@@ -93,3 +142,4 @@
     
 </body>
 </html>
+
