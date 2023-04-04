@@ -71,6 +71,7 @@
     padding: 8px;
     background-color: var(--couleur-white-hex);
     border-radius: 30px;
+    cursor: pointer;
 }
 .friends-section .friend h4{
     font-weight: 500;
