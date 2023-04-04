@@ -148,7 +148,9 @@
     
                     <div class="text-input">
                         <textarea id="answer-txt" name="answer-txt" rows="4" cols="50"></textarea>
-                        <img src="img/arrow_message.png" alt="icone fleche envoie message">
+                        <!-- <input type="submit" value="" -->
+                        <button type="submit" name="btn-send-message"><img src="img/arrow_message.png" alt="icone fleche envoie message"></button>
+                        <!-- <img src="img/arrow_message.png" alt="icone fleche envoie message"> -->
                     </div>
                 </section>
 
