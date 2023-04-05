@@ -1,0 +1,228 @@
+/* IMPORT FONT */
+
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Rubik:wght@300;400;700&display=swap');
+
+/* BODY */
+element { /* fonctionne po */
+    --element-width: 1920px;
+    width: var(--element-width, 100%);
+    --element-height: 1080px;
+    width: var(--element-height, 100%);
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    margin: 0 auto;
+    background-color: var(--couleur-black-hex);
+    
+}
+
+
+
+/* VARIABLES */
+
+:root{
+    --couleur-bleu-hex: #3E7BFA;
+    --couleur-red-hex: #FF3B3B;
+    --couleur-green-hex: #06C270;
+    --couleur-orange-hex: #FF8800;
+    --couleur-yellow-hex: #FFCC00;
+    --couleur-turquoise-hex: #00CFDE;
+    --couleur-purple-hex: #6600CC;
+    --couleur-white-hex: #F2F2F5;
+    --couleur-grey-hex: #555770;
+    --couleur-black-hex: #1C1C28;
+    --couleur-lightgrey-rgba: rgba(85, 87, 112, 0.05);
+    font-size: 16px;
+    
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+	padding: 0;
+}
+
+h1{
+    font-weight: 600;
+    font-size: 4rem;
+}
+h2{
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+h3{
+    font-weight: 700;
+    font-size: 2.25rem;
+}
+h4{
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+h5{
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+h6{
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.font-lalezard{
+    font-family: 'Lalezar', cursive;
+}
+
+a.voir-plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--couleur-white-hex);
+    position: relative;
+}
+
+a.voir-plus::after{
+    position: absolute;
+    top: -3px;
+    left: 70px;
+    height: 22px;
+    width: 28px;
+    transition: left 0.2s ease-in-out;
+    transition: background-size 0.2s ease-in-out;
+    background-image: url('img/double_chevron.png');
+    background-size: 22px 22px;
+    content:"";
+    background-origin: border-box;
+    background-repeat: no-repeat;
+}
+
+a.voir-plus:hover::after{
+    left: 75px;
+    background-size: 28px 22px;
+}
+
+
+.color-orange{
+    color: var(--couleur-orange-hex);
+}
+
+.color-purple{
+    color: var(--couleur-purple-hex);
+}
+
+.color-white{
+    color: var(--couleur-white-hex);
+}
+
+
+
+/* HEADER */
+
+
+
+
+/* ASIDE */
+
+
+
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    height: 100vh;
+    width: 15vw;
+    position: fixed;
+    top: 0;
+}
+
+aside #header-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+}
+
+aside nav{
+    gap: 20px;
+}
+
+aside nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--couleur-white-hex);
+    gap: 15px;
+    padding:8px 0 8px 18%;
+}
+
+
+
+aside #aside-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+    padding: 32px 0 15px 0;
+}
+
+
+aside #aside-buttons #aside-main-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+aside #aside-buttons #aside-main-buttons a{
+    background-color: var(--couleur-lightgrey-rgba);
+    border-radius: 0 50px 50px 0 ;
+    position: relative;
+    overflow: hidden;
+}
+
+aside #aside-buttons #aside-main-buttons a::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--couleur-grey-hex);
+    z-index: -1;
+    transition: opacity 250ms linear;
+    opacity: 0;
+}
+
+aside #aside-main-buttons a::before:hover{
+    opacity: 1;
+}
+
+aside #aside-other-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+main{
+    padding-right: 20%;
+}
+
+main header #header-input-profil{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    
+}
+
+
+
+
+

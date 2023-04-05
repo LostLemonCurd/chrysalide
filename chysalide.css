@@ -308,6 +308,14 @@ margin-bottom: 30px;
   text-indent: 40px;
   background-color: var(--couleur-lightgrey-rgba);
   outline: none;
+  display: flex;
+  align-items: center;
+ 
+}
+
+.input-search input::placeholder{
+  font-size: 20px;
+
 }
 
 .input-search .input-in-white{
@@ -315,7 +323,8 @@ margin-bottom: 30px;
 }
 
 .input-search .svg-in-black{
-  
+  position: absolute;
+  left: 13px;
 }
 
 .input-search .svg-in-black path{
