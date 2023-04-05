@@ -343,3 +343,12 @@ aside #aside-other-buttons a{
     cursor: pointer;
     text-align: center;
 }
+
+
+
+/* H5 error display */
+.error{
+    color: #FF3B3B;
+    background-color: #F2F2F5;
+    text-decoration: underline;
+}

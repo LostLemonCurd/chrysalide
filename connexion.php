@@ -19,9 +19,9 @@
     include('init.php');
 
     // SI l'utilisateur est déjà connecté il sera automatique redirigé vers l'index
-    if(isset($_SESSION['user'])){
-        header('Location:index.php');
-    }
+    // if(isset($_SESSION['user'])){
+    //     header('Location:index.php');
+    // }
 
     if($_POST){
 

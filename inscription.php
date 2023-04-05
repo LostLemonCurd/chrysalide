@@ -19,9 +19,9 @@
     include('init.php');
 
     // SI l'utilisateur est déjà connecté il sera automatique redirigé vers l'index
-    if(isset($_SESSION['membre'])){
-        header('location:index.php');
-    }
+    // if(isset($_SESSION['membre'])){
+    //     header('location:index.php');
+    // }
 
     if($_POST){
 
@@ -111,19 +111,19 @@
             <div class="profile-pic">
                 <div class="profile-choice">
                     <label for="img1"><img src="img/avatar-1.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img1" name="userimg" value="Avatar1" require>  
+                    <input type="radio" id="img1" name="userimg" value="avatar-1.png" require>  
                 </div>
                 <div class="profile-choice">
                     <label for="img2"><img src="img/avatar-2.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img2" name="userimg" value="Avatar2" require>
+                    <input type="radio" id="img2" name="userimg" value="avatar-2.png" require>
                 </div>
                 <div class="profile-choice">
                     <label for="img3"><img src="img/avatar-3.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img3" name="userimg" value="Avatar3" require>
+                    <input type="radio" id="img3" name="userimg" value="avatar-3.png" require>
                 </div>
                 <div class="profile-choice">
                     <label for="img4"><img src="img/avatar-4.png" alt="Avatar à choisir"></img></label>
-                    <input type="radio" id="img4" name="userimg" value="Avatar4" require>
+                    <input type="radio" id="img4" name="userimg" value="avatar-4.png" require>
                 </div>
             </div>
             <input type="submit" value="Valider" class="btn-valider">

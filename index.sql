@@ -12,10 +12,12 @@ CREATE TABLE user (
 ) ENGINE=InnoDB;
 
 CREATE TABLE friends (
+    id_link INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
     id_friend INT NOT NULL,
-    date_debut DATETIME CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_user),
+    date_debut DATETIME,
+    PRIMARY KEY (id_link),
+    FOREIGN KEY (id_user) REFERENCES user(id_user),
     FOREIGN KEY (id_friend) REFERENCES user(id_user)
 ) ENGINE=InnoDB;
 
