@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='fr'>
+
 <head>
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -11,33 +12,31 @@
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
     <title>Chrysalide</title>
 </head>
+
 <body>
-    <h6 style="color:white;"> <?php error_reporting(E_ALL); ini_set('display_errors', 1); ?></h6>
-    <?php 
-        include('init.php');
+    <h6 style="color:white;"> <?php error_reporting(E_ALL);
+                                ini_set('display_errors', 1); ?></h6>
+    <?php
+    include('init.php');
 
-        // $r = $pdo->query('SELECT * FROM user');
-        // while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
-        //     $userImg = $user['userimg'];
-        // }
-        
-        $userId = $_SESSION['user']['id_user'];
-        
-        $r2 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId)");
+    $r = $pdo->query('SELECT * FROM user');
 
+    $userId = $_SESSION['user']['id_user'];
+    $userImg = $_SESSION['user']['userimg'];
 
-        while ($isAFriend = $r2->fetch(PDO::FETCH_ASSOC)) {
-            if (isset($isAFriend)) {
-               $requestFriend = 'Se désabonner';
-            } else {
-                $requestFriend = 'Suivre';
-            } 
-        } 
+    $r2 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId)");
 
 
-        
 
+    // if($_POST){
+    //     $r3 = $pdo->query("SELECT * FROM user WHERE id_user In (SELECT id_friend FROM friends WHERE id_user = $userId)");
+    //     if($r3->rowCount() >= 1){
+    //         $_POST['request'];
+    //     } else {
+    //         $pdo->exec("INSERT INTO friends (id_friend, message, date_debut) VALUES ('$_POST[pseudo]', '$_POST[message]', NOW())");
 
+    //     }
+    // }
     ?>
     <header>
         <section id="header-logo">
@@ -48,20 +47,24 @@
             <section id="header-input-buttons">
                 <form method="post">
                     <svg width="27" height="27" viewBox="0 0 27 27" fill="#1C1C28" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="#1C1C28"/>
+                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="#1C1C28" />
                     </svg>
                     <input class="search-bar" type="text" placeholder="Rechercher">
                 </form>
                 <div id="header-buttons">
-                    <a href="#"><h6>Tournois</h6></a>
-                    <a href="#"><h6>Chrysalide</h6></a>
+                    <a href="#">
+                        <h6>Tournois</h6>
+                    </a>
+                    <a href="#">
+                        <h6>Chrysalide</h6>
+                    </a>
                 </div>
             </section>
             <section id="header-profil">
-                <img src="img/<?php echo $userImg?>" alt="photo de profil">
+                <img src="img/<?php echo $userImg ?>" alt="photo de profil">
             </section>
         </section>
-        
+
     </header>
     <main>
         <aside>
@@ -108,48 +111,48 @@
                     <h2>Mes amis</h2>
                     <form method="post">
                         <svg width="27" height="27" viewBox="0 0 27 27" fill="#1C1C28" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="#1C1C28"/>
+                            <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="#1C1C28" />
                         </svg>
                         <input class="search-bar" type="text" placeholder="Rechercher">
                     </form>
                     <div class="friend-list">
-                        <?php 
-                        while ($friend = $r2->fetch(PDO::FETCH_ASSOC)) {                                
-                            echo '<div class="friend">
-                                <img src="img/'. $friend['userimg'] . '" alt="Photo de profil d\'un ami">
-                                <h4>'. $friend['username'] . '</h4>
+                        <?php
+                        while ($friend = $r2->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<div class="friend friend">
+                                <a  ><img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami"></a>
+                                <h4>' . $friend['username'] . '</h4>
                             </div>';
-                        }?>
+                        } ?>
                     </div>
                 </section>
                 <section class="friend-detail">
                     <div class="friend-info">
                         <img src="img/avatar1-focus.png" alt="Photo de profil">
                         <div class="contact-info">
-                                <div class="contact">
-                                    <span class="status">Connecté</span>
-                                    <h4> PHP </h4>
-                                    <div class="pays">
-                                        <img src="img/france.png" alt="Pays">
-                                        <p>France</p>
-                                    </div>
+                            <div class="contact">
+                                <span class="status">Connecté</span>
+                                <h4> PHP </h4>
+                                <div class="pays">
+                                    <img src="img/france.png" alt="Pays">
+                                    <p>France</p>
                                 </div>
-                                <div class="friend-btns">
-                                    <form method="post">
-                                        <input type="submit" class="request-f" value="<?php echo $requestFriend?>">
-                                        <input type="submit" class="msg" value="Message">
-                                    </form>
+                            </div>
+                            <div class="friend-btns">
+                                <form method="post">
+                                    <input type="submit" class="request-f" name="request" value="Ami">
+                                    <input type="submit" class="msg" value="Message">
+                                </form>
+                            </div>
+                            <div class="rewards">
+                                <div class="tropheys">
+                                    <img src="img/trophe.png" alt="Trophées Gagnés">
+                                    <p class="nb-trophes">15</p>
                                 </div>
-                                <div class="rewards">
-                                    <div class="tropheys" >
-                                        <img src="img/trophe.png" alt="Trophées Gagnés">
-                                        <p class="nb-trophes">15</p>
-                                    </div>
-                                    <div class="chrysalide-pts">
-                                        <img src="img/trophe.png" alt="Chrysalide Gagnés">
-                                        <p class="nb-chrysalide">26</p>
-                                    </div>
+                                <div class="chrysalide-pts">
+                                    <img src="img/trophe.png" alt="Chrysalide Gagnés">
+                                    <p class="nb-chrysalide">26</p>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div class="team-info">
@@ -197,4 +200,5 @@
 
     </main>
 </body>
+
 </html>
