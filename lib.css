@@ -93,6 +93,19 @@ h6{
     font-family: 'Lalezar', cursive;
 }
 
+.color-black{
+    color: var(--couleur-black-hex);
+}
+
+.color-white{
+    color: var(--couleur-white-hex);
+}
+
+.color-purple{
+    color: var(--couleur-purple-hex);
+}
+
+
 
 
 /* HEADER */

@@ -15,25 +15,10 @@
     include('init.php');
     
     $r = $pdo->query('SELECT * FROM user');
-    while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
-       switch ($user['userimg']) {
-        case 'Avatar1':
-            $userimg = 'avatar-1.png';
-        break;
-        case 'Avatar2':
-            $userimg = 'avatar-2.png';
-        break;
-        case 'Avatar3':
-            $userimg = 'avatar-3.png';
-        break;
-        case 'Avatar4':
-            $userimg = 'avatar-4.png';
-        break;
-        default:
-            $userimg = 'Whoopsie';
-        break;
-       }
-    }
+    // while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
+    //     $userImg = $user['userimg'];
+    // }
+    $userImage = $_SESSION['user']['userimg'];
     ?>
     <header>
         <section id="header-logo">
@@ -51,10 +36,12 @@
                 <div id="header-buttons">
                     <a href="#"><h6>Tournois</h6></a>
                     <a href="#"><h6>Chrysalide</h6></a>
+                    <a href="creation-chrysalide.php"><h6>Test Lorenzo</h6></a>
+
                 </div>
             </section>
             <section id="header-profil">
-                <img src="img/<?php echo $userimg?>" alt="photo de profil">
+                <img src="img/<?php echo $userImage?>" alt="photo de profil">
             </section>
         </section>
         

@@ -66,18 +66,21 @@
 }
 .friends-section .friend{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 8px;
     background-color: var(--couleur-white-hex);
     border-radius: 30px;
     cursor: pointer;
 }
-.friends-section .friend h4{
+.friends-section .friend a{
+    text-decoration: none;
+}
+.friends-section .friend a h4{
     font-weight: 500;
     color: var(--couleur-black-hex);
 }
-.friends-section .friend img{
+.friends-section .friend a img{
     width: 40px;
     height: 47px;
 }
@@ -145,6 +148,7 @@
     display: flex;
     align-items: center;
     color: var(--couleur-grey-hex);
+    gap: 8px;
 }
 .friends-section .contact-info .contact .pays img{
     height: 20px;
@@ -175,6 +179,11 @@
     border: 2px solid var(--couleur-grey-hex);
     font-weight: 500;
     font-size: 1rem;
+    text-decoration: none;
+    color: var(--couleur-white-hex);
+    padding: 8px;
+    border-radius: 40px;
+    text-align: center;
 }
 
 .friends-section .team-info{

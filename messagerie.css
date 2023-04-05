@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-#main-content-messagerie .chat-messagerie .msg-first-user {
+#main-content-messagerie .chat-messagerie .msg-destinataire {
     justify-content: flex-end;
 }
 
@@ -80,12 +80,12 @@
     width: 35vw;
 }
 
-#main-content-messagerie .chat-messagerie .messages .msg-marc {
+#main-content-messagerie .chat-messagerie .messages .msg-bleu-fonce {
     background-color: var(--couleur-bleu-hex);
     margin-left: 40px;
 }
 
-#main-content-messagerie .chat-messagerie .messages .msg-alonso {
+#main-content-messagerie .chat-messagerie .messages .msg-bleu-ciel {
     background-color: var(--couleur-lightblue-rbga);
     margin-right: 30px;
 }
@@ -95,11 +95,13 @@
     color: var(--couleur-white-hex);
 }
 
-#main-content-messagerie .chat-messagerie .text-input {
+#main-content-messagerie .chat-messagerie .text-input form {
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-#main-content-messagerie .chat-messagerie .text-input textarea {
+#main-content-messagerie .chat-messagerie .text-input form input {
     border: var(--couleur-bleu-hex) solid 3px;
     border-radius: 30px;
     width: 100%;
@@ -108,19 +110,25 @@
     resize: none;
 }
 
-#main-content-messagerie .text-input textarea::-webkit-scrollbar {
+#main-content-messagerie .text-input form #answer-txt::-webkit-scrollbar {
     display: none;
 }
 
-#main-content-messagerie .chat-messagerie .text-input img {
+#main-content-messagerie .chat-messagerie .text-input form button {
     position: absolute;
     bottom: 15px;
     right: 15px;
     background-color: var(--couleur-bleu-hex);
+    border: none;
     border-radius: 10px;
-    padding: 10px;
-    align-items: center;
-    width: 8%;
+    /* margin: auto */
+}
+
+#main-content-messagerie .chat-messagerie .text-input button img {
+    padding: 5px 1px;
+    margin: auto;
+    display: block;
+    width: 70%;
 }
 
 /* CONTACT EN COURS */
@@ -181,14 +189,24 @@
     gap: 12px;
     overflow: scroll;
 }
+
 .friend-list::-webkit-scrollbar {
-    display: none;
+    width: 5px;
+    height: 100%;
 }
+
+.friend-list::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: var(--couleur-white-hex);
+    border: 3px solid var(--couleur-white-hex);
+}
+
 .friend{
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 8px;
+    margin-right: 10px;
     background-color: var(--couleur-white-hex);
     border-radius: 30px;
 }
@@ -200,5 +218,3 @@
     width: 40px;
     height: 47px;
 }
-
-

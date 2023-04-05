@@ -5,6 +5,8 @@
 #main-content{
 }
 #main-content-create-chrysalide{
+  width: 100%;
+  margin-right: 64px;
 }
 /* >>>>>>> Stashed changes */
 
@@ -370,4 +372,93 @@ input[type="checkbox"]:active {
   width: 100%;
   text-align: center;
 }
+
+#find-a-chrysalide-pop-up{
+  width: 50%;
+  border-radius: 0 30px 30px 0;
+  background-color: var(--couleur-purple-hex);
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button{
+  color: var(--couleur-white-hex);
+  background-color: var(--couleur-bleu-hex);
+  padding: 5px 15px ;
+  border-radius: 50px;
+  width: auto;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+  cursor: pointer;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line{
+  position: relative;
+  height: 20px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span{
+  border-radius: 50px;
+  background-color: var(--couleur-white-hex);
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span:nth-child(1){
+  height: 2px;
+  width: 28px;
+  
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span:nth-child(2){
+  height: 2px;
+  width: 20px;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span:nth-child(3){
+  height: 2px;
+  width: 8px;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event #find-a-chrysalide-event-title{
+  display: flex;
+  gap: 5px;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event #find-a-chrysalide-event-buttons{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--couleur-black-hex);
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event #find-a-chrysalide-event-buttons button{
+  border-radius: 50px;
+  background-color: var(--couleur-green-hex);
+  border: none;
+}
+
+
+
 
