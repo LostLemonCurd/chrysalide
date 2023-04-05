@@ -31,7 +31,6 @@
         $r = $pdo->query("SELECT * FROM user WHERE email = '$_POST[email]' or username = '$_POST[email]'");
         if ($r->rowCount() >= 1) {
             $user = $r->fetch(PDO::FETCH_ASSOC);
-            var_dump($user); 
             //(pour vérifier si l'array a été crée)
 
             // Je vérifie si le mot de passe est correct:
@@ -43,6 +42,7 @@
                     $_SESSION['user']['id_user'] = $user['id_user'];
                     $_SESSION['user']['userimg'] = $user['userimg'];
                     $_SESSION['user']['date_inscription'] = $user['date_inscription'];
+                    $_SESSION['user']['loggedin'] = true;
 
                     // Je redirige l'internaute vers l'index avec la fonction header et l'attribut location: 
                     header('Location:index.php');

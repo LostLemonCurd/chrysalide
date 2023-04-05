@@ -96,8 +96,16 @@
     padding: 20px;
     gap: 12px;
 }
+.friends-section .friend-avatar-img{
+    height: auto;
+    width: 24%;
+}
 .friends-section .friend-detail .contact-info{
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 12px;
 }
 .friends-section .friend-detail .contact-info img{
     width: 110px;
@@ -121,18 +129,10 @@
     gap: 12px;
     color: var(--couleur-white-hex);
 }
-
 .friends-section .friend-info{
     display: flex;
-    width: 35vw;
+    width: 76%;
     align-items: center;
-}
-.friends-section .contact-info{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: 12px;
 }
 .friends-section .contact-info .contact{
     display: flex;
@@ -145,13 +145,18 @@
 .friends-section .contact-info .contact h4{
     color: var(--couleur-white-hex);
 }
-.friends-section .contact-info .contact .pays{
+.friends-section .contact-info .contact .contact-details{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     color: var(--couleur-grey-hex);
     gap: 8px;
 }
-.friends-section .contact-info .contact .pays img{
+.friends-section .contact-info .contact .contact-details .pays{
+    display: flex;
+    gap: 8px;
+}
+.friends-section .contact-info .contact .contact-details .pays img{
     height: 20px;
     width: 20px;
 }

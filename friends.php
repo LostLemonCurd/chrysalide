@@ -14,62 +14,75 @@
 </head>
 
 <body>
-    <h6 style="color:white;"> <?php error_reporting(E_ALL);ini_set('display_errors', 1); ?></h6>
+    <h6 class="error"> <?php error_reporting(E_ALL);ini_set('display_errors', 1); ?></h6>
     
     <?php
     include('init.php');
-
-
-    // Récupération des infromations de tous les utilisateurs pour les afficher à partir d'un format Get
-    $r = $pdo->query('SELECT * FROM user');
-
-
+    
     // Récupération des informations de l'utilisateur connecté                                      
     $userId = $_SESSION['user']['id_user'];
     $userImg = $_SESSION['user']['userimg'];
-
+    
+    // Récupération des infromations de tous les utilisateurs pour les afficher à partir d'un format Get
+    $r = $pdo->query("SELECT * FROM user WHERE id_user != $userId");
+    
     
     
     // Récupération GET de l'id des amis de l'utilisateur connecté
-    $friendId = '';
+    $friendId = 0;
     if($_GET){
         $friendId = $_GET['friendId'];
-    }
-
-    // Récupération à partir de l'id des informations de l'ami
-    $friendName = '';
-    $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
-    $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
-    $friendName = $friendDetail['username'];
-
-    // Récupération de tous les amis de l'utilisateur connecté
-    $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
-
-    // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
-    if($r3->rowCount() >= 1){
-        $isAFriend = true;
-    } else {
-        $isAFriend = false;
-    }
-    
-    // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
-    if($isAFriend == true){
-        $friendBtn = 'Se désabonner';
-    } else {
-        $friendBtn = 'Suivre';
-    }
-
-    // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
-    if($_POST){
-        if (!$isAFriend){
-            $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
+        // Récupération à partir de l'id des informations de l'ami
+        $friendName = '';
+        $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
+        $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
+        $friendName = $friendDetail['username'];
+        $friendSport = $friendDetail['favsport'];
+        $friendImg = $friendDetail['userimg'];
+        
+        // Récupération de tous les amis de l'utilisateur connecté
+        $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
+        
+        // On vérifie si l'utilisateur est connecté et on modifie le voyant de connexion: 
+            $btnConnect = '';
+            if (isset($_SESSION['user']['loggedin']) && $_SESSION['user']['loggedin'] == true) {
+                $btnConnect = 'Connecté';
+            } else {
+                $btnConnect = 'Déconnecté';
+            }
+            
+            // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
+            if($r3->rowCount() >= 1){
+                $isAFriend = true;
+            } else {
+                $isAFriend = false;
+            }
+            
+            // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
+            if($isAFriend == true){
+                $friendBtn = 'Se désabonner';
+            } else {
+                $friendBtn = 'Suivre';
+            }
+            
+            // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
+            if($_POST){
+                if (!$isAFriend){
+                    $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
+                } else {
+                    $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
+                }
+            }
         } else {
-            $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
+            $friendBtn = 'Suivre';
+            $friendName = 'Batman';
+            $friendSport = 'Football';
+            $btnConnect = 'Déconnecté';
+            $friendImg = 'batman.png';
         }
-    }
-    ?>
+        ?>
 
-    <!-- <h5 class="error">  </h5>  -->
+<h5 class="error"> </h5> 
 
     <header>
         <section id="header-logo">
@@ -160,14 +173,17 @@
                 </section>
                 <section class="friend-detail">
                     <div class="friend-info">
-                        <img src="img/avatar1-focus.png" alt="Photo de profil">
+                        <img class="friend-avatar-img" src="img/<?php echo $friendImg?>" alt="Photo de profil">
                         <div class="contact-info">
                             <div class="contact">
-                                <span class="status">Connecté</span>
-                                <h4><?php echo $friendName;?></h4>
-                                <div class="pays">
-                                    <img src="img/france.png" alt="Pays">
-                                    <p>France</p>
+                                <span class="status"><?php echo $btnConnect?></span>
+                                <h4><?php echo ucfirst($friendName);?></h4>
+                                <div class="contact-details">
+                                    <div class="pays">
+                                        <img src="img/france.png" alt="Pays">
+                                        <p>France</p>
+                                    </div>
+                                    <p><?php echo ucfirst($friendSport)?></p>
                                 </div>
                             </div>
                             <div class="friend-btns">
