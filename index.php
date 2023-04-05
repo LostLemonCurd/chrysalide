@@ -36,6 +36,8 @@
                 <div id="header-buttons">
                     <a href="#"><h6>Tournois</h6></a>
                     <a href="#"><h6>Chrysalide</h6></a>
+                    <a href="creation-chrysalide.php"><h6>Test Lorenzo</h6></a>
+
                 </div>
             </section>
             <section id="header-profil">
