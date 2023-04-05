@@ -30,43 +30,43 @@
 
     
     
-    // // Récupération GET de l'id des amis de l'utilisateur connecté
-    // $friendId = '';
-    // if($_GET){
-    //     $friendId = $_GET['friendId'];
-    // }
+    // Récupération GET de l'id des amis de l'utilisateur connecté
+    $friendId = '';
+    if($_GET){
+        $friendId = $_GET['friendId'];
+    }
 
-    // // Récupération à partir de l'id des informations de l'ami
-    // $friendName = '';
-    // $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
-    // $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
-    // $friendName = $friendDetail['username'];
+    // Récupération à partir de l'id des informations de l'ami
+    $friendName = '';
+    $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
+    $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
+    $friendName = $friendDetail['username'];
 
-    // // Récupération de tous les amis de l'utilisateur connecté
-    // $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
+    // Récupération de tous les amis de l'utilisateur connecté
+    $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
 
-    // // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
-    // if($r3->rowCount() >= 1){
-    //     $isAFriend = true;
-    // } else {
-    //     $isAFriend = false;
-    // }
+    // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
+    if($r3->rowCount() >= 1){
+        $isAFriend = true;
+    } else {
+        $isAFriend = false;
+    }
     
-    // // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
-    // if($isAFriend == true){
-    //     $friendBtn = 'Se désabonner';
-    // } else {
-    //     $friendBtn = 'Suivre';
-    // }
+    // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
+    if($isAFriend == true){
+        $friendBtn = 'Se désabonner';
+    } else {
+        $friendBtn = 'Suivre';
+    }
 
-    // // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
-    // if($_POST){
-    //     if (!$isAFriend){
-    //         $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
-    //     } else {
-    //         $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
-    //     }
-    // }
+    // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
+    if($_POST){
+        if (!$isAFriend){
+            $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
+        } else {
+            $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
+        }
+    }
     ?>
 
     <!-- <h5 class="error">  </h5>  -->
