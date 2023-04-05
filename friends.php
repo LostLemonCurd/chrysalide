@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <h6 style="color:white;"> <?php error_reporting(E_ALL);
-                                ini_set('display_errors', 1); ?></h6>
+    <h6 style="color:white;"> <?php error_reporting(E_ALL);ini_set('display_errors', 1); ?></h6>
+    
     <?php
     include('init.php');
 
@@ -26,18 +26,43 @@
 
     $r2 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId)");
 
+    
+    $r3 = $pdo->query("SELECT * FROM user WHERE id_user In (SELECT id_friend FROM friends WHERE id_user = $userId)");
+    if($r3->rowCount() >= 1){
+        $isAFriend = true;
+    } else {
+        $isAFriend = false;
+    }
+    
+    if($isAFriend){
+        $friendBtn = 'Se désabonner';
+    } else {
+        $friendBtn = 'Suivre';
+    }
+    
+    $friendId = '';
+    if($_GET){
+        $friendId = $_GET['friendId'];
+    }
+
+    $friendName = '';
+    $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
+    $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
+    $friendName = $friendDetail['username'];
+    
 
 
-    // if($_POST){
-    //     $r3 = $pdo->query("SELECT * FROM user WHERE id_user In (SELECT id_friend FROM friends WHERE id_user = $userId)");
-    //     if($r3->rowCount() >= 1){
-    //         $_POST['request'];
-    //     } else {
-    //         $pdo->exec("INSERT INTO friends (id_friend, message, date_debut) VALUES ('$_POST[pseudo]', '$_POST[message]', NOW())");
-
-    //     }
-    // }
+    if($_POST){
+        if (!$isAFriend){
+            $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now()");
+        } else {
+            $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
+        }
+    }
     ?>
+
+    <h5 class="error"> <?php echo $friendId ?> </h5> 
+
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
@@ -118,9 +143,9 @@
                     <div class="friend-list">
                         <?php
                         while ($friend = $r2->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<div class="friend friend">
-                                <a  ><img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami"></a>
-                                <h4>' . $friend['username'] . '</h4>
+                            echo '<div class="friend">
+                                <a href="?friendId='.$friend['id_user'].'"><img src="img/'.$friend['userimg'].'" alt="Photo de profil d\'un ami"></a>
+                                <a href="?friendId='.$friend['id_user'].'"><h4>'.$friend['username'].'</h4></a>
                             </div>';
                         } ?>
                     </div>
@@ -131,7 +156,7 @@
                         <div class="contact-info">
                             <div class="contact">
                                 <span class="status">Connecté</span>
-                                <h4> PHP </h4>
+                                <h4><?php echo $friendName;?></h4>
                                 <div class="pays">
                                     <img src="img/france.png" alt="Pays">
                                     <p>France</p>
@@ -139,8 +164,8 @@
                             </div>
                             <div class="friend-btns">
                                 <form method="post">
-                                    <input type="submit" class="request-f" name="request" value="Ami">
-                                    <input type="submit" class="msg" value="Message">
+                                    <input type="submit" class="request-f" name="request" value="<?php echo $friendBtn?>">
+                                    <a href="messagerie.php" class="msg">Message</a>
                                 </form>
                             </div>
                             <div class="rewards">
