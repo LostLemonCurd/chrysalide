@@ -58,3 +58,14 @@ CREATE TABLE messages (
     FOREIGN KEY (id_expediteur) REFERENCES user(id_user),
     FOREIGN KEY (id_destinataire) REFERENCES user(id_user)
 ) ENGINE=InnoDB;
+
+CREATE TABLE groupes (
+    id_groupe INT NOT NULL AUTO_INCREMENT,
+    nom_groupe VARCHAR(30),
+    ville VARCHAR(50),
+    places_disponibles INT NOT NULL,
+    sport VARCHAR(50),
+    id_user INT NOT NULL,
+    PRIMARY KEY (id_groupe),
+    FOREIGN KEY (id_user) REFERENCES user(id_user)
+) ENGINE=InnoDB;
