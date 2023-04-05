@@ -6,10 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="lib.css">
+    <link rel="stylesheet" href="messagerie.css">
     <script src='lib.js' defer></script>
     <title>Librairie</title>
 </head>
 <body>
+<?php
+require 'init.php';
+
+// Enregistrer les commentaires dans la base
+// Si le formulaire est posté :
+if($_POST) {
+// Je corrige les '' :
+$_POST['id_expediteur'] = addslashes($_POST['id_expediteur']);
+$_POST['message'] = addslashes($_POST['message']);
+    
+// J'enregiste le commentaire dans la base :
+// exec = executer 
+$pdo->exec("INSERT INTO messages (id_expediteur, message, date)
+VALUES ('$_POST[id_expediteur]', '$_POST[messages]', NOW())");
+}
+
+// Afficher les commentaires sur la page
+// fetch stock toutes les informations 
+    $r = $pdo->query('SELECT * FROM messages');
+    while ($messages = $r->fetch(PDO::FETCH_ASSOC)) {
+        echo $messages['user'] . ' : ' . $messages['message'] . '<br>';
+    } 
+?>
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
@@ -85,72 +109,42 @@
             <div class="messagerie-contact">
                 <section class="chat-messagerie">
                     <div class="list-messages">
-                        <div class="messages msg-first-user">
-                            <h6 class="time">11h56</h6>
-                            
-                            <div class="outside-message msg-marc">
-                                <img src="img/avatar_messagerie_chat_marc.png" alt="avatar utilisateur messagerie">
-                                <div class="inside-message">
-                                    <h6>Marc Petit</h6>
-                                    <p>Bonjour, c'est toujours bon pour jeudi !!!</p>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="messages">
-                            <div class="outside-message msg-alonso">
+                        <?php
+                        while ($messages = $r->fetch(PDO::FETCH_ASSOC)) {
+                        echo'<div class="messages">
+                            <div class="outside-message msg-bleu-ciel">
                                 <img src="img/avatar_messagerie_chat_alonso.png" alt="avatar utilisateur messagerie">
-                                <div class="inside-message">
-                                    <h6>Fernando Alonso</h6>
-                                    <p>Bonjour, oui c'est toujours bon !</p>
+                                <div class="inside-message">        
+                                    <h6>'. $messages['id_expediteur'].'</h6>
+                                    <p>'. $messages['message'].'</p>
                                 </div>
                             </div>
-        
-                            <h6 class="time">12h01</h6>
-                        </div>
-        
-                        <div class="messages msg-first-user">
-                            <h6 class="time">12h13</h6>
-        
-                            <div class="outside-message msg-marc">
-                                <img src="img/avatar_messagerie_chat_marc.png" alt="avatar utilisateur messagerie">
-                                <div class="inside-message">
-                                    <h6>Marc Petit</h6>
-                                    <p>Okep top super</p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="messages">
-                            <div class="outside-message msg-alonso">
+                        
+                            <h6 class="time">'. $messages['date'].'</h6>
+                        </div>';
+                        } ?>
+
+                        <?php
+                        while ($messages = $r->fetch(PDO::FETCH_ASSOC)) { 
+                        echo '<div class="messages">
+                            <h6 class="time">'. $messages['date'].'</h6>
+
+                            <div class="outside-message msg-bleu-fonce">
                                 <img src="img/avatar_messagerie_chat_alonso.png" alt="avatar utilisateur messagerie">
-                                <div class="inside-message">
-                                    <h6>Fernando Alonso</h6>
-                                    <p>J'arriverais en avance</p>
+                                <div class="inside-message">        
+                                    <h6>'. $_SESSION['user']['username'].'</h6>
+                                    <p>'. $messages['message'].'</p>
                                 </div>
                             </div>
-        
-                            <h6 class="time">12h25</h6>
-                        </div>
-    
-                        <div class="messages msg-first-user">
-                            <h6 class="time">12h34</h6>
-        
-                            <div class="outside-message msg-marc">
-                                <img src="img/avatar_messagerie_chat_marc.png" alt="avatar utilisateur messagerie">
-                                <div class="inside-message">
-                                    <h6>Marc Petit</h6>
-                                    <p>D'accord</p>
-                                </div>
-                            </div>
-                        </div>
+                        </div>';
+                        } ?>
                     </div>
     
                     <div class="text-input">
-                        <textarea id="answer-txt" name="answer-txt" rows="4" cols="50"></textarea>
-                        <!-- <input type="submit" value="" -->
-                        <button type="submit" name="btn-send-message"><img src="img/arrow_message.png" alt="icone fleche envoie message"></button>
-                        <!-- <img src="img/arrow_message.png" alt="icone fleche envoie message"> -->
+                        <form method="POST">
+                            <input type="text" id="answer-txt" name="answer-txt">
+                            <button type="submit" name="btn-send-message"><img src="img/arrow_message.png" alt="icone fleche envoie message"></button>
+                        </form>
                     </div>
                 </section>
 
@@ -189,5 +183,18 @@
             </div>
         </section>
     </main>
+
+
+
+    
 </body>
 </html>
+
+
+<!-- <form method="post">
+        <input type="text" name="user" placeholder="Pseudo">
+        <br><br>
+        <textarea name="message" placeholder="message"></textarea>
+        <br><br>
+        <input type="submit" value="Poster">
+</form> -->
