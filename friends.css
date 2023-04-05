@@ -12,6 +12,7 @@
 .friends-section{
     display: flex;
     gap: 12px;
+    height: 450px;
 }
 .friends-section .mes-amis{
     display: flex;

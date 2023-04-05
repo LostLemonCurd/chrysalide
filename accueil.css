@@ -272,7 +272,7 @@ aside{
     flex-direction: column;
     justify-content: space-between;
     position: sticky;
-    top: 15vh;
+    top: 200px;
 }
 
 
@@ -282,6 +282,7 @@ aside #aside-main-buttons{
     flex-direction: column;
     gap: 20px;
     justify-self: flex-start;
+    position: sticky;
 }
 
 aside #aside-main-buttons a{
