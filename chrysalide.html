@@ -89,93 +89,7 @@
                 <button class="btn-blue"><h6>Créer</h6></button>
                 <button class="btn-vide"><h6>Rejoindre</h6></button>
             </div>
-            <div class="overlay">
-            <div class="overlay-content">
-                <button class="close-btn">x</button>
-                <h1 id="titre-overlay">Créer ta Chrysalide</h1>
-                <h5 class="espace" >Type de compétition</h5>
-                <div id="block-checkbox">
-                    
-                  <div id="block-checkbox">
-                    <label for="public">Privée</label>
-                    <input type="checkbox" id="public" name="access" value="public">
-                    <label for="private">Public</label>
-                    <input type="checkbox" id="private" name="access" value="private">
-                  </div>
-                </div>
-                <h2 class="espace">Activitées</h2>
-                <div class="sport_line">
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                </div>
-                <div class="sport_line">
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div><div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                <div class="carte_sport">
-                    <img src="img/foot.png" alt="" width="112" height="100">
-                    <h6 class="space_carte">Football</h6>
-                </div>
-                </div>
-                <h2 class="espace">Places disponibles</h2>
-                <div id="block-checkbox">
-                    <label for="checkbox-1">1</label>
-                    <input type="checkbox" id="checkbox-1" name="checkbox-group">
-                    <label for="checkbox-2">2</label>
-                    <input type="checkbox" id="checkbox-2" name="checkbox-group">
-                    <label for="checkbox-3">3</label>
-                    <input type="checkbox" id="checkbox-3" name="checkbox-group">
-                    <label for="checkbox-4">4</label>
-                    <input type="checkbox" id="checkbox-4" name="checkbox-group">
-                    <label for="checkbox-5">5</label>
-                    <input type="checkbox" id="checkbox-5" name="checkbox-group">
-                    <label for="checkbox-6">6</label>
-                    <input type="checkbox" id="checkbox-6" name="checkbox-group">
-                    <label for="checkbox-7">7</label>
-                    <input type="checkbox" id="checkbox-7" name="checkbox-group">
-                    <label for="checkbox-8">8</label>
-                    <input type="checkbox" id="checkbox-8" name="checkbox-group">
-                    <label for="checkbox-9">Plus</label>
-                    <input type="checkbox" id="checkbox-9" name="checkbox-group">
-                  </div>
-                  <script>
-                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                    checkboxes.forEach((checkbox) => {
-                    checkbox.addEventListener('change', (event) => {
-                        // Si la checkbox est cochée
-                        if (event.target.checked) {
-                        // Désélectionner toutes les autres checkboxes
-                        checkboxes.forEach((otherCheckbox) => {
-                            if (otherCheckbox !== checkbox) {
-                            otherCheckbox.checked = false;
-                            }
-                        });
-                        }
-                    });
-                    });
-                  </script>
+            
                   <button class="btn-inviter"><h6>Inviter</h6></button>
                   <button class="btn-blue"><h6>Créer</h6></button>
             </div>
@@ -225,7 +139,7 @@
                 <div id="find-research-area-chrysalide">
                     <div id="find-a-chrysalide-research">
                         <div id="find-a-chrysalide-research-input">
-                            <form method="post" action="">
+                            <form class="input-search" method="post" action="">
                                 <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="red"/>
                                 </svg>
@@ -255,8 +169,8 @@
                         </div>
                     </div>
                     <div id="find-a-chrysalide-pop-up">
-                        <button id="find-a-chrysalide-filter-button">
-                            <div id="find-a-chrysalide-filter-button-line">
+                        <button class="find-a-chrysalide-filter-button">
+                            <div class="find-a-chrysalide-filter-button-line">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -266,7 +180,67 @@
                         <div id="find-a-chrysalide-content-event">
                             <div id="find-a-chrysalide-event">
                                 <div id="find-a-chrysalide-event-title">
-                                    <h5>Equipe</h5><h5>Paris-but</h5>
+                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
+                                </div>
+                                <div id="find-a-chrysalide-event-img">
+                                    <img src="img/foot.png" alt="image de foot">
+                                </div>
+                                <div id="find-a-chrysalide-event-buttons">
+                                    <button><h5 class="color-black">Rejoindre</h5></button>
+                                    <h5 class="color-black">11/11</h5>
+                                </div>
+                            </div>
+                            <div id="find-a-chrysalide-event">
+                                <div id="find-a-chrysalide-event-title">
+                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
+                                </div>
+                                <div id="find-a-chrysalide-event-img">
+                                    <img src="img/foot.png" alt="image de foot">
+                                </div>
+                                <div id="find-a-chrysalide-event-buttons">
+                                    <button><h5 class="color-black">Rejoindre</h5></button>
+                                    <h5 class="color-black">11/11</h5>
+                                </div>
+                            </div>
+                            <div id="find-a-chrysalide-event">
+                                <div id="find-a-chrysalide-event-title">
+                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
+                                </div>
+                                <div id="find-a-chrysalide-event-img">
+                                    <img src="img/foot.png" alt="image de foot">
+                                </div>
+                                <div id="find-a-chrysalide-event-buttons">
+                                    <button><h5 class="color-black">Rejoindre</h5></button>
+                                    <h5 class="color-black">11/11</h5>
+                                </div>
+                            </div>
+                            <div id="find-a-chrysalide-event">
+                                <div id="find-a-chrysalide-event-title">
+                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
+                                </div>
+                                <div id="find-a-chrysalide-event-img">
+                                    <img src="img/foot.png" alt="image de foot">
+                                </div>
+                                <div id="find-a-chrysalide-event-buttons">
+                                    <button><h5 class="color-black">Rejoindre</h5></button>
+                                    <h5 class="color-black">11/11</h5>
+                                </div>
+                            </div>
+                            <div id="find-a-chrysalide-event">
+                                <div id="find-a-chrysalide-event-title">
+                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
+                                </div>
+                                <div id="find-a-chrysalide-event-img">
+                                    <img src="img/foot.png" alt="image de foot">
+                                </div>
+                                <div id="find-a-chrysalide-event-buttons">
+                                    <button><h5 class="color-black">Rejoindre</h5></button>
+                                    <h5 class="color-black">11/11</h5>
+                                </div>
+                            </div>
+                            <div id="find-a-chrysalide-event">
+                                <div id="find-a-chrysalide-event-title">
+                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
                                 </div>
                                 <div id="find-a-chrysalide-event-img">
                                     <img src="img/foot.png" alt="image de foot">
@@ -280,7 +254,38 @@
                         
                     </div>
                     <div id="find-a-chrysalide-filter">
-                        
+                        <button class="find-a-chrysalide-filter-button">
+                            <div class="find-a-chrysalide-filter-button-line">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <h6>Filter</h6>
+                        </button>
+                        <div id="find-a-chrysalide-filter-content">
+                            <form class="input-search" method="post" action="">
+                                <svg class="svg-in-black" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="white"/>
+                                </svg>
+                                <input type="text" class="input-in-white">
+                                <div id="choose-ray-dropdown">
+                            </form>   
+                            <div id="choose-ray-dropdown">
+                                <h6>RAYON</h6>
+                                <div id="choose-ray-dropdown-content">
+                                    <h6>5 KM</h6>
+                                    <input type="checkbox">
+                                    <h6>10 KM</h6>
+                                    <input type="checkbox">
+                                    <h6>20 KM</h6>
+                                    <input type="checkbox">
+                                    <h6>50 KM</h6>
+                                    <input type="checkbox">
+                                    <h6>100 KM</h6>
+                                    <input type="checkbox">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 

@@ -1,168 +1,166 @@
-/* <<<<<<< Updated upstream */
 .espace{
-    margin-top: 30px;
-}
-#main-content{
+  margin-top: 30px;
+  color: var(--couleur-white-hex);
 }
 #main-content-create-chrysalide{
   width: 100%;
-  margin-right: 64px;
+  padding-right: 64px;
 }
-/* >>>>>>> Stashed changes */
-
+#main-content-create-chrysalide{
+}
 
 #encours{
-  display: flex;
+display: flex;
 }
 
 .loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10.5vh;
-  padding-left: 1vh;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 10.5vh;
+padding-left: 1vh;
 }
 
 .loader span {
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background-color: white;
-  opacity: 100;
-  animation: loader 3s ease-in-out infinite;
+width: 10px;
+height: 10px;
+margin: 0 5px;
+border-radius: 50%;
+background-color: white;
+opacity: 100;
+animation: loader 3s ease-in-out infinite;
 }
 
 .loader span:nth-child(2) {
-  animation-delay: 0.2s;
+animation-delay: 0.2s;
 }
 
 .loader span:nth-child(3) {
-  animation-delay: 0.4s;
+animation-delay: 0.4s;
 }
 
 @keyframes loader {
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
+100% {
+  opacity: 0;
+  transform: scale(0);
+}
+100% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  transform: scale(0);
+}
 }
 #btn-box{
-  margin-bottom: 15px;
+margin-bottom: 15px;
 }
 .btn-blue{
-  padding: 5px 20px;
-  border-radius: 30px;
-  background-color: rgba(62, 123, 250, 1);
-  outline: none;
-  border: none;
-  color: var(--couleur-white-hex);
-  cursor: pointer;
-  text-align: center;
+padding: 5px 20px;
+border-radius: 30px;
+background-color: rgba(62, 123, 250, 1);
+outline: none;
+border: none;
+color: var(--couleur-white-hex);
+cursor: pointer;
+text-align: center;
 }
 
 .btn-vide{
-  padding: 3px 20px;
-  border-radius: 30px;
-  border: 2px solid var(--couleur-bleu-hex);
-  background-color: var(--couleur-black-hex);
-  color: var(--couleur-white-hex);
-  cursor: pointer;
-  text-align: center;
-  margin-left: 10px;
+padding: 3px 20px;
+border-radius: 30px;
+border: 2px solid var(--couleur-bleu-hex);
+background-color: var(--couleur-black-hex);
+color: var(--couleur-white-hex);
+cursor: pointer;
+text-align: center;
+margin-left: 10px;
 }
 :hover.btn-vide{
-  background-color: var(--couleur-bleu-hex);
+background-color: var(--couleur-bleu-hex);
 }
 
 #block-checkbox{
-  color: var(--couleur-white-hex);
-  display: flex;
-  align-items: center;
-  padding-top: 15px;
+color: var(--couleur-white-hex);
+display: flex;
+align-items: center;
+padding-top: 15px;
 }
 
 #block-checkbox {
-  color: var(--couleur-white-hex);
-  display: flex;
-  align-items: center;
+color: var(--couleur-white-hex);
+display: flex;
+align-items: center;
 }
 
 /* Style de la checkbox */
 input[type="checkbox"] {
-  /* Masquer la checkbox par défaut */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  /* Définir la taille de la checkbox */
-  width: 20px;
-  height: 20px;
-  /* Définir la bordure et la couleur */
-  border: 3px solid var(--couleur-bleu-hex);
-  border-radius: 3px;
-  /* Définir la couleur de fond */
-  background-color: var(--couleur-black-hex);
-  /* Définir la position du point */
-  position: relative;
-  /* Ajouter une marge pour que le point ne touche pas la bordure */
-  margin: 3px;
-  /* Ajouter une transition pour l'animation */
-  transition: all 0.3s ease;
+/* Masquer la checkbox par défaut */
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+/* Définir la taille de la checkbox */
+width: 20px;
+height: 20px;
+/* Définir la bordure et la couleur */
+border: 3px solid var(--couleur-white-hex);
+border-radius: 3px;
+/* Définir la couleur de fond */
+background-color: var(--couleur-black-hex);
+/* Définir la position du point */
+position: relative;
+/* Ajouter une marge pour que le point ne touche pas la bordure */
+margin: 3px;
+/* Ajouter une transition pour l'animation */
+transition: all 0.3s ease;
 }
 
 /* Style de la checkbox cochée */
 input[type="checkbox"]:checked::after {
-  /* Ajouter un point orange */
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
-  background-color: rgba(255, 136, 0, 1);
-  border-radius: 50%;
+/* Ajouter un point orange */
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 10px;
+height: 10px;
+background-color: rgba(255, 136, 0, 1);
+border-radius: 50%;
 }
 
 /* Style du label */
 label {
-  /* Définir la marge */
-  margin-left: 10px;
+/* Définir la marge */
+margin-left: 10px;
 }
 
 /* Style de la checkbox lorsqu'elle est cliquée */
 input[type="checkbox"]:active {
-  /* Définir la couleur de la bordure */
-  border-color: var(--couleur-bleu-hex);
+/* Définir la couleur de la bordure */
+border-color: var(--couleur-bleu-hex);
 }
 #mes-chrysalide{
-  display: flex;
-  margin-bottom: 30px;
+display: flex;
+margin-bottom: 30px;
 }
 /* <<<<<<< Updated upstream */
-  .my-div h5 {
-    color: white;
-    margin-top: 0;
-    padding: 5px;
-  }
-  
-  .my-div img {
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-  }
-  
-  .my-div h6 {
-    color: white;
-    margin-bottom: 0;
-  }
+.my-div h5 {
+  color: white;
+  margin-top: 0;
+  padding: 5px;
+}
+
+.my-div img {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.my-div h6 {
+  color: white;
+  margin-bottom: 0;
+}
 
   .overlay {
     display: none;
@@ -273,11 +271,13 @@ input[type="checkbox"]:active {
 
 #find-a-chrysalide #find-research-area-chrysalide{
   display: flex;
+  flex-wrap: wrap;
+  
 
 }
 
 #find-a-chrysalide #find-research-area-chrysalide #find-a-chrysalide-research{
-  width: 50%;
+  width: 34%;
   border-radius: 30px 0 0 30px; 
   background-color: var(--couleur-white-hex);
   padding: 5px;
@@ -292,7 +292,7 @@ input[type="checkbox"]:active {
   flex-direction: column;
 }
 
-#find-a-chrysalide #find-a-chrysalide-research #find-a-chrysalide-research-input form{
+.input-search{
   display: flex;
   align-items: center;
   position: relative;
@@ -300,13 +300,26 @@ input[type="checkbox"]:active {
   padding: 5px;
 }
 
-#find-a-chrysalide #find-a-chrysalide-research #find-a-chrysalide-research-input form input{
+.input-search input{
   width: 100%;
   height: 42px;
   border-radius: 50px;
   border: none;
   text-indent: 40px;
   background-color: var(--couleur-lightgrey-rgba);
+  outline: none;
+}
+
+.input-search .input-in-white{
+  background-color: var(--couleur-white-hex);
+}
+
+.input-search .svg-in-black{
+  
+}
+
+.input-search .svg-in-black path{
+  fill: var(--couleur-black-hex);
 }
 
 #find-a-chrysalide #find-a-chrysalide-research #find-a-chrysalide-research-input form input:focus{
@@ -374,30 +387,37 @@ input[type="checkbox"]:active {
 }
 
 #find-a-chrysalide-pop-up{
-  width: 50%;
+  width: 66%;
   border-radius: 0 30px 30px 0;
   background-color: var(--couleur-purple-hex);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
 }
 
-#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button{
+/*  */
+
+ .find-a-chrysalide-filter-button{
   color: var(--couleur-white-hex);
   background-color: var(--couleur-bleu-hex);
-  padding: 5px 15px ;
+  padding: 5px 17px ;
   border-radius: 50px;
-  width: auto;
+  width: 110px;
   border: none;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  justify-content: space-around;
-  gap: 15px;
+  justify-content: space-between;
+
   cursor: pointer;
 }
 
-#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line{
+.find-a-chrysalide-filter-button .find-a-chrysalide-filter-button-line{
   position: relative;
-  height: 20px;
+  height: 18px;
   width: auto;
   display: flex;
   flex-direction: column;
@@ -405,23 +425,23 @@ input[type="checkbox"]:active {
   justify-content: space-around;
 }
 
-#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span{
+.find-a-chrysalide-filter-button .find-a-chrysalide-filter-button-line span{
   border-radius: 50px;
   background-color: var(--couleur-white-hex);
 }
 
-#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span:nth-child(1){
+.find-a-chrysalide-filter-button .find-a-chrysalide-filter-button-line span:nth-child(1){
   height: 2px;
   width: 28px;
   
 }
 
-#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span:nth-child(2){
+.find-a-chrysalide-filter-button .find-a-chrysalide-filter-button-line span:nth-child(2){
   height: 2px;
   width: 20px;
 }
 
-#find-a-chrysalide-pop-up #find-a-chrysalide-filter-button #find-a-chrysalide-filter-button-line span:nth-child(3){
+.find-a-chrysalide-filter-button .find-a-chrysalide-filter-button-line span:nth-child(3){
   height: 2px;
   width: 8px;
 }
@@ -430,6 +450,25 @@ input[type="checkbox"]:active {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  height: 240px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  justify-content: center;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event::-webkit-scrollbar{
+  width: 5px;
+
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event::-webkit-scrollbar-track{
+  border-radius: 50px;
+}
+
+#find-a-chrysalide-pop-up #find-a-chrysalide-content-event::-webkit-scrollbar-thumb{
+  background-color: var(--couleur-white-hex);
+  border-radius: 50px;
 }
 
 #find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event{
@@ -437,7 +476,11 @@ input[type="checkbox"]:active {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px 25px;
+  gap: 15px;
+  border-radius: 30px;
+  background-color: var(--couleur-white-hex);
+
 }
 
 #find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event #find-a-chrysalide-event-title{
@@ -457,8 +500,16 @@ input[type="checkbox"]:active {
   border-radius: 50px;
   background-color: var(--couleur-green-hex);
   border: none;
+  padding: 5px 10px;
 }
 
-
+#find-a-chrysalide-filter{
+  width: 66%;
+  border-radius: 0 30px 30px 0;
+  background-color: var(--couleur-grey-hex);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
 
 
