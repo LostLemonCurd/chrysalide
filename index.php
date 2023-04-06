@@ -14,11 +14,17 @@
     <?php 
     include('init.php');
     
-    $r = $pdo->query('SELECT * FROM user');
+    
+    $userImage = $_SESSION['user']['userimg'];
+    $userName =  $_SESSION['user']['username'];
+    // $usertoken = $_SESSION['user']['usercoins'];
+    // $usertoken = $_SESSION['user']['usertrophees'];
+    
+        $r = $pdo->query('SELECT * FROM user');
     // while ($user = $r->fetch(PDO::FETCH_ASSOC)) {
     //     $userImg = $user['userimg'];
     // }
-    $userImage = $_SESSION['user']['userimg'];
+
     ?>
     <header>
         <section id="header-logo">
@@ -39,7 +45,7 @@
                 </div>
             </section>
             <section id="header-profil">
-                <img src="img/<?php echo $userImage?>" alt="photo de profil">
+                <img src="img/<?php echo $userImage ?>" alt="photo de profil">
             </section>
         </section>
         
@@ -86,6 +92,109 @@
             </nav>
         </aside>
         <section id="main-content">
+            <section id="main-content-homepage">
+                <div id="main-welcome">
+                    <div id="main-welcome-text">
+                        <div id="main-welcome-text-title">
+                            <h1>Bienvenue</h1>
+                            <h2>sur</h2>
+                            <p class="font-lalezard">Chrysalide</p>
+                        </div>
+                        <div id="main-welcome-text-description">
+                            <p>Découvrez de nombreux sports en créant ou rejoignant une  chrysalide et organisez de nouvelles rencontres sportives proches de chez vous</p>
+                        </div>
+                    </div>
+                    <div id="main-welcome-img">
+                        <img src="img/all_sports.png" alt="image équipement de sport">
+                    </div>
+                </div>
+
+                <section id="profil-organisation-chrysalide">
+                    <div id="profil-in-organisation">
+                        <h2><?php echo $userName ?></h2> <!-- PHP name -->
+                        <img src="img/<?php echo $userImage ?>" alt="photo de profil">
+                        <div id="profil-statistic">
+                            <div id="profil-trophee">
+                                <img src="img/trophe.svg" alt="">
+                                <span>
+                                    <?php  ?>
+                                </span>
+                            </div>
+
+                            <div id="profil-coins">
+                                <img src="img/mini_logo_coins.png" alt="">
+                                <span>
+                                    <?php  ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="create-organisation-chrysalide">
+                        <h2>Organisez votre prochaine</h2>
+                        <div id="logo-chrysalide-animation">
+                            <svg width="118" height="208" viewBox="0 0 118 208" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.822632 106.838L66.4302 207.65L116.069 132.977H104.232L66.4302 189.276L12.7793 106.693L66.4331 19.0763L104.124 78.634L116.069 78.6547L66.3165 0" fill="#1C1C28"/>
+                                <path d="M0.822632 106.838L66.4302 207.65L116.069 132.977H104.232L66.4302 189.276L12.7793 106.693L66.4331 19.0763L104.124 78.634L116.069 78.6547L66.3165 0" stroke="#1C1C28" stroke-miterlimit="10"/>
+                            </svg>
+                            <svg width="76" height="147" viewBox="0 0 76 147" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M46.0085 0.858704L75.9524 47.7304H63.9838L46.176 19.9202L12.109 75.9761L46.0653 128.406L64.0048 102.26H75.7581L46.0653 146.792L0.0686035 75.9761L46.0085 0.858704Z" fill="#1C1C28"/>
+                            </svg>
+                            <svg width="66" height="46" viewBox="0 0 66 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M33.2486 5.30274L20.2037 5.21979L13.578 13.9477L6.95239 22.6756L9.25462 25.8189C10.5223 27.5491 13.4076 31.4953 15.6769 34.5942C17.9433 37.6961 19.8419 40.2469 19.8419 40.2469C19.8419 40.2469 23.6421 40.2913 28.2405 40.318C32.839 40.3476 38.6992 40.3832 41.2616 40.401L45.9258 40.4306L52.5515 31.7027L59.1771 22.9748L52.8235 14.2913C49.3283 9.51559 46.4311 5.55753 46.3833 5.49828L46.2966 5.38866L33.2516 5.30571L33.2486 5.30274Z" stroke="#3E7BFA" stroke-width="10" stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                        <p class="font-lalezard">Chrysalide</p>
+                    </div>
+                </section>
+                <section id="prochaine-chrysalide">
+                    <h2>Mes prochaines chrysalides</h2>
+                    <a class="voir-plus" href="#">Voir plus</a>
+                </section>
+                <section id="teams">
+                    <div class="team-card">
+                        <div class="team-card-title">
+                            <h3 class="color-white">Équipe</h3>
+                            <h3 class="color-purple">Rangers</h3>
+                        </div>
+                        <img src="img/image_football.png" alt="">
+                        <div class="team-card-date">
+                            <h5 class="color-white">Montreuil</h5>
+                            <h5 class="color-white">12/03/2023</h5>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card-title">
+                            <h3 class="color-white">Équipe</h3>
+                            <h3 class="color-orange">Rigolo</h3>
+                        </div>
+                        <img src="img/image_tennis.png" alt="">
+                        <div class="team-card-date">
+                            <h5 class="color-white">Paris</h5>
+                            <h5 class="color-white">12/03/2023</h5>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card-title">
+                            <h3 class="color-white">Équipe</h3>
+                            <h3 class="color-purple">Supreme</h3>
+                        </div>
+                        <img src="img/image_football.png" alt="">
+                        <div class="team-card-date">
+                            <h5 class="color-white">Paris</h5>
+                            <h5 class="color-white">12/03/2023</h5>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Tournois en cours</h2>
+                </section>
+                <section>
+                    
+                </section>
+            </section>
+
         </section>
 
     </main>

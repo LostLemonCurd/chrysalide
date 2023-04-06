@@ -105,7 +105,36 @@ h6{
     color: var(--couleur-purple-hex);
 }
 
+/* BOUTON VOIR PLUS */
 
+a.voir-plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--couleur-white-hex);
+    position: relative;
+}
+
+a.voir-plus::after{
+    position: absolute;
+    top: -3px;
+    left: 70px;
+    height: 22px;
+    width: 28px;
+    transition: left 0.2s ease-in-out;
+    transition: background-size 0.2s ease-in-out;
+    background-image: url('img/double_chevron.png');
+    background-size: 22px 22px;
+    content:"";
+    background-origin: border-box;
+    background-repeat: no-repeat;
+}
+
+a.voir-plus:hover::after{
+    left: 75px;
+    background-size: 28px 22px;
+}
 
 
 /* HEADER */
@@ -364,4 +393,197 @@ aside #aside-other-buttons a{
     color: #FF3B3B;
     background-color: #F2F2F5;
     text-decoration: underline;
+}
+
+/* INDEX PHP */
+
+/* MAIN CONTENT */
+
+#main-content-homepage{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    padding-right: 64px;
+    gap: 30px;
+}
+
+#main-content-homepage #main-welcome{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--couleur-purple-hex);
+    border-radius: 30px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+    text-align: center;
+    padding: 15px;
+}
+
+#main-content-homepage #main-welcome #main-welcome-text {
+    color: var(--couleur-white-hex);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 60%;
+}
+
+#main-content-homepage #main-welcome #main-welcome-text  #main-welcome-text-title {
+    width: 100%;
+}
+
+#main-content-homepage #main-welcome #main-welcome-text  #main-welcome-text-description {
+    max-width: 600px;
+    width: 100%;
+}
+
+
+#main-content-homepage #main-welcome #main-welcome-text #main-welcome-text-title  p{
+    font-size: 96px ;
+    padding: 10px;
+}
+
+#main-content-homepage #main-welcome #main-welcome-img img{
+    width: 70%;
+}
+
+/* PROFIL + ORGANISATION de CHRYSALIDE */
+
+#profil-organisation-chrysalide {
+    display: flex;
+    max-height: 450px;
+    width: 100%;
+    justify-items: space-between;
+    gap: 25px;
+}
+
+#profil-organisation-chrysalide #profil-in-organisation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    border-radius: 30px;
+    padding: 30px;
+    width: 40%;
+    color: var(--couleur-white-hex);
+    background-color: var(--couleur-bleu-hex);
+}
+
+
+#profil-organisation-chrysalide #profil-in-organisation #profil-statistic{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    transform: scale(0.9);
+}
+
+#profil-organisation-chrysalide #profil-in-organisation #profil-statistic #profil-in-organisation, #profil-organisation-chrysalide #profil-in-organisation #profil-statistic #profil-coins {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#profil-organisation-chrysalide #profil-in-organisation #profil-statistic  #profil-trophee span, #profil-organisation-chrysalide #profil-in-organisation #profil-statistic #profil-coins span{
+    font-size: 36px;
+}
+
+#profil-organisation-chrysalide #create-organisation-chrysalide{
+    width: 60%;
+    color: var(--couleur-black-hex);
+    background-color: var(--couleur-yellow-hex);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+#profil-organisation-chrysalide #create-organisation-chrysalide p{
+    font-size: 96px;
+}
+
+#profil-organisation-chrysalide #create-organisation-chrysalide #logo-chrysalide-animation{
+    transform: scale(0.8);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#profil-organisation-chrysalide #create-organisation-chrysalide #logo-chrysalide-animation svg{
+    position: relative;
+}
+/* 
+#profil-organisation-chrysalide #create-organisation-chrysalide #logo-chrysalide-animation:hover >  svg:nth-child(1) {
+    animation: logoToRight 0.5s linear;
+}
+
+#profil-organisation-chrysalide #create-organisation-chrysalide #logo-chrysalide-animation:hover > svg:nth-child(3) {
+    animation: logoToLeft 0.5s linear;
+}
+
+@keyframes logoToRight {
+    from{
+        left: 0;
+    }
+
+    to{
+        left: 20%;
+    }
+}
+
+*/
+
+#prochaine-chrysalide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: var(--couleur-white-hex);
+}
+
+#teams{
+    width: 100%;
+    max-height: 410px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#teams .team-card{
+    width: 30%;
+    height: 100%;
+    border-radius: 30px;
+    background-color: var(--couleur-grey-hex);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+
+#teams .team-card .team-card-title{
+    display: flex;
+    gap: 5px;
+}
+
+#teams .team-card img{
+    width: 50%;
+}
+
+#teams .team-card .team-card-date{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#teams .team-card .team-card-date h5{
+    text-align: center;
 }
