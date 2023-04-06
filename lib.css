@@ -162,7 +162,7 @@ header #header-input-profil #header-input-buttons form{
 
 }
 /* img/search.svg */
-header #header-input-profil #header-input-buttons form svg{
+header #header-input-profil #header-input-buttons form svg, header #header-input-profil #header-input-buttons form img{
     z-index: 10;
     position: absolute;
     left: 3%;
@@ -237,7 +237,7 @@ header #header-input-profil #header-profil{
 header #header-input-profil #header-profil img{
     display: block;
     height: auto;
-    width: 40%;
+    width: 60px;
     margin: 0 auto;
 
 }
@@ -252,7 +252,7 @@ header {
   
 main {
     display: flex;
-    gap: 40px;
+    gap: 29px;
 }
     
 main aside {
