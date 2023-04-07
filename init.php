@@ -21,11 +21,4 @@
 
 // Création d'une variable qui permettra d'y ajouter du contenu :
     $content= '';
-
-// S'il y a une action dans l'URL et si elle est égale à deconnexion alors je détruis la session:
-    if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
-        session_destroy();
-        header('location:index.php');
-    }
-
 ?>

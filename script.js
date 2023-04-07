@@ -28,3 +28,16 @@ function redirectionToHomapage(){
         var myWindow = window.open("index.php", "_self");
     },3000)
 }
+
+
+let deco = document.querySelector('#deco');
+
+deco.addEventListener('click', (e) =>{
+    e.preventDefault();
+
+    let seDeconnecter = console.confirm('Êtes-vous sur de vouloir vous déconnecter?');
+
+    if(seDeconnecter){
+        location.href = 'connexion.php';
+    }
+})

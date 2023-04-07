@@ -75,6 +75,10 @@
                     <img src="img/confidentialite.svg" alt="">
                     <h6>Confidentialité</h6>
                 </a>
+                <a id='deco' href="sessiondestroy.php">
+                    <img src="img/deco.svg" alt="Bouton de déconnexion">
+                    <h6>Déconnexion</h6>
+                </a>
             </nav>
         </aside>
         <section id="main-content-create-chrysalide">

@@ -57,11 +57,11 @@
                     <img src="img/friends.svg" alt="">
                     <h6>Friends</h6>
                 </a>
-                <a href="#">
+                <a href="messagerie.php">
                     <img src="img/messages.svg" alt="">
                     <h6>Messages</h6>
                 </a>
-                <a href="#">
+                <a href="chrysalide.php">
                     <img src="img/chrysalide.svg" alt="">
                     <h6>Chrysalide</h6>
                 </a>
@@ -88,6 +88,10 @@
                 <a href="#">
                     <img src="img/confidentialite.svg" alt="">
                     <h6>Confidentialité</h6>
+                </a>
+                <a id='deco' href="sessiondestroy.php">
+                    <img src="img/deco.svg" alt="Bouton de déconnexion">
+                    <h6>Déconnexion</h6>
                 </a>
             </nav>
         </aside>
