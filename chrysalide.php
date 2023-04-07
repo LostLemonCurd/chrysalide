@@ -39,20 +39,20 @@
     <main>
         <aside>
             <nav id="aside-main-buttons">
-                <a href="#">
+                <a href="friends.php">
                     <img src="img/friends.svg" alt="">
                     <h6>Friends</h6>
                 </a>
-                <a href="#">
+                <a href="messagerie.php">
                     <img src="img/messages.svg" alt="">
                     <h6>Messages</h6>
                 </a>
-                <a href="#">
+                <a href="chrysalide.php">
                     <img src="img/chrysalide.svg" alt="">
                     <h6>Chrysalide</h6>
                 </a>
 
-                <a href="#">
+                <a href="favoris.php">
                     <img src="img/favoris.svg" alt="">
                     <h6>Favoris</h6>
                 </a>

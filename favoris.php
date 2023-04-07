@@ -21,7 +21,11 @@
         $userId = $_SESSION['user']['id_user'];
         $userImg = $_SESSION['user']['userimg'];
 
-        $r = $pdo->query("SELECT * FROM user WHERE id_user IN ");
+        $r = $pdo->query("SELECT * FROM favoris WHERE id_user IN (SELECT id_user FROM user WHERE id_user = $userId");
+
+        while ($fav = $r) {
+            # code...
+        }
 
 
     ?>
@@ -53,15 +57,15 @@
     <main>
         <aside>
             <nav id="aside-main-buttons">
-                <a href="#">
+                <a href="friends.php">
                     <img src="img/friends.svg" alt="">
                     <h6>Friends</h6>
                 </a>
-                <a href="#">
+                <a href="messagerie.php">
                     <img src="img/messages.svg" alt="">
                     <h6>Messages</h6>
                 </a>
-                <a href="#">
+                <a href="chrysalide.php">
                     <img src="img/chrysalide.svg" alt="">
                     <h6>Chrysalide</h6>
                 </a>
