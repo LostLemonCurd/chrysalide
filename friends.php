@@ -116,15 +116,15 @@
                     <img src="img/friends.svg" alt="">
                     <h6>Friends</h6>
                 </a>
-                <a href="#">
+                <a href="messagerie.php">
                     <img src="img/messages.svg" alt="">
                     <h6>Messages</h6>
                 </a>
-                <a href="#">
+                <a href="chrysalide.php">
                     <img src="img/chrysalide.svg" alt="">
                     <h6>Chrysalide</h6>
                 </a>
-                <a href="#">
+                <a href="favoris.php">
                     <img src="img/favoris.svg" alt="">
                     <h6>Favoris</h6>
                 </a>
@@ -165,10 +165,10 @@
                     <div class="friend-list">
                         <?php
                         while ($friend = $r->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<div class="friend">
-                                <a href="?friendId=' . $friend['id_user'] . '"><img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami"></a>
-                                <a href="?friendId=' . $friend['id_user'] . '"><h4>' . $friend['username'] . '</h4></a>
-                            </div>';
+                            echo '<a class="friend" href="?friendId='.$friend['id_user'].'">
+                                <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
+                                <h4>' . $friend['username'] . '</h4>
+                            </a>';
                         } ?>
                     </div>
                 </section>

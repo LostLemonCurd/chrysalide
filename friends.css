@@ -73,15 +73,14 @@
     background-color: var(--couleur-white-hex);
     border-radius: 30px;
     cursor: pointer;
-}
-.friends-section .friend a{
     text-decoration: none;
 }
-.friends-section .friend a h4{
+.friends-section .friend h4{
+    text-decoration: none;
     font-weight: 500;
     color: var(--couleur-black-hex);
 }
-.friends-section .friend a img{
+.friends-section .friend img{
     width: 40px;
     height: 47px;
 }

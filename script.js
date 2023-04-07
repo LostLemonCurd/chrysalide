@@ -1,27 +1,33 @@
+// Redirection vers la page home avec le logo
+
 let logo = document.querySelector('#header-logo > img');
 logo.addEventListener('click', () => {
     window.location.assign("index.php");
 })
 
 
+// Affichage des éléments amis
+
 let friend = document.querySelectorAll('.friend');
+console.log(friend);
+
 let friendDetail = document.querySelector('.friend-detail');
-let count = 1;
+console.log(friendDetail);
 
 
-for (let index = 0; index < friend.length; index++) {
-    friend[index].addEventListener('click', () => {
-        if (count % 2 == 0){
+// Ajout de la fonctionnalité d'affichager/masquer les détails des amis de l'utilisateur
+for (const element of friend) {
+    element.addEventListener('click', () => {
+        if (friendDetail.style.display === 'none') {
             friendDetail.style.display = 'flex';
         } else {
             friendDetail.style.display = 'none';
         }
-        count++;
     })
 }
 
 
-/* Inscription */
+// Inscription
 
 function redirectionToHomapage(){
     setTimeout(() =>{
@@ -29,6 +35,8 @@ function redirectionToHomapage(){
     },3000)
 }
 
+
+// Demande de confirmation avant déconnexion
 
 let deco = document.querySelector('#deco');
 
