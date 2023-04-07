@@ -71,3 +71,12 @@ CREATE TABLE groupes (
     PRIMARY KEY (id_groupe),
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 ) ENGINE=InnoDB;
+
+CREATE TABLE favoris (
+    id_favori INT NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL,
+    id_groupe INT NOT NULL,
+    PRIMARY KEY (id_favori),
+    FOREIGN KEY (id_user) REFERENCES user(id_user),
+    FOREIGN KEY (id_groupe) REFERENCES groupes(id_groupe)
+) ENGINE=InnoDB;
