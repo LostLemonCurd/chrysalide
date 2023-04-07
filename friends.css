@@ -95,6 +95,7 @@
     flex-wrap: wrap;
     padding: 20px;
     gap: 12px;
+    transition: ease-in-out .3s;
 }
 .friends-section .friend-avatar-img{
     height: auto;

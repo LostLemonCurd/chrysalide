@@ -61,11 +61,13 @@ CREATE TABLE messages (
 
 CREATE TABLE groupes (
     id_groupe INT NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL,
     nom_groupe VARCHAR(30),
     ville VARCHAR(50),
     places_disponibles INT NOT NULL,
     sport VARCHAR(50),
-    id_user INT NOT NULL,
+    date_creation DATETIME NOT NULL,
+    date_event DATETIME NOT NULL,
     PRIMARY KEY (id_groupe),
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 ) ENGINE=InnoDB;

@@ -147,6 +147,10 @@
                     <img src="img/confidentialite.svg" alt="">
                     <h6>Confidentialité</h6>
                 </a>
+                <a href="#">
+                    <img src="img/confidentialite.svg" alt="">
+                    <h6>Déconnexion</h6>
+                </a>
             </nav>
         </aside>
         <div id="main-content-friends">
