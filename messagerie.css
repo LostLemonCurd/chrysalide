@@ -1,8 +1,13 @@
 /* MAIN MESSAGERIE */
 #main-content-messagerie {
-    width: 100%;
+    /* width: 100%;
     padding-right: 64px;
-    margin-bottom: 60px;
+    margin-bottom: 60px; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 50px 64px 0 0;
 }
 
 #main-content-messagerie .head-messagerie {
