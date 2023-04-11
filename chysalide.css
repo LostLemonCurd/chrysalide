@@ -313,13 +313,13 @@ margin-bottom: 30px;
 
 #find-a-chrysalide #find-research-area-chrysalide #find-a-chrysalide-research{
   width: 34%;
-  border-radius: 30px 0 0 30px; 
+  border-radius: 30px 0 0 30px;
   background-color: var(--couleur-white-hex);
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 #find-a-chrysalide #find-research-area-chrysalide #find-a-chrysalide-research #find-a-chrysalide-research-input{
@@ -333,6 +333,7 @@ margin-bottom: 30px;
   position: relative;
   width: 100%;
   padding: 5px;
+
 }
 
 .input-search input{
@@ -421,7 +422,7 @@ margin-bottom: 30px;
 }
 
 
-#find-a-chrysalide #find-a-chrysalide-sports h6{
+#find-a-chrysalide-sports h6{
   border: 1px solid var(--couleur-lightgrey-rgba);
   background-color: var(--couleur-lightgrey-rgba);
   border-radius: 50px;
@@ -429,6 +430,19 @@ margin-bottom: 30px;
   color: var(--couleur-white-hex);
   width: 100%;
   text-align: center;
+  cursor: pointer;
+}
+
+.sport-raquette:hover{
+  background-color: var(--couleur-orange-hex);
+}
+
+.sport-co:hover{
+  background-color: var(--couleur-purple-hex);
+}
+
+.sport-solo:hover{
+  background-color: var(--couleur-red-hex);
 }
 
 #find-a-chrysalide-pop-up{
@@ -439,7 +453,7 @@ margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+  position: relative;
 }
 
 /*  */
@@ -456,7 +470,7 @@ margin-bottom: 30px;
   justify-content: flex-end;
   align-items: center;
   justify-content: space-between;
-
+  
   cursor: pointer;
 }
 
@@ -554,50 +568,78 @@ margin-bottom: 30px;
   background-color: var(--couleur-grey-hex);
   display: flex;
   flex-direction: column;
+  align-items: flex-start ;
+  gap: 10px;
   padding: 15px;
-}
-
-#find-a-chrysalide-filter #choose-ray-dropdown #div-choose-ray-dropdown {
-  border-radius: 50px;
-  background-color: var(--couleur-black-hex);
-  position: relative;
-  display: inline-block;
-  padding: 5px 10px;
-}
-
-#find-a-chrysalide-filter #choose-ray-dropdown #div-choose-ray-dropdown #choose-ray-dropdown-content{
-  visibility: hidden;
-  opacity: 0;
   position: absolute;
-  padding-left: 0;
+  top: 0;
   left: 0;
-  margin-top: 5px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
   display: none;
-  background: var(--couleur-black-hex);
 }
 
-#find-a-chrysalide-filter #choose-ray-dropdown #div-choose-ray-dropdown:hover{
-  border-radius: 10px 10px 0px 0px ;
+#find-a-chrysalide-filter-content{
+  width: 100%;
 }
 
-#find-a-chrysalide-filter #choose-ray-dropdown #div-choose-ray-dropdown:hover > #choose-ray-dropdown-content, #find-a-chrysalide-filter #choose-ray-dropdown #div-choose-ray-dropdown #choose-ray-dropdown-content:hover{
-  visibility: visible;
-  opacity: 1;
-  display: block;
-  min-width: 90px;
-  text-align: left;
-  padding-top: 20px;
+#select-ray{
+  position: absolute;
+  right: 0;
+
 }
 
-.choose-rya-dropdown-element{
+#number-of-places{
   display: flex;
-  align-items: center;
-  justify-content: flex-end ;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding-left: 5px;
   margin-bottom: 5px;
+  gap: 10px;
+  width: 100%;
+}
+
+#number-of-places #number-of-places-checkbox{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3%;
+  width: 100%;
+}
+
+#number-of-places #number-of-places-checkbox .the-place-checkbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3%;
+  width: 10%;
+}
+
+#competition-type{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-left: 5px;
 }
 
 
+#competition-type #competition-type-checkbox{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  
+}
 
-
+#competition-type #competition-type-checkbox .the-competiton-checkbox{
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
 

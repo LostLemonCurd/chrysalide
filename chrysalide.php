@@ -161,33 +161,33 @@ if ($_POST) {
                 <input type="checkbox" name="sport" value="Football">Football<br>
             </div>
             <div class="carte_sport">
-                <img src="img/basket.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Basketball">Basketball<br>
             </div>
             <div class="carte_sport">
-                <img src="img/golf.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Golf">Golf<br>
             </div>
             <div class="carte_sport">
-                <img src="img/boxe.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Boxe">Boxe<br>
             </div>
             </div>
             <div class="sport_line">
             <div class="carte_sport">
-                <img src="img/Baseball.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Baseball">Baseball<br>
             </div>
             <div class="carte_sport">
-                <img src="img/tennis.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Tennis">Tennis<br>
             </div>
             <div class="carte_sport">
-                <img src="img/ping-pong.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Ping-pong">Ping-pong<br>
             </div>
             <div class="carte_sport">
-                <img src="img/bad.png" alt="" width="112" height="100">
+                <img src="img/foot.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Badminton">Badminton<br>
             </div>
             </div>
@@ -261,19 +261,19 @@ if ($_POST) {
                         </div>
                         
                         <div id="find-a-chrysalide-sports">
-                            <h6>Football</h6>
-                            <h6>Basketball</h6>
-                            <h6>Tennis</h6>
-                            <h6>Baseball</h6>
-                            <h6>Badminton</h6>
-                            <h6>Ping-pong</h6>
-                            <h6>Golf</h6>
-                            <h6>Boxe</h6>
+                            <h6 class="sport-co">Football</h6>
+                            <h6 class="sport-co">Basketball</h6>
+                            <h6 class="sport-raquette">Tennis</h6>
+                            <h6 class="sport-co">Baseball</h6>
+                            <h6 class="sport-raquette">Badminton</h6>
+                            <h6 class="sport-raquette">Ping-pong</h6>
+                            <h6 class="sport-solo">Golf</h6>
+                            <h6 class="sport-solo">Boxe</h6>
                         </div>
                     </div>
                     <div id="find-a-chrysalide-pop-up">
-                        <button class="find-a-chrysalide-filter-button">
-                            <div class="find-a-chrysalide-filter-button-line">
+                        <button class="find-a-chrysalide-filter-button" onclick="showFilter()" >
+                            <div class="find-a-chrysalide-filter-button-line filter-open">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -354,54 +354,99 @@ if ($_POST) {
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
-                    <div id="find-a-chrysalide-filter">
-                        <button class="find-a-chrysalide-filter-button">
-                            <div class="find-a-chrysalide-filter-button-line">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                        <div id="find-a-chrysalide-filter">
+                            <button  class="find-a-chrysalide-filter-button" onclick="hideFilter()">
+                                <div class="find-a-chrysalide-filter-button-line filter-close">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <h6>Filter</h6>
+                            </button>
+                            <div id="find-a-chrysalide-filter-content">
+                                <form class="input-search" method="" action="">
+                                    <svg class="svg-in-black" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="white"/>
+                                    </svg>
+                                    <input type="text" class="input-in-white"  placeholder="Saisissez une ville">
+                                    <select id="select-ray">
+                                        <option value="0"><h6>Rayon</h6></option>
+                                        <option value="5">
+                                            <h6>5 KM</h6>
+                                        </option>
+                                        <option value="10">
+                                            <h6>10 KM</h6>
+                                        </option>
+                                        <option value="20">
+                                            <h6>20 KM</h6>
+                                        </option>
+                                        <option value="50">
+                                            <h6>50 KM</h6>
+                                        </option>
+                                        <option value="100">
+                                            <h6>100 KM</h6>
+                                        </option>
+                                    </select>
+                                </form>
+                                
                             </div>
-                            <h6>Filter</h6>
-                        </button>
-                        <div id="find-a-chrysalide-filter-content">
-                            <form class="input-search" method="post" action="">
-                                <svg class="svg-in-black" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="white"/>
-                                </svg>
-                                <input type="text" class="input-in-white"  placeholder="Saisissez une ville">
-                                <div id="choose-ray-dropdown">
-                            </form>
-                            <div id="choose-ray-dropdown">
-                                <h6>RAYON</h6>
-                                <div id="choose-ray-dropdown-content">
-                                    <div class="choose-rya-dropdown-element">
-                                        <h6>5 KM</h6>
+                            <div id="number-of-places">
+                                <h5>Places disponibles</h5>
+                                <div id="number-of-places-checkbox">
+                                    <div class="the-place-checkbox">
                                         <input type="checkbox">
+                                        <h6>1</h6>
                                     </div>
-                                    <div class="choose-rya-dropdown-element">
-                                        <h6>10 KM</h6>
+                                    <div class="the-place-checkbox">
                                         <input type="checkbox">
+                                        <h6>2</h6>
                                     </div>
-                                    <div class="choose-rya-dropdown-element">
-                                        <h6>20 KM</h6>
+                                    <div class="the-place-checkbox">
                                         <input type="checkbox">
+                                        <h6>3</h6>
                                     </div>
-                                    <div class="choose-rya-dropdown-element">
-                                        <h6>50 KM</h6>
+                                    <div class="the-place-checkbox">
                                         <input type="checkbox">
+                                        <h6>4</h6>
                                     </div>
-                                    <div class="choose-rya-dropdown-element">
-                                        <h6>100 KM</h6>
+                                    <div class="the-place-checkbox">
                                         <input type="checkbox">
+                                        <h6>5</h6>
+                                    </div>
+                                    <div class="the-place-checkbox">
+                                        <input type="checkbox">
+                                        <h6>6</h6>
+                                    </div>
+                                    <div class="the-place-checkbox">
+                                        <input type="checkbox">
+                                        <h6>7</h6>
+                                    </div>
+                                    <div class="the-place-checkbox"> 
+                                        <input type="checkbox">
+                                        <h6>8</h6>
+                                    </div>
+                                    <div class="the-place-checkbox">
+                                        <input type="checkbox">
+                                        <h6>Plus</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="competition-type">
+                                <h5>Type de compétition </h5>
+                                <div id="competition-type-checkbox">
+                                    <div class="the-competiton-checkbox">
+                                        <input type="checkbox">
+                                        <h6>Non classé</h6>
+                                    </div>
+                                    <div class="the-competiton-checkbox">
+                                        <input type="checkbox">
+                                        <h6>Classé</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
             </div>
         </section>
 
@@ -424,6 +469,20 @@ if ($_POST) {
             publicCheckbox.checked = false;
         }
         });
+
+        const filter = document.getElementById("find-a-chrysalide-filter");
+        
+        
+        
+         function showFilter() { 
+            filter.style.display = "flex";
+        }
+
+        function hideFilter() { 
+            filter.style.display = "none";
+        }
+
+
       </script>
 </body>
 </html>
