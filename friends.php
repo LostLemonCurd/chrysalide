@@ -188,7 +188,7 @@
                                 </div>
                             </div>
                             <div class="friend-btns">
-                                <a class="request-f" data-conuser="<?php echo $userId?>" href="">Suivre</a>
+                                <a id="request-f" data-conuser="<?php echo $userId?>" href="">Suivre</a>
                                 <a href="messagerie.php" class="msg">Message</a>
                             </div>
                             <div class="rewards">
