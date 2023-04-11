@@ -29,61 +29,61 @@
 
 
 
-    // Récupération GET de l'id des amis de l'utilisateur connecté
-    $friendId = 0;
-    if ($_GET) {
-        $friendId = $_GET['friendId'];
-        // Récupération à partir de l'id des informations de l'ami
-        $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
-        $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
-        $friendName = $friendDetail['username'];
-        $friendSport = $friendDetail['favsport'];
-        $friendImg = $friendDetail['userimg'];
+    // // Récupération GET de l'id des amis de l'utilisateur connecté
+    // $friendId = 0;
+    // if ($_GET) {
+    //     $friendId = $_GET['friendId'];
+    //     // Récupération à partir de l'id des informations de l'ami
+    //     $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
+    //     $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
+    //     $friendName = $friendDetail['username'];
+    //     $friendSport = $friendDetail['favsport'];
+    //     $friendImg = $friendDetail['userimg'];
 
-        // Récupération de tous les amis de l'utilisateur connecté
-        $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
+    //     // Récupération de tous les amis de l'utilisateur connecté
+    //     $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
 
-        // On vérifie si l'utilisateur est connecté et on modifie le voyant de connexion: 
-        $btnConnect = '';
-        if (isset($_SESSION['user']['loggedin']) && $_SESSION['user']['loggedin'] == true) {
-            $btnConnect = 'Connecté';
-        } else {
-            $btnConnect = 'Déconnecté';
-        }
+    //     // On vérifie si l'utilisateur est connecté et on modifie le voyant de connexion: 
+    //     $btnConnect = '';
+    //     if (isset($_SESSION['user']['loggedin']) && $_SESSION['user']['loggedin'] == true) {
+    //         $btnConnect = 'Connecté';
+    //     } else {
+    //         $btnConnect = 'Déconnecté';
+    //     }
 
-        // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
-        if ($r3->rowCount() >= 1) {
-            $isAFriend = true;
-        } else {
-            $isAFriend = false;
-        }
+    //     // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
+    //     if ($r3->rowCount() >= 1) {
+    //         $isAFriend = true;
+    //     } else {
+    //         $isAFriend = false;
+    //     }
 
-        // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
-        if ($isAFriend == true) {
-            $friendBtn = 'Se désabonner';
-        } else {
-            $friendBtn = 'Suivre';
-        }
+    //     // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
+    //     if ($isAFriend == true) {
+    //         $friendBtn = 'Se désabonner';
+    //     } else {
+    //         $friendBtn = 'Suivre';
+    //     }
 
-        // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
-        if ($_POST) {
-            if (!$isAFriend) {
-                $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
-            } else {
-                $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
-            }
-        }
-    } else {
-        $friendBtn = 'Suivre';
-        $friendName = 'Batman';
-        $friendSport = 'Football';
-        $btnConnect = 'Déconnecté';
-        $friendImg = 'batman.png';
-    }
+    //     // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
+    //     if ($_POST) {
+    //         if (!$isAFriend) {
+    //             $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
+    //         } else {
+    //             $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
+    //         }
+    //     }
+    // } else {
+    //     $friendBtn = 'Suivre';
+    //     $friendName = 'Batman';
+    //     $friendSport = 'Football';
+    //     $btnConnect = 'Déconnecté';
+    //     $friendImg = 'batman.png';
+    // }
     ?>
 
-    <h5 class="error"> </h5>
-
+    <h5 class="error"></h5>
+    
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
@@ -165,33 +165,31 @@
                     <div class="friend-list">
                         <?php
                         while ($friend = $r->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<a class="friend" data-id="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
-                                <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
-                                <h4>' . $friend['username'] . '</h4>
-                            </a>';
+                            echo '<a class="friend" data-conuser="'.$userId.'" data-id="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
+                                    <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
+                                    <h4>' . $friend['username'] . '</h4>
+                                </a>';
                         } ?>
                     </div>
                 </section>
                 <section class="friend-detail">
                     <div class="friend-info">
-                        <img class="friend-avatar-img friendImg" src="img/<?php echo $friendImg ?>" alt="Photo de profil">
+                        <img class="friend-avatar-img friendImg" src="img/avatar-1.png" alt="Photo de profil">
                         <div class="contact-info">
                             <div class="contact">
-                                <span class="status"><?php echo $btnConnect ?></span>
-                                <h4 class="friendName"><?php echo ucfirst($friendName); ?></h4>
+                                <span class="status">Connecté</span>
+                                <h4 class="friendName">Batman</h4>
                                 <div class="contact-details">
                                     <div class="pays">
                                         <img src="img/france.png" alt="Pays">
                                         <p>France</p>
                                     </div>
-                                    <p class="friendSport"><?php echo ucfirst($friendSport) ?></p>
+                                    <p class="friendSport">Hockey sur dames</p>
                                 </div>
                             </div>
                             <div class="friend-btns">
-                                <form method="post">
-                                    <input type="submit" class="request-f" name="request" value="<?php echo $friendBtn ?>">
-                                    <a href="messagerie.php" class="msg">Message</a>
-                                </form>
+                                <a class="request-f" data-conuser="<?php echo $userId?>" href="">Suivre</a>
+                                <a href="messagerie.php" class="msg">Message</a>
                             </div>
                             <div class="rewards">
                                 <div class="tropheys">

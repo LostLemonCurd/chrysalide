@@ -164,12 +164,12 @@
     height: 20px;
     width: 20px;
 }
-.friends-section .friend-detail .friend-btns form{
+.friends-section .friend-detail .friend-btns{
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-.friends-section .friend-detail .friend-btns form input{
+.friends-section .friend-detail .friend-btns a{
     padding: 8px;
     border-radius: 30px;
     outline: none;
@@ -177,14 +177,16 @@
     cursor: pointer;
 }
 
-.friends-section .friend-detail .friend-btns form .request-f{
+.friends-section .friend-detail .friend-btns .request-f{
     background-color: var(--couleur-bleu-hex);
     border: 2px solid var(--couleur-bleu-hex);
     font-weight: 500;
     font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
 }
 
-.friends-section .friend-detail .friend-btns form .msg{
+.friends-section .friend-detail .friend-btns .msg{
     background-color: var(--couleur-grey-hex); 
     border: 2px solid var(--couleur-grey-hex);
     font-weight: 500;
