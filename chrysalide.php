@@ -161,33 +161,33 @@ if ($_POST) {
                 <input type="checkbox" name="sport" value="Football">Football<br>
             </div>
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/basket.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Basketball">Basketball<br>
             </div>
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/golf.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Golf">Golf<br>
             </div>
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/boxe.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Boxe">Boxe<br>
             </div>
             </div>
             <div class="sport_line">
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/Baseball.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Baseball">Baseball<br>
             </div>
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/tennis.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Tennis">Tennis<br>
             </div>
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/ping-pong.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Ping-pong">Ping-pong<br>
             </div>
             <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
+                <img src="img/bad.png" alt="" width="112" height="100">
                 <input type="checkbox" name="sport" value="Badminton">Badminton<br>
             </div>
             </div>
