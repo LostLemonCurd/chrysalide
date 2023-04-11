@@ -174,17 +174,17 @@
                 </section>
                 <section class="friend-detail">
                     <div class="friend-info">
-                        <img class="friend-avatar-img" src="img/<?php echo $friendImg ?>" alt="Photo de profil">
+                        <img class="friend-avatar-img friendImg" src="img/<?php echo $friendImg ?>" alt="Photo de profil">
                         <div class="contact-info">
                             <div class="contact">
                                 <span class="status"><?php echo $btnConnect ?></span>
-                                <h4><?php echo ucfirst($friendName); ?></h4>
+                                <h4 class="friendName"><?php echo ucfirst($friendName); ?></h4>
                                 <div class="contact-details">
                                     <div class="pays">
                                         <img src="img/france.png" alt="Pays">
                                         <p>France</p>
                                     </div>
-                                    <p><?php echo ucfirst($friendSport) ?></p>
+                                    <p class="friendSport"><?php echo ucfirst($friendSport) ?></p>
                                 </div>
                             </div>
                             <div class="friend-btns">

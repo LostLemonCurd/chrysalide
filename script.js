@@ -6,24 +6,24 @@ logo.addEventListener('click', () => {
 })
 
 
-// Affichage des éléments amis
+// // Affichage des éléments amis
 
-let friend = document.querySelectorAll('.friend');
-console.log(friend);
+// let friend = document.querySelectorAll('.friend');
+// console.log(friend);
 
-let friendDetail = document.querySelector('.friend-detail');
-console.log(friendDetail);
+// let friendDetail = document.querySelector('.friend-detail');
+// console.log(friendDetail);
 
-// Ajout de la fonctionnalité d'affichager/masquer les détails des amis de l'utilisateur
-for (const element of friend) {
-    element.addEventListener('click', () => {
-        if (friendDetail.style.display === 'none') {
-            friendDetail.style.display = 'flex';
-        } else {
-            friendDetail.style.display = 'none';
-        }
-    })
-}
+// // Ajout de la fonctionnalité d'affichager/masquer les détails des amis de l'utilisateur
+// for (const element of friend) {
+//     element.addEventListener('click', () => {
+//         if (friendDetail.style.display === 'none') {
+//             friendDetail.style.display = 'flex';
+//         } else {
+//             friendDetail.style.display = 'none';
+//         }
+//     })
+// }
 
 
 // Inscription
@@ -57,6 +57,7 @@ $(document).ready(function() {
 	// Je capte l'évenement change sur le select :
 	$('.friend').click(function(e) {
         e.preventDefault();
+        $('.friend-detail').toggle().css('display', 'flex');
         console.log('You clicked');
 		// Je récupère le friend_id qui est dans l'attribut html data 
 		let friend_id = $(this).data('id');
@@ -75,10 +76,10 @@ $(document).ready(function() {
 		}).done(function(data) {
 			// A faire après le PHP :
 			console.log(data); /*je récupère données*/
-			// Comme c'est un objet, je peux récupérer les valeur de ses propriétés :
-
-
-			
+            $('.friendName').text(data.username);
+            $('.friendImg').attr('src', `img/${data.userimg}`);
+            $('.friendSport').text(data.favsport);
+            $('.friendName').text(data.username);			
 		});
 	});
 
