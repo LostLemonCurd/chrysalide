@@ -105,31 +105,30 @@ if ($_POST) {
     $places_disponibles = $_POST["places_disponibles"];
     $sport = $_POST["sports"];
 
-
     // Générer un nom de groupe aléatoire
     $nom_groupe = 'Groupe_' . uniqid();
 
     // Vérifier si le nom de groupe est déjà utilisé
-    $r = $pdo->query("SELECT * FROM groupes WHERE nom_groupe = '$nom_groupe'");
-    if ($r->rowCount() >= 1) {
+    $stmt = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
+    $stmt->execute([$nom_groupe]);
+    if ($stmt->rowCount() >= 1) {
         // Le nom de groupe est déjà utilisé, générer un nouveau nom
         $nom_groupe = 'Groupe_' . uniqid();
     }
 
     // Insérer les données dans la table "groupes"
-    $pdo->exec("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
-    VALUES ('$nom_groupe', '$ville', '$places_disponibles', '$sport', '$user_id')");
+    $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
+    VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
 
-
-    if (mysqli_query($connexion, $requete)) {
+    // Vérifier si l'insertion s'est bien déroulée
+    if ($stmt->rowCount() > 0) {
         echo "Données insérées avec succès";
     } else {
-        echo "Erreur : " . $requete . "<br>" . mysqli_error($connexion);
+        echo "Erreur lors de l'insertion des données";
     }
-
-   
 }
-?>
+
             <div class="overlay">
     <div class="overlay-content">
     <h1 id="titre-overlay">Créer ta Chrysalide</h1>
