@@ -80,7 +80,7 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
                     <a href="#">
                         <h6>Tournois</h6>
                     </a>
-                    <a href="#">
+                    <a href="chrysalide.php">
                         <h6>Chrysalide</h6>
                     </a>
                 </div>
@@ -92,9 +92,9 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
     </header>
 
     <main>
-    <aside>
+        <aside>
             <nav id="aside-main-buttons">
-                <a href="#">
+                <a href="friends.php">
                     <img src="img/friends.svg" alt="">
                     <h6>Friends</h6>
                 </a>
@@ -106,7 +106,7 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
                     <img src="img/chrysalide.svg" alt="">
                     <h6>Chrysalide</h6>
                 </a>
-                <a href="favoris.php">
+                <a href="#">
                     <img src="img/favoris.svg" alt="">
                     <h6>Favoris</h6>
                 </a>
