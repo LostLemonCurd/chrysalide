@@ -14,7 +14,6 @@ console.log(friend);
 let friendDetail = document.querySelector('.friend-detail');
 console.log(friendDetail);
 
-
 // Ajout de la fonctionnalité d'affichager/masquer les détails des amis de l'utilisateur
 for (const element of friend) {
     element.addEventListener('click', () => {
@@ -50,3 +49,37 @@ deco.addEventListener('click', (e) =>{
         location.href = 'connexion.php';
     }
 })
+
+
+// Requête Ajax
+$(document).ready(function() {
+
+	// Je capte l'évenement change sur le select :
+	$('.friend').click(function(e) {
+        e.preventDefault();
+        console.log('You clicked');
+		// Je récupère le friend_id qui est dans l'attribut html data 
+		let friend_id = $(this).data('id');
+		console.log(friend_id);
+
+		// Je lance la fonction ajax :
+		$.ajax({
+			// Je mets l'URL dans laquelle je récupère les données :
+			url: 'getFriendDetails.php',
+			// Le type est get car je récupère des infos :
+			type: 'GET',
+			// Le type de donnée qu'on veut recupérer est en json :
+			dataType: 'json',
+			// Dans la propriété data, je mets un objet ayant comme propriété monIdEmploye (qui sera récupérable en PHP) avec comme valeur ma variable id_employe créée plus haut :
+			data: {friendId: friend_id}
+		}).done(function(data) {
+			// A faire après le PHP :
+			console.log(data); /*je récupère données*/
+			// Comme c'est un objet, je peux récupérer les valeur de ses propriétés :
+
+
+			
+		});
+	});
+
+});

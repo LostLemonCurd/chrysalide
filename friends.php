@@ -10,12 +10,12 @@
     <link rel='stylesheet' href='friends.css'>
     <script src='script.js' defer></script>
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Chrysalide</title>
 </head>
 
 <body>
-    <h6 class="error"> <?php error_reporting(E_ALL);
-                        ini_set('display_errors', 1); ?></h6>
+    <h6 class="error"> <?php error_reporting(E_ALL); ini_set('display_errors', 1); ?></h6>
 
     <?php
     include('init.php');
@@ -165,7 +165,7 @@
                     <div class="friend-list">
                         <?php
                         while ($friend = $r->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<a class="friend" href="?friendId='.$friend['id_user'].'">
+                            echo '<a class="friend" data-id="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
                                 <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
                                 <h4>' . $friend['username'] . '</h4>
                             </a>';
