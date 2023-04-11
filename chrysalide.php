@@ -94,7 +94,8 @@
                 <button class="btn-blue" onclick="openOverlay()"><h6>Créer</h6></button>
                 <button class="btn-vide"><h6>Rejoindre</h6></button>
             </div>
-            <?php
+
+<?php
 include('init.php');
 // Vérifier si le formulaire a été soumis
 $user_id = $_SESSION["user"]["id_user"];
@@ -128,6 +129,7 @@ if ($_POST) {
         echo "Erreur lors de l'insertion des données";
     }
 }
+?>
 
             <div class="overlay">
     <div class="overlay-content">
