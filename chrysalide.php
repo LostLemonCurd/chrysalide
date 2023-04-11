@@ -12,6 +12,43 @@
   <title>Chrysalide</title>
 </head>
 <body>
+<?php
+include('init.php');
+// Vérifier si le formulaire a été soumis
+$user_id = $_SESSION["user"]["id_user"];
+if ($_POST) {
+
+    // Récupérer les données saisies par l'utilisateur
+    $ville = $_POST["ville"];
+    $places_disponibles = $_POST["places_disponibles"];
+    $sport = $_POST["sport"];
+
+    // Générer un nom de groupe aléatoire
+    $nom_groupe = 'Groupe_' . uniqid();
+
+    // Vérifier si le nom de groupe est déjà utilisé
+    $stmt = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
+    $stmt->execute([$nom_groupe]);
+    if ($stmt->rowCount() >= 1) {
+        // Le nom de groupe est déjà utilisé, générer un nouveau nom
+        $nom_groupe = 'Groupe_' . uniqid();
+    }
+
+    // Insérer les données dans la table "groupes"
+    $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
+    VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
+    $r_user = $pdo->query("SELECT * FROM groupes");
+
+    // Vérifier si l'insertion s'est bien déroulée
+    if ($r_user->rowCount() > 0) {
+        echo "Données insérées avec succès";
+    } else {
+        echo "Erreur lors de l'insertion des données";
+    }
+}
+?>
+
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
@@ -95,47 +132,12 @@
                 <button class="btn-vide"><h6>Rejoindre</h6></button>
             </div>
 
-<?php
-include('init.php');
-// Vérifier si le formulaire a été soumis
-$user_id = $_SESSION["user"]["id_user"];
-if ($_POST) {
-
-    // Récupérer les données saisies par l'utilisateur
-    $ville = $_POST["ville"];
-    $places_disponibles = $_POST["places_disponibles"];
-    $sport = $_POST["sports"];
-
-    // Générer un nom de groupe aléatoire
-    $nom_groupe = 'Groupe_' . uniqid();
-
-    // Vérifier si le nom de groupe est déjà utilisé
-    $stmt = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
-    $stmt->execute([$nom_groupe]);
-    if ($stmt->rowCount() >= 1) {
-        // Le nom de groupe est déjà utilisé, générer un nouveau nom
-        $nom_groupe = 'Groupe_' . uniqid();
-    }
-
-    // Insérer les données dans la table "groupes"
-    $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
-    VALUES (?, ?, ?, ?, ?)");
-    $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
-
-    // Vérifier si l'insertion s'est bien déroulée
-    if ($stmt->rowCount() > 0) {
-        echo "Données insérées avec succès";
-    } else {
-        echo "Erreur lors de l'insertion des données";
-    }
-}
-?>
 
             <div class="overlay">
     <div class="overlay-content">
     <h1 id="titre-overlay">Créer ta Chrysalide</h1>
     <button class="close-btn">x</button>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["chrysalide"]); ?>">
+        <form method="post">
             <h2 class='espace'>Ville : </h2><input type="text" name="ville"><br>
             <h2 class='espace'>Places disponibles : </h2>
             <select name="places_disponibles">
@@ -156,37 +158,37 @@ if ($_POST) {
             <div class="sport_line">
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Football">Football<br>
+                <input type="checkbox" name="sport" value="Football">Football<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Basketball">Basketball<br>
+                <input type="checkbox" name="sport" value="Basketball">Basketball<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Golf">Golf<br>
+                <input type="checkbox" name="sport" value="Golf">Golf<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Boxe">Boxe<br>
+                <input type="checkbox" name="sport" value="Boxe">Boxe<br>
             </div>
             </div>
             <div class="sport_line">
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Baseball">Baseball<br>
+                <input type="checkbox" name="sport" value="Baseball">Baseball<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Tennis">Tennis<br>
+                <input type="checkbox" name="sport" value="Tennis">Tennis<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Ping-pong">Ping-pong<br>
+                <input type="checkbox" name="sport" value="Ping-pong">Ping-pong<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport[]" value="Badminton">Badminton<br>
+                <input type="checkbox" name="sport" value="Badminton">Badminton<br>
             </div>
             </div>
             </select>
