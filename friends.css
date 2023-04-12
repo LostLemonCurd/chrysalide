@@ -177,7 +177,7 @@
     cursor: pointer;
 }
 
-.friends-section .friend-detail .friend-btns #request-f{
+.friends-section .friend-detail .friend-btns .request-f{
     background-color: var(--couleur-bleu-hex);
     border: 2px solid var(--couleur-bleu-hex);
     font-weight: 500;

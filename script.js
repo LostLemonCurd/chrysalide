@@ -61,33 +61,28 @@ $(document).ready(function() {
             $('.friendImg').attr('src', `img/${data.friend.userimg}`);
             $('.friendSport').text(data.friend.favsport);
             if (data.isAFriend !== true) {
-                $('#request-f').text('Suivre');
-                $('#request-f').attr('data-isfriend', 0);
-                $('#request-f').attr('data-friendid', friendId);
+                $('.request-f').text('Suivre');
+                $('.request-f').attr('data-isfriend', 0);
+                $('.request-f').attr('data-friendid', friendId);
             } else {
-                $('#request-f').text('Se désabonner'); 
-                $('#request-f').attr('data-isfriend', 1);    
-                $('#request-f').attr('data-friendid', friendId); 
+                $('.request-f').text('Se désabonner'); 
+                $('.request-f').attr('data-isfriend', 1);    
+                $('.request-f').attr('data-friendid', friendId); 
             }
 
 		});
 	});
 
-    $('#request-f').on('click', function(e) {
+    $(document).on('click', '.request-f', function(e) {        
         e.preventDefault();
-        console.log('you clicked');
-        let friendId = $(this).data('friendid');
-        let userId = $(this).data('conuser');
-        console.log(friendId);
-		console.log(userId);
-        let isFriend = $(this).data('isfriend');
-        console.log(isFriend);
-        if (isFriend === 0) {
+        let friendId =  this.getAttribute("data-friendid");
+        let userId =  this.getAttribute("data-conuser");
+        // console.log("eee" + this.getAttribute("data-isfriend"));
+        if (this.getAttribute("data-isfriend") === '0') {
             url = 'addFriend.php';
         } else {
             url = 'removeFriend.php';
         }
-        console.log(url);
 		// Je lance la fonction ajax :
 		$.ajax({
 			// Je mets l'URL dans laquelle je récupère les données :
@@ -102,13 +97,11 @@ $(document).ready(function() {
 			// A faire après le PHP :
             console.log(data);
             if (url === 'addFriend.php') {
-                $('#request-f').text('Se désabonner'); 
-                $('#request-f').attr('data-isfriend', 1);   
-                $('#request-f').attr('data-friendid', friendId);
+                $('.request-f').text('Se désabonner'); 
+                $('.request-f').attr('data-isfriend', 1);   
             } else if (url === 'removeFriend.php'){
-                $('#request-f').text('Suivre');
-                $('#request-f').attr('data-isfriend', 0);
-                $('#request-f').attr('data-friendid', friendId);
+                $('.request-f').text('Suivre');
+                $('.request-f').attr('data-isfriend', 0);
             }
 
 		});

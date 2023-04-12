@@ -27,59 +27,10 @@
     // Récupération des infromations de tous les utilisateurs pour les afficher à partir d'un format Get
     $r = $pdo->query("SELECT * FROM user WHERE id_user != $userId");
 
+    $r_groupe = $pdo->query("SELECT * FROM `groupes` WHERE id_user IN (SELECT * FROM user WHERE id_user = $userId)");
+    // `id_groupe`, `id_user`, `nom_groupe`, `ville`, `places_disponibles`, `sport`, `date_creation`, `date_event` FROM `groupes` WHERE")
 
 
-    // // Récupération GET de l'id des amis de l'utilisateur connecté
-    // $friendId = 0;
-    // if ($_GET) {
-    //     $friendId = $_GET['friendId'];
-    //     // Récupération à partir de l'id des informations de l'ami
-    //     $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
-    //     $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
-    //     $friendName = $friendDetail['username'];
-    //     $friendSport = $friendDetail['favsport'];
-    //     $friendImg = $friendDetail['userimg'];
-
-    //     // Récupération de tous les amis de l'utilisateur connecté
-    //     $r3 = $pdo->query("SELECT * FROM user WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = $userId AND id_friend = $friendId)");
-
-    //     // On vérifie si l'utilisateur est connecté et on modifie le voyant de connexion: 
-    //     $btnConnect = '';
-    //     if (isset($_SESSION['user']['loggedin']) && $_SESSION['user']['loggedin'] == true) {
-    //         $btnConnect = 'Connecté';
-    //     } else {
-    //         $btnConnect = 'Déconnecté';
-    //     }
-
-    //     // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
-    //     if ($r3->rowCount() >= 1) {
-    //         $isAFriend = true;
-    //     } else {
-    //         $isAFriend = false;
-    //     }
-
-    //     // Modification du bouton selon le statut d'amitié (Suivre/Désabonnement)
-    //     if ($isAFriend == true) {
-    //         $friendBtn = 'Se désabonner';
-    //     } else {
-    //         $friendBtn = 'Suivre';
-    //     }
-
-    //     // Le bouton Se désabonner/ Suivre permet d'ajouter un ami ou de le supprimer
-    //     if ($_POST) {
-    //         if (!$isAFriend) {
-    //             $pdo->exec("INSERT INTO friends(id_user, id_friend, date_debut) VALUES ('$userId','$friendId',now())");
-    //         } else {
-    //             $pdo->exec("DELETE FROM friends WHERE id_user = $userId AND id_friend = $friendId");
-    //         }
-    //     }
-    // } else {
-    //     $friendBtn = 'Suivre';
-    //     $friendName = 'Batman';
-    //     $friendSport = 'Football';
-    //     $btnConnect = 'Déconnecté';
-    //     $friendImg = 'batman.png';
-    // }
     ?>
 
     <h5 class="error"></h5>
@@ -188,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="friend-btns">
-                                <a id="request-f" data-conuser="<?php echo $userId?>" href="">Suivre</a>
+                                <a class="request-f" data-conuser="<?php echo $userId?>" href="">Suivre</a>
                                 <a href="messagerie.php" class="msg">Message</a>
                             </div>
                             <div class="rewards">
@@ -226,22 +177,28 @@
                 <h2>Mes équipes</h2>
                 <button class="create-btn">Créer</button>
                 <div class="team-list">
-                    <div class="teams">
-                        <h5><span>Equipe</span> PHP</h5>
-                        <img src="img/foot.png" alt="Image du sport">
-                        <div class="add-sport-section">
-                            <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
-                            <h5 class="compteur">4/5</h5>
-                        </div>
-                    </div>
-                    <div class="teams">
-                        <h5><span>Equipe</span> PHP</h5>
-                        <img src="img/tennis.png" alt="Image du sport">
-                        <div class="add-sport-section">
-                            <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
-                            <h5 class="compteur">2/2</h5>
-                        </div>
-                    </div>
+                        <div class="teams">
+                             <h5>'.$user_grp['nom_groupe'].'</h5>
+                             <img src="img/foot.png" alt="Image du sport">
+                             <div class="add-sport-section">
+                                 <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
+                                 <h5 class="compteur">4/5</h5>
+                             </div>
+                         </div>'
+                    <?php 
+                    // `id_groupe`, `id_user`, `nom_groupe`, `ville`, `places_disponibles`, `sport`, `date_creation`, `date_event` FROM `groupes` WHERE")
+                    // while ($user_grp = $r_groupe->fetch(PDO::FETCH_ASSOC)) { 
+                    //     echo
+                    //     '<div class="teams">
+                    //         <h5>'.$user_grp['nom_groupe'].'</h5>
+                    //         <img src="img/foot.png" alt="Image du sport">
+                    //         <div class="add-sport-section">
+                    //             <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
+                    //             <h5 class="compteur">4/5</h5>
+                    //         </div>
+                    //     </div>'
+                    // }
+                    ?>
                 </div>
             </section>
         </div>

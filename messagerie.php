@@ -38,7 +38,7 @@ if($_GET){
         //     $testMessage = $testmess['message'];
         // }
     } 
-$r = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId)");
+$r = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId) ORDER BY date ASC");
 
 // Enregistrer les commentaires dans la base
 // Si le formulaire est posté :
