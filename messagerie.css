@@ -86,6 +86,10 @@
     width: 35vw;
 }
 
+#main-content-messagerie .chat-messagerie .messages .outside-message img {
+    width: 30px;
+}
+
 #main-content-messagerie .chat-messagerie .messages .msg-bleu-fonce {
     background-color: var(--couleur-bleu-hex);
     margin-left: 40px;

@@ -1,3 +1,6 @@
+<!-- comment savoir à qui on parle ???? ajout couleur côté ami ? -->
+<!-- probleme redirection vers header -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,13 +20,14 @@
     <?php
 require 'init.php';
 
+$userimg = $_SESSION['user']['userimg'];
 $user_id = $_SESSION['user']['id_user'];
-$rUser = $pdo->query('SELECT * FROM user');
-
+$rUser = $pdo->query("SELECT * FROM user WHERE id_user != $user_id");
 
 // Récupération GET de l'id des amis de l'utilisateur connecté
 $friendId = 8;
 $friendName = 'friend';
+
 if($_GET){
     $friendId = $_GET['friendId'];
     // Récupération à partir de l'id des informations de l'ami
@@ -31,30 +35,23 @@ if($_GET){
     $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
     $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
     $friendName = $friendDetail['username'];
+} 
 
-    // Récupération des messages de l'utilisateur selectionné
-    // $r5 = $pdo->query("SELECT * FROM messages WHERE id_expediteur = '$friendId'");
-    // while ($testmess = $r5->fetch(PDO::FETCH_ASSOC)) {
-        //     $testMessage = $testmess['message'];
-        // }
-    } 
+// $r_expediteur = $pdo->query("SELECT * FROM messages WHERE id_expediteur = $friendId AND id_destinataire = $user_id");
+// $r_destinataire = $pdo->query("SELECT * FROM messages WHERE id_expediteur = $user_id AND id_destinataire = $friendId");
 $r = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId) ORDER BY date ASC");
 
 // Enregistrer les commentaires dans la base
 // Si le formulaire est posté :
 if (isset($_POST['btn-send-message'])) {
-// if($_POST) {
+
 // Je corrige les '' :
 $answertxt = addslashes($_POST['answer-txt']);
-// $id_destinaire = 
 
 // recuperer l'id utilisateur via l'url avec $GET
  
 // J'enregiste le commentaire dans la base :
-// exec = executer 
-// $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($user_id, '$answertxt', NOW())");
 $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendId, '$answertxt', NOW())");
-// j'ai enlevé , id_destinataire dans la requette
 }
 
 
@@ -145,33 +142,33 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
                 <section class="chat-messagerie">
                     <div class="list-messages">
 
-                        <?php
-                        while ($messages = $r->fetch(PDO::FETCH_ASSOC)) { 
-                            echo '<div class="messages">
-                            <h6 class="time">'. $messages['date'].'</h6>
-
-                            <div class="outside-message msg-bleu-fonce">
-                                <img src="img/avatar_messagerie_chat_deux.png" alt="avatar utilisateur messagerie">
-                                <div class="inside-message">        
-                                    <h6>'. $friendName .'</h6>
-                                    <p>'. $messages['message'].'</p>
-                                </div>
-                            </div>
-                        </div>';
-                    } ?>
-
                     <?php
-                    while ($messages = $r->fetch(PDO::FETCH_ASSOC)) {
-                    echo'<div class="messages">
-                        <div class="outside-message msg-bleu-ciel">
-                            <img src="img/avatar_messagerie_chat_un.png" alt="avatar utilisateur messagerie">
+                    while ($messages = $r_destinataire->fetch(PDO::FETCH_ASSOC)) { 
+                    echo '<div class="messages">
+                        <h6 class="time">'. $messages['date'].'</h6>
+
+                        <div class="outside-message msg-bleu-fonce">
+                            <img src="img/'.$userimg.'" alt="avatar utilisateur messagerie">
                             <div class="inside-message">        
                                 <h6>'. $_SESSION['user']['username'].'</h6>
                                 <p>'. $messages['message'].'</p>
                             </div>
                         </div>
+                    </div>';
+                    } 
+                    ?>
+                    <?php
+                    while ($messages_bis = $r_expediteur->fetch(PDO::FETCH_ASSOC)) {
+                    echo'<div class="messages">
+                        <div class="outside-message msg-bleu-ciel">
+                            <img src="img/'.$friendImage.'" alt="avatar utilisateur messagerie">
+                            <div class="inside-message">        
+                                <h6>'. $friendName .'</h6>
+                                <p>'. $messages_bis['message'].'</p>
+                            </div>
+                        </div>
                     
-                        <h6 class="time">'. $messages['date'].'</h6>
+                        <h6 class="time">'. $messages_bis['date'].'</h6>
                     </div>';
                     } ?>
                     </div>
