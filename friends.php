@@ -27,9 +27,8 @@
     // Récupération des infromations de tous les utilisateurs pour les afficher à partir d'un format Get
     $r = $pdo->query("SELECT * FROM user WHERE id_user != $userId");
 
-    $r_groupe = $pdo->query("SELECT * FROM `groupes` WHERE id_user IN (SELECT * FROM user WHERE id_user = $userId)");
+    $r_groupe = $pdo->query("SELECT * FROM `groupes` WHERE id_user IN (SELECT id_user FROM user WHERE id_user = $userId)");
     // `id_groupe`, `id_user`, `nom_groupe`, `ville`, `places_disponibles`, `sport`, `date_creation`, `date_event` FROM `groupes` WHERE")
-
 
     ?>
 
@@ -186,18 +185,17 @@
                              </div>
                          </div>'
                     <?php 
-                    // `id_groupe`, `id_user`, `nom_groupe`, `ville`, `places_disponibles`, `sport`, `date_creation`, `date_event` FROM `groupes` WHERE")
-                    // while ($user_grp = $r_groupe->fetch(PDO::FETCH_ASSOC)) { 
-                    //     echo
-                    //     '<div class="teams">
-                    //         <h5>'.$user_grp['nom_groupe'].'</h5>
-                    //         <img src="img/foot.png" alt="Image du sport">
-                    //         <div class="add-sport-section">
-                    //             <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
-                    //             <h5 class="compteur">4/5</h5>
-                    //         </div>
-                    //     </div>'
-                    // }
+                    while ($user_grp = $r_groupe->fetch(PDO::FETCH_ASSOC)) { 
+                        echo
+                        '<div class="teams">
+                            <h5>'.$user_grp['nom_groupe'].'</h5>
+                            <img src="img/foot.png" alt="Image du sport">
+                            <div class="add-sport-section">
+                                <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
+                                <h5 class="compteur">4/5</h5>
+                            </div>
+                        </div>';
+                    }
                     ?>
                 </div>
             </section>

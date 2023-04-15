@@ -228,6 +228,7 @@
     margin-right: 10px;
     background-color: var(--couleur-white-hex);
     border-radius: 30px;
+    text-decoration: none;
 }
 .friend h4{
     font-weight: 500;

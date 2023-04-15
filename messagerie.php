@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="lib.css">
     <link rel="stylesheet" href="messagerie.css">
-    <script src='lib.js' defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="scriptMessages.js" defer></script>
+    <script src="lib.js" defer></script>
     <title>Messagerie</title>
 </head>
 <body>
@@ -21,10 +23,12 @@
 require 'init.php';
 
 $userimg = $_SESSION['user']['userimg'];
-$friendImage = $_SESSION['friends']['userimg'];
 $user_id = $_SESSION['user']['id_user'];
+
+
 $rUser = $pdo->query("SELECT * FROM user WHERE id_user != $user_id");
 
+// $friendImage = $_SESSION['friends']['userimg']; Il n'y a pas de session frends il faut les récupérer avec une requête SQL
 // Récupération GET de l'id des amis de l'utilisateur connecté
 $friendId = 8;
 $friendName = 'friend';
@@ -36,23 +40,26 @@ if($_GET){
     $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
     $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
     $friendName = $friendDetail['username'];
+    $friendImage = $friendDetail['userimg'];
 } 
 
-$r_expediteur = $pdo->query("SELECT * FROM messages WHERE id_expediteur = $friendId AND id_destinataire = $user_id");
-$r_destinataire = $pdo->query("SELECT * FROM messages WHERE id_expediteur = $user_id AND id_destinataire = $friendId");
-$r = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId) ORDER BY date ASC");
+$r_messages = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId) ORDER BY date ASC");
 
 // Enregistrer les commentaires dans la base
 // Si le formulaire est posté :
+
 if (isset($_POST['btn-send-message'])) {
-
-// Je corrige les '' :
-$answertxt = addslashes($_POST['answer-txt']);
-
-// recuperer l'id utilisateur via l'url avec $GET
- 
-// J'enregiste le commentaire dans la base :
-$pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendId, '$answertxt', NOW())");
+    $erreur = '';
+    if ($_POST['btn-send-message'] != '') {
+        // Je corrige les '' :
+        $answertxt = addslashes($_POST['answer-txt']);
+        // recuperer l'id utilisateur via l'url avec $GET
+    
+        // J'enregiste le commentaire dans la base :
+        $pdo->exec("INSERT INTO messages (id_expediteur, id_destinataire, message, date) VALUES ($user_id, $friendId, '$answertxt', NOW())");
+    } else {
+        $erreur = 'Il faut au moins un caractère pour envoyer un message!';
+    }
 }
 
 
@@ -62,7 +69,6 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
     //     echo $messages['id_destinataire'] . ' : ' . $messages['message'] . '<br>';
     // } 
 ?>
-<h5 class='error'><?php echo $user_id; ?></h5>
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
@@ -142,42 +148,39 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
             <div class="messagerie-contact">
                 <section class="chat-messagerie">
                     <div class="list-messages">
-
-                    <?php
-                    while ($messages = $r_destinataire->fetch(PDO::FETCH_ASSOC)) { 
-                    echo '<div class="messages">
-                        <h6 class="time">'. $messages['date'].'</h6>
-
-                        <div class="outside-message msg-bleu-fonce">
-                            <img src="img/'.$userimg.'" alt="avatar utilisateur messagerie">
-                            <div class="inside-message">        
-                                <h6>'. $_SESSION['user']['username'].'</h6>
-                                <p>'. $messages['message'].'</p>
-                            </div>
-                        </div>
-                    </div>';
-                    } 
+                    <?php 
+                    // while ($messages = $r_messages->fetch(PDO::FETCH_ASSOC)){
+                    //     if ($messages['id_expediteur'] === $user_id) {
+                    //     echo   '<div class="messages">
+                    //                 <h6 class="time">'. $messages['date'].'</h6>
+                    //                 <div class="outside-message msg-bleu-fonce">
+                    //                     <img src="img/'.$userimg.'" alt="avatar utilisateur messagerie">
+                    //                     <div class="inside-message">        
+                    //                         <h6>'. $_SESSION['user']['username'].'</h6>
+                    //                         <p>'. $messages['message'].'</p>
+                    //                     </div>
+                    //                 </div>
+                    //             </div>';
+                    //     } else if ($messages['id_expediteur'] === $friendId) {
+                    //     echo    '<div class="messages">
+                    //                 <div class="outside-message msg-bleu-ciel">
+                    //                     <img src="img/'.$friendImage.'" alt="avatar utilisateur messagerie">
+                    //                     <div class="inside-message">        
+                    //                         <h6>'. $friendName .'</h6>
+                    //                         <p>'. $messages['message'].'</p>
+                    //                     </div>
+                    //                 </div>
+                    //                 <h6 class="time">'. $messages['date'].'</h6>
+                    //             </div>';
+                    //     }
+                    // }
                     ?>
-                    <?php
-                    while ($messages_bis = $r_expediteur->fetch(PDO::FETCH_ASSOC)) {
-                    echo'<div class="messages">
-                        <div class="outside-message msg-bleu-ciel">
-                            <img src="img/'.$friendImage.'" alt="avatar utilisateur messagerie">
-                            <div class="inside-message">        
-                                <h6>'. $friendName .'</h6>
-                                <p>'. $messages_bis['message'].'</p>
-                            </div>
-                        </div>
-                    
-                        <h6 class="time">'. $messages_bis['date'].'</h6>
-                    </div>';
-                    } ?>
                     </div>
 
                     <div class="text-input">
-                        <form method="POST" action="">
+                        <form method="POST">
                             <input type="text" id="answer-txt" name="answer-txt">
-                            <button type="submit" name="btn-send-message"><img src="img/arrow_message.png" alt="icone fleche envoie message"></button>
+                            <button type="submit" name="btn-send-message" class="btn-message"><img src="img/arrow_message.png" alt="icone fleche envoie message"></button>
                         </form>
                     </div>
                 </section>
@@ -195,11 +198,12 @@ $pdo->exec("INSERT INTO messages (id_expediteur, message, date) VALUES ($friendI
                     <div class="friend-list">
                         <?php
                         while ($friend = $rUser->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<div class="friend">
-                                <a href="?friendId='.$friend['id_user'].'"><img src="img/'.$friend['userimg'].'" alt="Photo de profil d\'un ami"></a>
-                                <a href="?friendId='.$friend['id_user'].'"><h4>'.$friend['username'].'</h4></a>
-                            </div>';
-                        } ?>
+                            echo '<a class="friend" data-user="'.$user_id.'" data-friend="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
+                                    <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
+                                    <h4>' . $friend['username'] . '</h4>
+                                </a>';
+                        } 
+                        ?>
                     </div>
                 </section>
             </div>
