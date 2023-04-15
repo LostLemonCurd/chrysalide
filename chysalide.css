@@ -421,17 +421,24 @@ margin-bottom: 30px;
   border: 2px solid var(--couleur-black-hex);
 }
 
-
-#find-a-chrysalide-sports h6{
+#find-a-chrysalide-sports button{
+  
   border: 1px solid var(--couleur-lightgrey-rgba);
   background-color: var(--couleur-lightgrey-rgba);
   border-radius: 50px;
   padding: 12px 0;
-  color: var(--couleur-white-hex);
   width: 100%;
   text-align: center;
+}
+
+#find-a-chrysalide-sports button h6{
+  
+  color: var(--couleur-white-hex);
+  
   cursor: pointer;
 }
+
+
 
 .sport-raquette:hover{
   background-color: var(--couleur-orange-hex);
@@ -510,6 +517,7 @@ margin-bottom: 30px;
   flex-wrap: wrap;
   gap: 15px;
   height: 240px;
+  width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
   overflow-y: auto;

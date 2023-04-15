@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="lib.css">
     <link rel="stylesheet" href="chysalide.css">
     <link rel="stylesheet" href="création-chrysalide.php">
-    <script src='lib.js' defer></script>
+    <script src='script-chrysalide.js' defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- <script src='lib.js' defer></script> -->
   <title>Chrysalide</title>
 </head>
 <body>
@@ -38,14 +41,18 @@ if ($_POST) {
     $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
     VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
-    $r_user = $pdo->query("SELECT * FROM groupes");
+    $stmt = $pdo->query("SELECT * FROM groupes");
 
     // Vérifier si l'insertion s'est bien déroulée
-    if ($r_user->rowCount() > 0) {
+    if ($r_sport->rowCount() > 0) {
         echo "Données insérées avec succès";
     } else {
         echo "Erreur lors de l'insertion des données";
     }
+
+    
+
+
 }
 ?>
 
@@ -158,37 +165,37 @@ if ($_POST) {
             <div class="sport_line">
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Football">Football<br>
+                <input type="checkbox" name="sport" value="football">Football<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Basketball">Basketball<br>
+                <input type="checkbox" name="sport" value="basketball">Basketball<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Golf">Golf<br>
+                <input type="checkbox" name="sport" value="golf">Golf<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Boxe">Boxe<br>
+                <input type="checkbox" name="sport" value="boxe">Boxe<br>
             </div>
             </div>
             <div class="sport_line">
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Baseball">Baseball<br>
+                <input type="checkbox" name="sport" value="baseball">Baseball<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Tennis">Tennis<br>
+                <input type="checkbox" name="sport" value="tennis">Tennis<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Ping-pong">Ping-pong<br>
+                <input type="checkbox" name="sport" value="ping-pong">Ping-pong<br>
             </div>
             <div class="carte_sport">
                 <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="Badminton">Badminton<br>
+                <input type="checkbox" name="sport" value="badminton">Badminton<br>
             </div>
             </div>
             </select>
@@ -261,14 +268,14 @@ if ($_POST) {
                         </div>
                         
                         <div id="find-a-chrysalide-sports">
-                            <h6 class="sport-co">Football</h6>
-                            <h6 class="sport-co">Basketball</h6>
-                            <h6 class="sport-raquette">Tennis</h6>
-                            <h6 class="sport-co">Baseball</h6>
-                            <h6 class="sport-raquette">Badminton</h6>
-                            <h6 class="sport-raquette">Ping-pong</h6>
-                            <h6 class="sport-solo">Golf</h6>
-                            <h6 class="sport-solo">Boxe</h6>
+                            <button class="display-sport sport-co" data-sport='football' data-user="<?php echo $user_id ?>"><h6  id='btn-football'>Football</h6></button>
+                            <button class="display-sport sport-co" data-sport='basketball' data-user="<?php echo $user_id ?>"><h6  id='btn-basketball'>Basketball</h6></button>
+                            <button class="display-sport sport-raquette" data-sport='tennis' data-user="<?php echo $user_id ?>"><h6  id='btn-tennis'>Tennis</h6></button>
+                            <button class="display-sport sport-co" data-sport='baseball' data-user="<?php echo $user_id ?>"><h6  id='btn-baseball'>Baseball</h6></button>
+                            <button class="display-sport sport-raquette" data-sport='badminton' data-user="<?php echo $user_id ?>"><h6  id='btn-badminton'>Badminton</h6></button>
+                            <button class="display-sport sport-raquette" data-sport='ping-pong' data-user="<?php echo $user_id ?>"><h6  id='btn-ping-pong'>Ping-pong</h6></button>
+                            <button class="display-sport sport-solo" data-sport='golf' data-user="<?php echo $user_id ?>"><h6 id='btn-golf'>Golf</h6></button>
+                            <button class="display-sport sport-solo" data-sport='boxe' data-user="<?php echo $user_id ?>"><h6 id='btn-boxe'>Boxe</h6></button>
                         </div>
                     </div>
                     <div id="find-a-chrysalide-pop-up">
@@ -281,78 +288,39 @@ if ($_POST) {
                             <h6>Filter</h6>
                         </button>
                         <div id="find-a-chrysalide-content-event">
-                            <div id="find-a-chrysalide-event">
-                                <div id="find-a-chrysalide-event-title">
-                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                </div>
-                                <div id="find-a-chrysalide-event-img">
-                                    <img src="img/foot.png" alt="image de foot">
-                                </div>
-                                <div id="find-a-chrysalide-event-buttons">
-                                    <button><h5 class="color-black">Rejoindre</h5></button>
-                                    <h5 class="color-black">11/11</h5>
-                                </div>
-                            </div>
-                            <div id="find-a-chrysalide-event">
-                                <div id="find-a-chrysalide-event-title">
-                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                </div>
-                                <div id="find-a-chrysalide-event-img">
-                                    <img src="img/foot.png" alt="image de foot">
-                                </div>
-                                <div id="find-a-chrysalide-event-buttons">
-                                    <button><h5 class="color-black">Rejoindre</h5></button>
-                                    <h5 class="color-black">11/11</h5>
-                                </div>
-                            </div>
-                            <div id="find-a-chrysalide-event">
-                                <div id="find-a-chrysalide-event-title">
-                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                </div>
-                                <div id="find-a-chrysalide-event-img">
-                                    <img src="img/foot.png" alt="image de foot">
-                                </div>
-                                <div id="find-a-chrysalide-event-buttons">
-                                    <button><h5 class="color-black">Rejoindre</h5></button>
-                                    <h5 class="color-black">11/11</h5>
-                                </div>
-                            </div>
-                            <div id="find-a-chrysalide-event">
-                                <div id="find-a-chrysalide-event-title">
-                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                </div>
-                                <div id="find-a-chrysalide-event-img">
-                                    <img src="img/foot.png" alt="image de foot">
-                                </div>
-                                <div id="find-a-chrysalide-event-buttons">
-                                    <button><h5 class="color-black">Rejoindre</h5></button>
-                                    <h5 class="color-black">11/11</h5>
-                                </div>
-                            </div>
-                            <div id="find-a-chrysalide-event">
-                                <div id="find-a-chrysalide-event-title">
-                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                </div>
-                                <div id="find-a-chrysalide-event-img">
-                                    <img src="img/foot.png" alt="image de foot">
-                                </div>
-                                <div id="find-a-chrysalide-event-buttons">
-                                    <button><h5 class="color-black">Rejoindre</h5></button>
-                                    <h5 class="color-black">11/11</h5>
-                                </div>
-                            </div>
-                            <div id="find-a-chrysalide-event">
-                                <div id="find-a-chrysalide-event-title">
-                                    <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                </div>
-                                <div id="find-a-chrysalide-event-img">
-                                    <img src="img/foot.png" alt="image de foot">
-                                </div>
-                                <div id="find-a-chrysalide-event-buttons">
-                                    <button><h5 class="color-black">Rejoindre</h5></button>
-                                    <h5 class="color-black">11/11</h5>
-                                </div>
-                            </div>
+                            <script>
+                                 
+                            </script>
+                            <?php
+                               /*while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<a class="friend" data-conuser="'.$sport.'" data-id="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
+                                        <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
+                                        <h4>' . $friend['username'] . '</h4>
+                                    </a>';
+                            }*/
+                            
+                            ?>
+                            <?php 
+                            $r_sport = $pdo->query("SELECT * FROM groupes");
+                            while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<div id="find-a-chrysalide-event">
+                                        <div id="find-a-chrysalide-event-title">
+                                            <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
+                                        </div>
+                                        <div id="find-a-chrysalide-event-img">
+                                            <img src="img/'. $sport['sport'] .'.png" alt="image de foot">
+                                        </div>
+                                        <div id="find-a-chrysalide-event-buttons">
+                                            <button><h5 class="color-black">Rejoindre</h5></button>
+                                            <h5 class="color-black">' . $sport['places_disponibles'] .  '/'. $sport['places_disponibles'] .'</h5>
+                                        </div>
+                                    </div>';
+                            
+                            } 
+
+                            ?>
+                            
+                            
                         </div>
                         <div id="find-a-chrysalide-filter">
                             <button  class="find-a-chrysalide-filter-button" onclick="hideFilter()">
