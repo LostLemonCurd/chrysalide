@@ -30,20 +30,20 @@ $rUser = $pdo->query("SELECT * FROM user WHERE id_user != $user_id");
 
 // $friendImage = $_SESSION['friends']['userimg']; Il n'y a pas de session frends il faut les récupérer avec une requête SQL
 // Récupération GET de l'id des amis de l'utilisateur connecté
-$friendId = 8;
-$friendName = 'friend';
+// $friendId = 8;
+// $friendName = 'friend';
 
-if($_GET){
-    $friendId = $_GET['friendId'];
-    // Récupération à partir de l'id des informations de l'ami
-    $friendName = '';
-    $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
-    $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
-    $friendName = $friendDetail['username'];
-    $friendImage = $friendDetail['userimg'];
-} 
+// if($_GET){
+//     $friendId = $_GET['friendId'];
+//     // Récupération à partir de l'id des informations de l'ami
+//     $friendName = '';
+//     $r4 = $pdo->query("SELECT * FROM user WHERE id_user = '$friendId'");
+//     $friendDetail = $r4->fetch(PDO::FETCH_ASSOC);
+//     $friendName = $friendDetail['username'];
+//     $friendImage = $friendDetail['userimg'];
+// } 
 
-$r_messages = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId) ORDER BY date ASC");
+// $r_messages = $pdo->query("SELECT * FROM messages WHERE (id_expediteur = $friendId AND id_destinataire = $user_id) OR (id_expediteur = $user_id AND id_destinataire = $friendId) ORDER BY date ASC");
 
 // Enregistrer les commentaires dans la base
 // Si le formulaire est posté :
@@ -179,7 +179,7 @@ if (isset($_POST['btn-send-message'])) {
 
                     <div class="text-input">
                         <form method="POST">
-                            <input type="text" id="answer-txt" name="answer-txt">
+                            <input type="text" class='answer-txt' id="answer-txt" name="answer-txt">
                             <button type="submit" name="btn-send-message" class="btn-message"><img src="img/arrow_message.png" alt="icone fleche envoie message"></button>
                         </form>
                     </div>
@@ -198,7 +198,7 @@ if (isset($_POST['btn-send-message'])) {
                     <div class="friend-list">
                         <?php
                         while ($friend = $rUser->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<a class="friend" data-user="'.$user_id.'" data-friend="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
+                            echo '<a class="friend" data-user="'.$user_id.'" data-friend="'.$friend['id_user'].'" href="">
                                     <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
                                     <h4>' . $friend['username'] . '</h4>
                                 </a>';
