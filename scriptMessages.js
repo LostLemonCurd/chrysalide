@@ -1,7 +1,6 @@
 // Requête Ajax
 $(document).ready(function() {
 // Je capte l'évenement change sur la div friend :
-    function fetchMessages() {
         $('.friend').click(function(e) {
             e.preventDefault();
             let listMessage = document.querySelector('.list-messages');
@@ -81,14 +80,14 @@ $(document).ready(function() {
                 }
             });
         });
-    }
-    fetchMessages();
+
     $(document).on('click', '.btn-message', function(e) {        
         e.preventDefault();
         let user_id = $(this).data('user');
         let friendId = $(this).data('friend');
         console.log(user_id);
         console.log(friendId);
+        let msgInput = document.querySelector('#answer-txt');
         let msgContent = document.querySelector('#answer-txt').value;
         console.log(msgContent);
 
@@ -105,8 +104,13 @@ $(document).ready(function() {
 		}).done(function(data) {
 			// A faire après le PHP :
             console.log(data);
-            fetchMessages();
-
+            msgInput.value = '';
 		});
     });
 });
+
+
+
+
+
+
