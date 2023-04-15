@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,49 +13,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <!-- <script src='lib.js' defer></script> -->
-  <title>Chrysalide</title>
+    <title>Chrysalide</title>
 </head>
+
 <body>
-<?php
-include('init.php');
-// Vérifier si le formulaire a été soumis
-$user_id = $_SESSION["user"]["id_user"];
-if ($_POST) {
+    <?php
+    include('init.php');
+    // Vérifier si le formulaire a été soumis
+    $user_id = $_SESSION["user"]["id_user"];
+    if ($_POST) {
 
-    // Récupérer les données saisies par l'utilisateur
-    $ville = $_POST["ville"];
-    $places_disponibles = $_POST["places_disponibles"];
-    $sport = $_POST["sport"];
+        // Récupérer les données saisies par l'utilisateur
+        $ville = $_POST["ville"];
+        $places_disponibles = $_POST["places_disponibles"];
+        $sport = $_POST["sport"];
 
-    // Générer un nom de groupe aléatoire
-    $nom_groupe = 'Groupe_' . uniqid();
-
-    // Vérifier si le nom de groupe est déjà utilisé
-    $stmt = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
-    $stmt->execute([$nom_groupe]);
-    if ($stmt->rowCount() >= 1) {
-        // Le nom de groupe est déjà utilisé, générer un nouveau nom
+        // Générer un nom de groupe aléatoire
         $nom_groupe = 'Groupe_' . uniqid();
-    }
 
-    // Insérer les données dans la table "groupes"
-    $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
+        // Vérifier si le nom de groupe est déjà utilisé
+        $stmt = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
+        $stmt->execute([$nom_groupe]);
+        if ($stmt->rowCount() >= 1) {
+            // Le nom de groupe est déjà utilisé, générer un nouveau nom
+            $nom_groupe = 'Groupe_' . uniqid();
+        }
+
+        // Insérer les données dans la table "groupes"
+        $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
     VALUES (?, ?, ?, ?, ?)");
-    $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
-    $stmt = $pdo->query("SELECT * FROM groupes");
+        $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
+        $stmt = $pdo->query("SELECT * FROM groupes");
 
-    // Vérifier si l'insertion s'est bien déroulée
-    if ($r_sport->rowCount() > 0) {
-        echo "Données insérées avec succès";
-    } else {
-        echo "Erreur lors de l'insertion des données";
+        // Vérifier si l'insertion s'est bien déroulée
+        if ($r_sport->rowCount() > 0) {
+            echo "Données insérées avec succès";
+        } else {
+            echo "Erreur lors de l'insertion des données";
+        }
     }
-
-    
-
-
-}
-?>
+    ?>
 
     <header>
         <section id="header-logo">
@@ -65,20 +63,24 @@ if ($_POST) {
             <section id="header-input-buttons">
                 <form method="post">
                     <svg width="27" height="27" viewBox="0 0 27 27" fill="#1C1C28" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="#1C1C28"/>
+                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="#1C1C28" />
                     </svg>
                     <input class="search-bar" type="text" placeholder="Rechercher">
                 </form>
                 <div id="header-buttons">
-                    <a href="#"><h6>Tournois</h6></a>
-                    <a href="#"><h6>Chrysalide</h6></a>
+                    <a href="#">
+                        <h6>Tournois</h6>
+                    </a>
+                    <a href="#">
+                        <h6>Chrysalide</h6>
+                    </a>
                 </div>
             </section>
             <section id="header-profil">
                 <img src="img/img-profile.png" alt="photo de profil">
             </section>
         </section>
-        
+
     </header>
     <main>
         <aside>
@@ -135,75 +137,79 @@ if ($_POST) {
                 </div>
             </div>
             <div id="btn-box">
-                <button class="btn-blue" onclick="openOverlay()"><h6>Créer</h6></button>
-                <button class="btn-vide"><h6>Rejoindre</h6></button>
+                <button class="btn-blue" onclick="openOverlay()">
+                    <h6>Créer</h6>
+                </button>
+                <button class="btn-vide">
+                    <h6>Rejoindre</h6>
+                </button>
             </div>
 
 
             <div class="overlay">
-    <div class="overlay-content">
-    <h1 id="titre-overlay">Créer ta Chrysalide</h1>
-    <button class="close-btn">x</button>
-        <form method="post">
-            <h2 class='espace'>Ville : </h2><input type="text" name="ville"><br>
-            <h2 class='espace'>Places disponibles : </h2>
-            <select name="places_disponibles">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select><br>
-            <h2 class="espace">Sports :</h2><br>
-            <div class="sport_line">
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="football">Football<br>
+                <div class="overlay-content">
+                    <h1 id="titre-overlay">Créer ta Chrysalide</h1>
+                    <button class="close-btn">x</button>
+                    <form method="post">
+                        <h2 class='espace'>Ville : </h2><input type="text" name="ville"><br>
+                        <h2 class='espace'>Places disponibles : </h2>
+                        <select name="places_disponibles">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select><br>
+                        <h2 class="espace">Sports :</h2><br>
+                        <div class="sport_line">
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="football">Football<br>
+                            </div>
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="basketball">Basketball<br>
+                            </div>
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="golf">Golf<br>
+                            </div>
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="boxe">Boxe<br>
+                            </div>
+                        </div>
+                        <div class="sport_line">
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="baseball">Baseball<br>
+                            </div>
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="tennis">Tennis<br>
+                            </div>
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="ping-pong">Ping-pong<br>
+                            </div>
+                            <div class="carte_sport">
+                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <input type="checkbox" name="sport" value="badminton">Badminton<br>
+                            </div>
+                        </div>
+                        </select>
+                        <div class="Créergroupe"><input class=btn-blue type="submit" value="Créer un groupe"></div>
+
+                    </form>
+                </div>
             </div>
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="basketball">Basketball<br>
-            </div>
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="golf">Golf<br>
-            </div>
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="boxe">Boxe<br>
-            </div>
-            </div>
-            <div class="sport_line">
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="baseball">Baseball<br>
-            </div>
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="tennis">Tennis<br>
-            </div>
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="ping-pong">Ping-pong<br>
-            </div>
-            <div class="carte_sport">
-                <img src="img/foot.png" alt="" width="112" height="100">
-                <input type="checkbox" name="sport" value="badminton">Badminton<br>
-            </div>
-            </div>
-            </select>
-            <div class="Créergroupe"><input class=btn-blue type="submit" value="Créer un groupe"></div>
-            
-        </form>
-    </div>
-</div>
             <script>
                 const createBtn = document.querySelector('.btn-blue');
                 const overlay = document.querySelector('.overlay');
@@ -223,7 +229,7 @@ if ($_POST) {
                 <label for="private">Privée</label>
                 <input type="checkbox" id="private" name="access" value="private">
             </div>
-              
+
             <div id="mes-chrysalide">
                 <div class="my-div">
                     <h5>Equipe</h5>
@@ -251,7 +257,7 @@ if ($_POST) {
                         <div id="find-a-chrysalide-research-input">
                             <form class="input-search" method="post" action="">
                                 <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="red"/>
+                                    <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="red" />
                                 </svg>
                                 <input type="text" placeholder="Rechercher">
                             </form>
@@ -266,20 +272,36 @@ if ($_POST) {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div id="find-a-chrysalide-sports">
-                            <button class="display-sport sport-co" data-sport='football' data-user="<?php echo $user_id ?>"><h6  id='btn-football'>Football</h6></button>
-                            <button class="display-sport sport-co" data-sport='basketball' data-user="<?php echo $user_id ?>"><h6  id='btn-basketball'>Basketball</h6></button>
-                            <button class="display-sport sport-raquette" data-sport='tennis' data-user="<?php echo $user_id ?>"><h6  id='btn-tennis'>Tennis</h6></button>
-                            <button class="display-sport sport-co" data-sport='baseball' data-user="<?php echo $user_id ?>"><h6  id='btn-baseball'>Baseball</h6></button>
-                            <button class="display-sport sport-raquette" data-sport='badminton' data-user="<?php echo $user_id ?>"><h6  id='btn-badminton'>Badminton</h6></button>
-                            <button class="display-sport sport-raquette" data-sport='ping-pong' data-user="<?php echo $user_id ?>"><h6  id='btn-ping-pong'>Ping-pong</h6></button>
-                            <button class="display-sport sport-solo" data-sport='golf' data-user="<?php echo $user_id ?>"><h6 id='btn-golf'>Golf</h6></button>
-                            <button class="display-sport sport-solo" data-sport='boxe' data-user="<?php echo $user_id ?>"><h6 id='btn-boxe'>Boxe</h6></button>
+                            <button class="display-sport sport-co" data-sport='football' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-football'>Football</h6>
+                            </button>
+                            <button class="display-sport sport-co" data-sport='basketball' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-basketball'>Basketball</h6>
+                            </button>
+                            <button class="display-sport sport-raquette" data-sport='tennis' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-tennis'>Tennis</h6>
+                            </button>
+                            <button class="display-sport sport-co" data-sport='baseball' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-baseball'>Baseball</h6>
+                            </button>
+                            <button class="display-sport sport-raquette" data-sport='badminton' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-badminton'>Badminton</h6>
+                            </button>
+                            <button class="display-sport sport-raquette" data-sport='ping-pong' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-ping-pong'>Ping-pong</h6>
+                            </button>
+                            <button class="display-sport sport-solo" data-sport='golf' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-golf'>Golf</h6>
+                            </button>
+                            <button class="display-sport sport-solo" data-sport='boxe' data-user="<?php echo $user_id ?>">
+                                <h6 id='btn-boxe'>Boxe</h6>
+                            </button>
                         </div>
                     </div>
                     <div id="find-a-chrysalide-pop-up">
-                        <button class="find-a-chrysalide-filter-button" onclick="showFilter()" >
+                        <button class="find-a-chrysalide-filter-button" onclick="showFilter()">
                             <div class="find-a-chrysalide-filter-button-line filter-open">
                                 <span></span>
                                 <span></span>
@@ -289,18 +311,18 @@ if ($_POST) {
                         </button>
                         <div id="find-a-chrysalide-content-event">
                             <script>
-                                 
+
                             </script>
                             <?php
-                               /*while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
+                            /*while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<a class="friend" data-conuser="'.$sport.'" data-id="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
                                         <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
                                         <h4>' . $friend['username'] . '</h4>
                                     </a>';
                             }*/
-                            
+
                             ?>
-                            <?php 
+                            <?php
                             $r_sport = $pdo->query("SELECT * FROM groupes");
                             while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<div id="find-a-chrysalide-event">
@@ -308,22 +330,21 @@ if ($_POST) {
                                             <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
                                         </div>
                                         <div id="find-a-chrysalide-event-img">
-                                            <img src="img/'. $sport['sport'] .'.png" alt="image de foot">
+                                            <img src="img/' . $sport['sport'] . '.png" alt="image de foot">
                                         </div>
                                         <div id="find-a-chrysalide-event-buttons">
                                             <button><h5 class="color-black">Rejoindre</h5></button>
-                                            <h5 class="color-black">' . $sport['places_disponibles'] .  '/'. $sport['places_disponibles'] .'</h5>
+                                            <h5 class="color-black">' . $sport['places_disponibles'] .  '/' . $sport['places_disponibles'] . '</h5>
                                         </div>
                                     </div>';
-                            
-                            } 
+                            }
 
                             ?>
-                            
-                            
+
+
                         </div>
                         <div id="find-a-chrysalide-filter">
-                            <button  class="find-a-chrysalide-filter-button" onclick="hideFilter()">
+                            <button class="find-a-chrysalide-filter-button" onclick="hideFilter()">
                                 <div class="find-a-chrysalide-filter-button-line filter-close">
                                     <span></span>
                                     <span></span>
@@ -334,11 +355,13 @@ if ($_POST) {
                             <div id="find-a-chrysalide-filter-content">
                                 <form class="input-search" method="" action="">
                                     <svg class="svg-in-black" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="white"/>
+                                        <path d="M25.7351 24.3201L19.4764 18.0626C21.2904 15.8848 22.195 13.0914 22.0019 10.2635C21.8089 7.43573 20.533 4.7912 18.4398 2.88009C16.3466 0.968989 13.5972 -0.0615536 10.7635 0.00284627C7.92984 0.0672461 5.23008 1.22163 3.22586 3.22586C1.22163 5.23008 0.0672461 7.92984 0.00284627 10.7635C-0.0615536 13.5972 0.968989 16.3466 2.88009 18.4398C4.7912 20.533 7.43573 21.8089 10.2635 22.0019C13.0914 22.195 15.8848 21.2904 18.0626 19.4764L24.3201 25.7351C24.413 25.828 24.5233 25.9017 24.6447 25.952C24.7661 26.0023 24.8962 26.0282 25.0276 26.0282C25.159 26.0282 25.2891 26.0023 25.4105 25.952C25.5319 25.9017 25.6422 25.828 25.7351 25.7351C25.828 25.6422 25.9017 25.5319 25.952 25.4105C26.0023 25.2891 26.0282 25.159 26.0282 25.0276C26.0282 24.8962 26.0023 24.7661 25.952 24.6447C25.9017 24.5233 25.828 24.413 25.7351 24.3201ZM2.02763 11.0276C2.02763 9.2476 2.55547 7.50754 3.5444 6.0275C4.53334 4.54745 5.93894 3.3939 7.58348 2.71271C9.22801 2.03152 11.0376 1.85329 12.7834 2.20056C14.5293 2.54783 16.1329 3.405 17.3916 4.66367C18.6503 5.92234 19.5074 7.52599 19.8547 9.27182C20.202 11.0176 20.0237 12.8272 19.3425 14.4718C18.6614 16.1163 17.5078 17.5219 16.0278 18.5109C14.5477 19.4998 12.8077 20.0276 11.0276 20.0276C8.64149 20.025 6.35385 19.0759 4.66659 17.3887C2.97934 15.7014 2.03028 13.4138 2.02763 11.0276Z" fill="white" />
                                     </svg>
-                                    <input type="text" class="input-in-white"  placeholder="Saisissez une ville">
+                                    <input type="text" class="input-in-white" placeholder="Saisissez une ville">
                                     <select id="select-ray">
-                                        <option value="0"><h6>Rayon</h6></option>
+                                        <option value="0">
+                                            <h6>Rayon</h6>
+                                        </option>
                                         <option value="5">
                                             <h6>5 KM</h6>
                                         </option>
@@ -356,7 +379,7 @@ if ($_POST) {
                                         </option>
                                     </select>
                                 </form>
-                                
+
                             </div>
                             <div id="number-of-places">
                                 <h5>Places disponibles</h5>
@@ -389,7 +412,7 @@ if ($_POST) {
                                         <input type="checkbox">
                                         <h6>7</h6>
                                     </div>
-                                    <div class="the-place-checkbox"> 
+                                    <div class="the-place-checkbox">
                                         <input type="checkbox">
                                         <h6>8</h6>
                                     </div>
@@ -427,31 +450,29 @@ if ($_POST) {
 
         // Ajouter un événement "click" à chaque checkbox
         publicCheckbox.addEventListener('click', function() {
-        if (publicCheckbox.checked) {
-            privateCheckbox.checked = false;
-        }
+            if (publicCheckbox.checked) {
+                privateCheckbox.checked = false;
+            }
         });
 
         privateCheckbox.addEventListener('click', function() {
-        if (privateCheckbox.checked) {
-            publicCheckbox.checked = false;
-        }
+            if (privateCheckbox.checked) {
+                publicCheckbox.checked = false;
+            }
         });
 
         const filter = document.getElementById("find-a-chrysalide-filter");
-        
-        
-        
-         function showFilter() { 
+
+
+
+        function showFilter() {
             filter.style.display = "flex";
         }
 
-        function hideFilter() { 
+        function hideFilter() {
             filter.style.display = "none";
         }
-
-
-      </script>
+    </script>
 </body>
-</html>
 
+</html>

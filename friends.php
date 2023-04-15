@@ -30,10 +30,7 @@
     $r_groupe = $pdo->query("SELECT * FROM `groupes` WHERE id_user IN (SELECT id_user FROM user WHERE id_user = $userId)");
     // `id_groupe`, `id_user`, `nom_groupe`, `ville`, `places_disponibles`, `sport`, `date_creation`, `date_event` FROM `groupes` WHERE")
 
-    ?>
-
-    <h5 class="error"></h5>
-    
+    ?>    
     <header>
         <section id="header-logo">
             <img src="img/logo.png" alt="logo de Chrysalide">
