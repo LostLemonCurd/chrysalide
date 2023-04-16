@@ -20,6 +20,7 @@
                         ini_set('display_errors', 1); ?></h6>
 
     <?php
+// Require permet de charger le fichier init.php (contient des configurations initiales pour la connexion BDD, etc) dans le fichier messagerie = évite répition code
 require 'init.php';
 
 // On redirige l'utilisateur s'il n'est pas connecté:
@@ -28,11 +29,11 @@ if(!isset($_SESSION['user'])){
 }
 
 
-
+// Stocke l'image de profil et l'id de l'utilisateur connecté
 $userimg = $_SESSION['user']['userimg'];
 $user_id = $_SESSION['user']['id_user'];
 
-
+// Sélection de toutes les infos de tous les users de la table user dont l'ID est différent de l'utilisateur connecté grâce à l'objet pdo pour la boucle while
 $rUser = $pdo->query("SELECT * FROM user WHERE id_user != $user_id");
 
 ?>
@@ -138,6 +139,8 @@ $rUser = $pdo->query("SELECT * FROM user WHERE id_user != $user_id");
                     
                     <div class="friend-list">
                         <?php
+                        // Permet d'afficher la liste des utilisateurs amis avec la personne connectée (affiche l'image de profil + nom utilisateur des amis dans un lien <a>)
+                        // A chaque itération de la boucle while, la variable $friend stocke les données de l'ami grâce à la reqûete SQL précédente ($rUser = $pdo->query("SELECT * FROM user WHERE id_user != $user_id");)
                         while ($friend = $rUser->fetch(PDO::FETCH_ASSOC)) {
                             echo '<a class="friend" data-user="'.$user_id.'" data-friend="'.$friend['id_user'].'" href="">
                                     <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
