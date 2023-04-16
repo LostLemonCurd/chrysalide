@@ -117,9 +117,9 @@ $(document).ready(function() {
 		});
 	});
 
-    $(document).on('click', '#btnRejoindre', function(e) {        
+    $(document).on('click', '.request-f', function(e) {        
         e.preventDefault();
-        let groupeName =  this.getAttribute("data-groupe");
+        let friendId =  this.getAttribute("data-friendid");
         let userId =  this.getAttribute("data-conuser");
         // console.log("eee" + this.getAttribute("data-isfriend"));
         if (this.getAttribute("data-isfriend") === '0') {
