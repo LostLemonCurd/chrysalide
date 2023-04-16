@@ -1,3 +1,11 @@
+// Redirection vers la page home avec le logo
+
+let logo = document.querySelector('#header-logo > img');
+logo.addEventListener('click', () => {
+    window.location.assign("index.php");
+})
+
+
 // Demande de confirmation avant déconnexion
 
 let deco = document.querySelector('#deco');

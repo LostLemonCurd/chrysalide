@@ -22,6 +22,13 @@
     <?php
 require 'init.php';
 
+// On redirige l'utilisateur s'il n'est pas connecté:
+if(!isset($_SESSION['user'])){
+   header('location:connexion.php');
+}
+
+
+
 $userimg = $_SESSION['user']['userimg'];
 $user_id = $_SESSION['user']['id_user'];
 

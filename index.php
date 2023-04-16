@@ -14,6 +14,10 @@
     <?php 
     include('init.php');
     
+    // On redirige l'utilisateur s'il n'est pas connecté:
+    if(!isset($_SESSION['user'])){
+        header('location:connexion.php');
+    }
     
     $userImage = $_SESSION['user']['userimg'];
     $userName =  $_SESSION['user']['username'];
