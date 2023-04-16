@@ -30,7 +30,7 @@ deco.addEventListener('click', (e) =>{
     }
 })
 
-
+let groupeList = document.querySelector('.team-list');
 // Requête Ajax
 $(document).ready(function() {
 
@@ -43,7 +43,7 @@ $(document).ready(function() {
         let userId = $(this).data('conuser');
 		console.log(friendId);
 		console.log(userId);
-
+        groupeList.innerHTML = '';
 		// Je lance la fonction ajax :
 		$.ajax({
 			// Je mets l'URL dans laquelle je récupère les données :
@@ -69,13 +69,56 @@ $(document).ready(function() {
                 $('.request-f').attr('data-isfriend', 1);    
                 $('.request-f').attr('data-friendid', friendId); 
             }
+            for (let i = 0; i < data.groupe.length; i++) {
+                let sportImg;
+                switch (data.groupe[i].sport) {
+                    case 'football':
+                        sportImg = 'football.png';
+                        break;
+                    case 'basketball':
+                        sportImg = 'basket.png';
+                        break;
+                    case 'golf':
+                        sportImg = 'golf.png';
+                        break;
+                    case 'boxe':
+                        sportImg = 'boxe.png';
+                        break;
+                    case 'baseball':
+                        sportImg = 'baseball.png';
+                        break;
+                    case 'tennis':
+                        sportImg = 'tennis.png';
+                        break;
+                    case 'ping-pong':
+                        sportImg = 'ping-pong.png';
+                        break;
+                    case 'badminton':
+                        sportImg = 'bad.png';
+                        break;       
+                    default:
+                        sportImg = 'Nope';
+                        break;
+                }
+                // Creating the elements
+                let teamDiv = document.createElement('div');
+                teamDiv.classList.add('teams');
+                let teamImg = document.createElement('img');
+                teamImg.setAttribute('src', `img/${sportImg}`);
+                teamImg.setAttribute('alt', `${data.groupe[i].sport}`);
+                let teamName = document.createElement('h6');
+                teamName.innerHTML = data.groupe[i].nom_groupe;
+                // Appending everything to the page.
+                teamDiv.append(teamImg, teamName);
+                groupeList.appendChild(teamDiv);
+            }
 
 		});
 	});
 
-    $(document).on('click', '.request-f', function(e) {        
+    $(document).on('click', '#btnRejoindre', function(e) {        
         e.preventDefault();
-        let friendId =  this.getAttribute("data-friendid");
+        let groupeName =  this.getAttribute("data-groupe");
         let userId =  this.getAttribute("data-conuser");
         // console.log("eee" + this.getAttribute("data-isfriend"));
         if (this.getAttribute("data-isfriend") === '0') {

@@ -211,9 +211,10 @@
     justify-content: space-between;
     width: 100%;
     gap: 18px;
+    overflow: scroll;
 }
 .friends-section .team-list img{
-    width: 40%;
+    width: 50px;
     height: auto;
 }
 .friends-section .team-list .teams{
@@ -254,6 +255,7 @@
 .equipe-section .team-list{
     display: flex;
     gap: 20px;
+    overflow: scroll;
 }
 .equipe-section .team-list .teams{
     display: flex;

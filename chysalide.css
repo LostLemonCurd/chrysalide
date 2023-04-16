@@ -143,6 +143,7 @@ border-color: var(--couleur-bleu-hex);
 #mes-chrysalide{
 display: flex;
 margin-bottom: 30px;
+overflow: scroll;
 }
 /* <<<<<<< Updated upstream */
 .my-div h5 {
@@ -561,6 +562,7 @@ margin-bottom: 30px;
   justify-content: space-between;
   align-items: center;
   color: var(--couleur-black-hex);
+  gap: 12px;
 }
 
 #find-a-chrysalide-pop-up #find-a-chrysalide-content-event #find-a-chrysalide-event #find-a-chrysalide-event-buttons button{
@@ -651,3 +653,7 @@ margin-bottom: 30px;
   justify-content: flex-start;
 }
 
+.dark-center{
+  color: var(--couleur-black-hex);
+  text-align: center;
+}

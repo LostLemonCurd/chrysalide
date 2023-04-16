@@ -17,40 +17,48 @@
 </head>
 
 <body>
+<h6 class="error"> <?php error_reporting(E_ALL); ini_set('display_errors', 1); ?></h6>
+
     <?php
     include('init.php');
     // Vérifier si le formulaire a été soumis
     $user_id = $_SESSION["user"]["id_user"];
-    if ($_POST) {
 
+    // $r_user_groupe = $pdo->query("SELECT * FROM groupes WHERE id_user = $user_id");
+    $r_user_groupe = $pdo->query("SELECT DISTINCT nom_groupe, ville, sport, date_event FROM groupes WHERE id_user = $user_id");
+
+
+    if ($_POST) {
         // Récupérer les données saisies par l'utilisateur
         $ville = $_POST["ville"];
         $places_disponibles = $_POST["places_disponibles"];
         $sport = $_POST["sport"];
+        $nom_groupe = $_POST["nom_groupe"];
+        $date_event = $_POST["date_event"];
 
-        // Générer un nom de groupe aléatoire
-        $nom_groupe = 'Groupe_' . uniqid();
+        // // Générer un nom de groupe aléatoire
+        // $nom_groupe = 'Groupe_' . uniqid();
 
         // Vérifier si le nom de groupe est déjà utilisé
-        $stmt = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
-        $stmt->execute([$nom_groupe]);
-        if ($stmt->rowCount() >= 1) {
+        $r_nom = $pdo->prepare("SELECT * FROM groupes WHERE nom_groupe = ?");
+        $r_nom->execute([$nom_groupe]);
+        if ($r_nom->rowCount() >= 1) {
             // Le nom de groupe est déjà utilisé, générer un nouveau nom
             $nom_groupe = 'Groupe_' . uniqid();
         }
 
         // Insérer les données dans la table "groupes"
-        $stmt = $pdo->prepare("INSERT INTO groupes (nom_groupe, ville, places_disponibles, sport, id_user) 
-    VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$nom_groupe, $ville, $places_disponibles, $sport, $user_id]);
-        $stmt = $pdo->query("SELECT * FROM groupes");
+        $stmt = $pdo->prepare("INSERT INTO groupes (id_user, nom_groupe, ville, places_disponibles, sport, date_creation, date_event) VALUES (?, ?, ?, ?, ?, now(), ?)");
+        $stmt->execute([$user_id, "$nom_groupe", "$ville", $places_disponibles, "$sport", $date_event]);
 
+
+        $r_sport = $pdo->query("SELECT * FROM groupes");
         // Vérifier si l'insertion s'est bien déroulée
-        if ($r_sport->rowCount() > 0) {
-            echo "Données insérées avec succès";
-        } else {
-            echo "Erreur lors de l'insertion des données";
-        }
+        // if ($r_sport->rowCount() > 0) {
+        //     echo "Données insérées avec succès";
+        // } else {
+        //     echo "Erreur lors de l'insertion des données";
+        // }
     }
     ?>
 
@@ -151,7 +159,12 @@
                     <h1 id="titre-overlay">Créer ta Chrysalide</h1>
                     <button class="close-btn">x</button>
                     <form method="post">
-                        <h2 class='espace'>Ville : </h2><input type="text" name="ville"><br>
+                        <h2 class='espace'>Ville : </h2>
+                        <input type="text" name="ville"><br>
+                        <h2 class='espace'>Nom du Groupe : </h2>
+                        <input type="text" name="nom_groupe"><br>
+                        <h2 class='espace'>Date de l'évenement : </h2>
+                        <input type="date" name="date_event"><br>
                         <h2 class='espace'>Places disponibles : </h2>
                         <select name="places_disponibles">
                             <option value="1">1</option>
@@ -170,37 +183,37 @@
                         <h2 class="espace">Sports :</h2><br>
                         <div class="sport_line">
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/football.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="football">Football<br>
                             </div>
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/basket.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="basketball">Basketball<br>
                             </div>
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/golf.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="golf">Golf<br>
                             </div>
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/boxe.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="boxe">Boxe<br>
                             </div>
                         </div>
                         <div class="sport_line">
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/baseball.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="baseball">Baseball<br>
                             </div>
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/tennis.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="tennis">Tennis<br>
                             </div>
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/ping-pong.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="ping-pong">Ping-pong<br>
                             </div>
                             <div class="carte_sport">
-                                <img src="img/foot.png" alt="" width="112" height="100">
+                                <img src="img/bad.png" alt="" width="112" height="100">
                                 <input type="checkbox" name="sport" value="badminton">Badminton<br>
                             </div>
                         </div>
@@ -231,24 +244,46 @@
             </div>
 
             <div id="mes-chrysalide">
-                <div class="my-div">
-                    <h5>Equipe</h5>
-                    <img src="img/foot.png" alt="Image" width="140" height="125">
-                    <h5>Ville</h5>
-                    <h6>Date</h6>
-                </div>
-                <div class="my-div">
-                    <h5>Equipe</h5>
-                    <img src="img/foot.png" alt="Image" width="140" height="125">
-                    <h5>Ville</h5>
-                    <h6>Date</h6>
-                </div>
-                <div class="my-div">
-                    <h5>Equipe</h5>
-                    <img src="img/foot.png" alt="Image" width="140" height="125">
-                    <h5>Ville</h5>
-                    <h6>Date</h6>
-                </div>
+                <?php 
+                while ($user_groupe = $r_user_groupe->fetch(PDO::FETCH_ASSOC)){
+                    switch ($user_groupe['sport']) {
+                        case 'football':
+                            $sport_img = 'football.png';
+                            break;
+                        case 'basketball':
+                            $sport_img = 'basket.png';
+                            break;
+                        case 'golf':
+                            $sport_img = 'golf.png';
+                            break;
+                        case 'boxe':
+                            $sport_img = 'boxe.png';
+                            break;
+                        case 'baseball':
+                            $sport_img = 'baseball.png';
+                            break;
+                        case 'tennis':
+                            $sport_img = 'tennis.png';
+                            break;
+                        case 'ping-pong':
+                            $sport_img = 'ping-pong.png';
+                            break;
+                        case 'badminton':
+                            $sport_img = 'bad.png';
+                            break;       
+                        default:
+                            $sport_img = 'Nope';
+                            break;
+                    }
+                    echo 
+                    '<div class="my-div">
+                        <h5>'.$user_groupe['nom_groupe'].'</h5>
+                        <img src="img/'.$sport_img.'" alt="Image" width="140" height="125">
+                        <h5>'.$user_groupe['ville'].'</h5>
+                        <h6>'.$user_groupe['date_event'].'</h6>
+                    </div>';
+                }
+                ?>
             </div>
             <div id="find-a-chrysalide">
                 <h1>Trouvez une chrysalide</h1>
@@ -309,40 +344,13 @@
                             </div>
                             <h6>Filter</h6>
                         </button>
+
+                        
                         <div id="find-a-chrysalide-content-event">
-                            <script>
-
-                            </script>
-                            <?php
-                            /*while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
-                                echo '<a class="friend" data-conuser="'.$sport.'" data-id="'.$friend['id_user'].'" href="?friendId='.$friend['id_user'].'">
-                                        <img src="img/' . $friend['userimg'] . '" alt="Photo de profil d\'un ami">
-                                        <h4>' . $friend['username'] . '</h4>
-                                    </a>';
-                            }*/
-
-                            ?>
-                            <?php
-                            $r_sport = $pdo->query("SELECT * FROM groupes");
-                            while ($sport = $r_sport->fetch(PDO::FETCH_ASSOC)) {
-                                echo '<div id="find-a-chrysalide-event">
-                                        <div id="find-a-chrysalide-event-title">
-                                            <h5 class="color-purple">Equipe</h5><h5 class="color-black">Paris-but</h5>
-                                        </div>
-                                        <div id="find-a-chrysalide-event-img">
-                                            <img src="img/' . $sport['sport'] . '.png" alt="image de foot">
-                                        </div>
-                                        <div id="find-a-chrysalide-event-buttons">
-                                            <button><h5 class="color-black">Rejoindre</h5></button>
-                                            <h5 class="color-black">' . $sport['places_disponibles'] .  '/' . $sport['places_disponibles'] . '</h5>
-                                        </div>
-                                    </div>';
-                            }
-
-                            ?>
-
 
                         </div>
+
+
                         <div id="find-a-chrysalide-filter">
                             <button class="find-a-chrysalide-filter-button" onclick="hideFilter()">
                                 <div class="find-a-chrysalide-filter-button-line filter-close">

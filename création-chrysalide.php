@@ -53,7 +53,10 @@ if ($_POST) {
     <h1 id="titre-overlay">Créer ta Chrysalide</h1>
     <button class="close-btn">x</button>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["chrysalide"]); ?>">
-            <h2 class='espace'>Ville : </h2><input type="text" name="ville"><br>
+            <h2 class='espace'>Ville : </h2>
+            <input type="text" name="ville"><br>
+            <h2 class='espace'>Nom du Groupe : </h2>
+            <input type="text" name="nom_grp"><br>
             <h2 class='espace'>Places disponibles : </h2>
             <select name="places_disponibles">
                 <option value="1">1</option>

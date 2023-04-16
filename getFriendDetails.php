@@ -20,6 +20,51 @@ $r1 = $pdo->prepare("SELECT * FROM user WHERE id_user = ?");
 $r1->execute([$_GET['friendId']]);
 $friend = $r1->fetch(PDO::FETCH_ASSOC);
 
+$r1 = $pdo->prepare("SELECT * FROM groupes WHERE id_user = ?");
+$r1->execute([$_GET['friendId']]);
+while ($row = $r1->fetch(PDO::FETCH_ASSOC)){
+    switch ($row['sport']) {
+        case 'football':
+            $sport_img = 'football.png';
+            break;
+        case 'basketball':
+            $sport_img = 'basket.png';
+            break;
+        case 'golf':
+            $sport_img = 'golf.png';
+            break;
+        case 'boxe':
+            $sport_img = 'boxe.png';
+            break;
+        case 'baseball':
+            $sport_img = 'baseball.png';
+            break;
+        case 'tennis':
+            $sport_img = 'tennis.png';
+            break;
+        case 'ping-pong':
+            $sport_img = 'ping-pong.png';
+            break;
+        case 'badminton':
+            $sport_img = 'bad.png';
+            break;       
+        default:
+            $sport_img = 'Nope';
+            break;
+    }
+
+    $groupe_info = [
+        'nom_groupe' => $row['nom_groupe'],
+        'places_disponibles' => $row['places_disponibles'],
+        'ville' => $row['ville'],
+        'sport' => $row['sport'],
+        'sportImg' => $sport_img,
+        'date_creation' => $row['date_creation'],
+        'date_event' => $row['date_event'],
+
+    ];
+    $groupe[] = $groupe_info;
+}
 // Vérification du statut d'amitié de l'utilisateur connecté avec les autres utilisateurs
 $isAFriend = false;
 $r2 = $pdo->prepare("SELECT * FROM friends WHERE (id_user = ? AND id_friend = ?)");
@@ -34,6 +79,7 @@ if (($r2->rowCount() >= 1) or ($r3->rowCount() >= 1)) {
 // Adding the values to the array response so it can be accessed with json later
 $response = [
     'friend' => $friend,
+    'groupe' => $groupe,
     'isAFriend' => $isAFriend
 ];
 

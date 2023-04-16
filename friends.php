@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='reset.css'>
     <link rel="stylesheet" href="lib.css">
     <link rel='stylesheet' href='friends.css'>
-    <script src='script.js' defer></script>
+    <script src='scriptFriends.js' defer></script>
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Chrysalide</title>
@@ -27,8 +27,9 @@
     // Récupération des infromations de tous les utilisateurs pour les afficher à partir d'un format Get
     $r = $pdo->query("SELECT * FROM user WHERE id_user != $userId");
 
-    $r_groupe = $pdo->query("SELECT * FROM `groupes` WHERE id_user IN (SELECT id_user FROM user WHERE id_user = $userId)");
-    // `id_groupe`, `id_user`, `nom_groupe`, `ville`, `places_disponibles`, `sport`, `date_creation`, `date_event` FROM `groupes` WHERE")
+    // $r_groupe = $pdo->query("SELECT * FROM `groupes` WHERE id_user IN (SELECT id_user FROM user WHERE id_user = $userId)");
+    $r_groupe = $pdo->query("SELECT DISTINCT nom_groupe, ville, sport, date_event, places_disponibles FROM groupes WHERE id_user = $userId");
+
 
     ?>    
     <header>
@@ -153,18 +154,7 @@
                     <div class="team-info">
                         <h4>Equipes Chrysalide</h4>
                         <div class="team-list">
-                            <div class="teams">
-                                <img src="img/foot.png" alt="Football">
-                                <h6>Equipe<br>PHP</h6>
-                            </div>
-                            <div class="teams">
-                                <img src="img/foot.png" alt="Football">
-                                <h6>Equipe<br>PHP</h6>
-                            </div>
-                            <div class="teams">
-                                <img src="img/tennis.png" alt="Tennis">
-                                <h6>Equipe<br>PHP</h6>
-                            </div>
+
                         </div>
                     </div>
                 </section>
@@ -173,23 +163,45 @@
                 <h2>Mes équipes</h2>
                 <button class="create-btn">Créer</button>
                 <div class="team-list">
-                        <div class="teams">
-                             <h5>'.$user_grp['nom_groupe'].'</h5>
-                             <img src="img/foot.png" alt="Image du sport">
-                             <div class="add-sport-section">
-                                 <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
-                                 <h5 class="compteur">4/5</h5>
-                             </div>
-                         </div>'
-                    <?php 
-                    while ($user_grp = $r_groupe->fetch(PDO::FETCH_ASSOC)) { 
+                    <?php
+                    while ($user_grp = $r_groupe->fetch(PDO::FETCH_ASSOC)) {
+                        $places = $user_grp['places_disponibles'];
+                        switch ($user_grp['sport']) {
+                            case 'football':
+                                $sport_img = 'football.png';
+                                break;
+                            case 'basketball':
+                                $sport_img = 'basket.png';
+                                break;
+                            case 'golf':
+                                $sport_img = 'golf.png';
+                                break;
+                            case 'boxe':
+                                $sport_img = 'boxe.png';
+                                break;
+                            case 'baseball':
+                                $sport_img = 'baseball.png';
+                                break;
+                            case 'tennis':
+                                $sport_img = 'tennis.png';
+                                break;
+                            case 'ping-pong':
+                                $sport_img = 'ping-pong.png';
+                                break;
+                            case 'badminton':
+                                $sport_img = 'bad.png';
+                                break;       
+                            default:
+                                $sport_img = 'Nope';
+                                break;
+                        }
                         echo
                         '<div class="teams">
                             <h5>'.$user_grp['nom_groupe'].'</h5>
-                            <img src="img/foot.png" alt="Image du sport">
+                            <img src="img/'.$sport_img.'" alt="Image du sport">
                             <div class="add-sport-section">
                                 <a><img class="add-sport-btn" src="img/plus.svg" alt="Icone Plus"></a>
-                                <h5 class="compteur">4/5</h5>
+                                <h5 class="compteur">4/'.$places.'</h5>
                             </div>
                         </div>';
                     }
