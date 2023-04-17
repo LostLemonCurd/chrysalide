@@ -7,6 +7,7 @@
     <link rel='stylesheet' href='reset.css'>
     <link rel='stylesheet' href='lib.css'>
     <script src='script.js' defer></script>
+    <script src="lib.js" defer></script>
     <script src='https://kit.fontawesome.com/3ebad5cdee.js' crossorigin='anonymous'></script>
     <title>Chrysalide</title>
 </head>
